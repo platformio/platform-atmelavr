@@ -1,0 +1,20 @@
+{
+  "build": {
+    "core": "arduino", 
+    "extra_flags": "-DARDUINO_ARCH_AVR -DARDUINO_AVR_TRINKET5", 
+    "f_cpu": "16000000L", 
+    "mcu": "attiny85", 
+    "variant": "tiny8"
+  }, 
+  "frameworks": [
+    "arduino"
+  ], 
+  "name": "Adafruit Trinket 5V/16MHz", 
+  "upload": {
+    "maximum_ram_size": 512, 
+    "maximum_size": 8192, 
+    "protocol": "usbtiny"
+  }, 
+  "url": "http://www.adafruit.com/products/1501", 
+  "vendor": "Adafruit"
+}

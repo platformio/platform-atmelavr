@@ -1,0 +1,22 @@
+{
+  "build": {
+    "core": "arduino", 
+    "extra_flags": "-DARDUINO_ARCH_AVR -DAVR_RAMBO", 
+    "f_cpu": "16000000L", 
+    "mcu": "atmega2560", 
+    "variant": "rambo"
+  }, 
+  "frameworks": [
+    "arduino"
+  ], 
+  "name": "RepRap RAMBo", 
+  "upload": {
+    "maximum_ram_size": 8192, 
+    "maximum_size": 258048, 
+    "protocol": "wiring", 
+    "require_upload_port": true, 
+    "speed": 115200
+  }, 
+  "url": "http://reprap.org/wiki/Rambo", 
+  "vendor": "RepRap"
+}

@@ -1,0 +1,22 @@
+{
+  "build": {
+    "core": "arduino", 
+    "extra_flags": "-DARDUINO_ARCH_AVR -DARDUINO_AVR_MEGA", 
+    "f_cpu": "16000000L", 
+    "mcu": "atmega1284p", 
+    "variant": "wildfirev3"
+  }, 
+  "frameworks": [
+    "arduino"
+  ], 
+  "name": "Wicked Device WildFire V3", 
+  "upload": {
+    "maximum_ram_size": 16384, 
+    "maximum_size": 130048, 
+    "protocol": "arduino", 
+    "require_upload_port": true, 
+    "speed": 115200
+  }, 
+  "url": "http://shop.wickeddevice.com/resources/wildfire/", 
+  "vendor": "Wicked Device"
+}

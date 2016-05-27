@@ -1,0 +1,20 @@
+{
+  "build": {
+    "core": "arduino", 
+    "extra_flags": "-DARDUINO_ARCH_AVR -DARDUINO_AVR_ATTINY24", 
+    "f_cpu": "8000000L", 
+    "mcu": "attiny24", 
+    "variant": "tiny14"
+  }, 
+  "frameworks": [
+    "arduino"
+  ], 
+  "name": "Generic ATTiny24", 
+  "upload": {
+    "maximum_ram_size": 128, 
+    "maximum_size": 2048, 
+    "protocol": "usbtiny"
+  }, 
+  "url": "http://www.atmel.com/devices/ATTINY24.aspx", 
+  "vendor": "Generic ATTiny"
+}

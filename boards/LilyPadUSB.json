@@ -1,0 +1,36 @@
+{
+  "build": {
+    "core": "arduino", 
+    "extra_flags": "-DARDUINO_ARCH_AVR -DARDUINO_AVR_LILYPAD_USB", 
+    "f_cpu": "8000000L", 
+    "hwids": [
+      [
+        "0x1B4F", 
+        "0x9207"
+      ], 
+      [
+        "0x1B4F", 
+        "0x9208"
+      ]
+    ], 
+    "mcu": "atmega32u4", 
+    "usb_product": "LilyPad USB", 
+    "variant": "leonardo"
+  }, 
+  "frameworks": [
+    "arduino"
+  ], 
+  "name": "Arduino LilyPad USB", 
+  "upload": {
+    "disable_flushing": true, 
+    "maximum_ram_size": 2560, 
+    "maximum_size": 28672, 
+    "protocol": "avr109", 
+    "require_upload_port": true, 
+    "speed": 57600, 
+    "use_1200bps_touch": true, 
+    "wait_for_upload_port": true
+  }, 
+  "url": "http://arduino.cc/en/Main/ArduinoBoardLilyPadUSB", 
+  "vendor": "Arduino"
+}

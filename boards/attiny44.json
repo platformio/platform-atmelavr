@@ -1,0 +1,20 @@
+{
+  "build": {
+    "core": "arduino", 
+    "extra_flags": "-DARDUINO_ARCH_AVR -DARDUINO_AVR_ATTINY44", 
+    "f_cpu": "8000000L", 
+    "mcu": "attiny44", 
+    "variant": "tiny14"
+  }, 
+  "frameworks": [
+    "arduino"
+  ], 
+  "name": "Generic ATTiny44", 
+  "upload": {
+    "maximum_ram_size": 256, 
+    "maximum_size": 4096, 
+    "protocol": "usbtiny"
+  }, 
+  "url": "http://www.atmel.com/devices/ATTINY44.aspx", 
+  "vendor": "Generic ATTiny"
+}

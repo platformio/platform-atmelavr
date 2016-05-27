@@ -1,0 +1,21 @@
+{
+  "build": {
+    "core": "arduino", 
+    "extra_flags": "-DARDUINO_ARCH_AVR -DARDUINO_AVR_MEGA2560", 
+    "f_cpu": "8000000L", 
+    "mcu": "atmega2560", 
+    "variant": "mega"
+  }, 
+  "frameworks": [
+    "arduino"
+  ], 
+  "name": "SparkFun Mega Pro Mini 3.3V", 
+  "upload": {
+    "maximum_ram_size": 8192, 
+    "maximum_size": 258048, 
+    "protocol": "stk500v2", 
+    "speed": 57600
+  }, 
+  "url": "https://www.sparkfun.com/products/10743", 
+  "vendor": "SparkFun"
+}

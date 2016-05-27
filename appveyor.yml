@@ -1,0 +1,21 @@
+build: off
+environment:
+
+  matrix:
+    - PLATFORMIO_PROJECT_DIR: "examples/arduino-blink"
+    - PLATFORMIO_PROJECT_DIR: "examples/arduino-external-libs"
+    - PLATFORMIO_PROJECT_DIR: "examples/arduino-internal-libs"
+    - PLATFORMIO_PROJECT_DIR: "examples/arduino-own-src_dir"
+    - PLATFORMIO_PROJECT_DIR: "examples/digitstump-mouse"
+    - PLATFORMIO_PROJECT_DIR: "examples/engduino-magnetometer"
+    - PLATFORMIO_PROJECT_DIR: "examples/native-blink"
+    - PLATFORMIO_PROJECT_DIR: "examples/simba-blink"
+
+install:
+- cmd: git submodule update --init --recursive
+- cmd: SET PATH=%PATH%;C:\Python27\Scripts
+- cmd: pip install -U https://github.com/platformio/platformio/archive/feature/platformio-30.zip
+- cmd: platformio platform install file://.
+
+test_script:
+- cmd: platformio run -d %PLATFORMIO_PROJECT_DIR%

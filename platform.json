@@ -1,0 +1,61 @@
+{
+  "name": "atmelavr",
+  "title": "Atmel AVR",
+  "description": "Atmel AVR 8- and 32-bit MCUs deliver a unique combination of performance, power efficiency and design flexibility. Optimized to speed time to market-and easily adapt to new ones-they are based on the industrys most code-efficient architecture for C and assembly programming.",
+  "url": "http://www.atmel.com/products/microcontrollers/avr/default.aspx",
+  "homepage": "http://platformio.org/platforms/atmelavr",
+  "license": {
+    "type": "Apache-2.0",
+    "url": "http://opensource.org/licenses/apache2.0.php"
+  },
+  "engines": {
+    "platformio": "~3.0.0",
+    "scons": ">=2.3.0,<2.6.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/platformio/platform-atmelavr.git"
+  },
+  "version": "0.0.0",
+  "packageRepositories": [
+    "https://dl.bintray.com/platformio/dl-packages/manifest.json",
+    "https://sourceforge.net/projects/platformio-storage/files/packages/manifest.json/download",
+    "http://dl.platformio.org/packages/manifest.json"
+  ],
+  "frameworks": {
+    "arduino": {
+      "package": "framework-arduinoavr",
+      "script": "builder/frameworks/arduino.py"
+    },
+    "simba": {
+      "package": "framework-simba",
+      "script": "builder/frameworks/simba.py"
+    }
+  },
+  "packages": {
+    "toolchain-atmelavr": {
+      "type": "toolchain",
+      "version": "~1.40801.0"
+    },
+    "framework-arduinoavr": {
+      "type": "framework",
+      "optional": true,
+      "version": "~1.10608.0"
+    },
+    "framework-simba": {
+      "type": "framework",
+      "optional": true,
+      "version": "~1.500.0"
+    },
+    "tool-avrdude": {
+      "type": "uploader",
+      "optional": true,
+      "version": ">=1.60001.0,<=1.60100.0"
+    },
+    "tool-micronucleus": {
+      "type": "uploader",
+      "optional": true,
+      "version": "~1.200.0"
+    }
+  }
+}

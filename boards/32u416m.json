@@ -1,0 +1,31 @@
+{
+  "build": {
+    "board": "AVR_MICRODUINO_CORE_USB", 
+    "core": "arduino", 
+    "f_cpu": "16000000L", 
+    "hwids": [
+      [
+        "0x2341", 
+        "0x8036"
+      ]
+    ], 
+    "mcu": "atmega32u4", 
+    "variant": "32u4"
+  }, 
+  "frameworks": [
+    "arduino"
+  ], 
+  "name": "Microduino Core USB (ATmega32U4@16M,5V)", 
+  "upload": {
+    "disable_flushing": true, 
+    "maximum_ram_size": 2560, 
+    "maximum_size": 28672, 
+    "protocol": "avr109", 
+    "require_upload_port": true, 
+    "speed": 57600, 
+    "use_1200bps_touch": true, 
+    "wait_for_upload_port": true
+  }, 
+  "url": "https://www.microduino.cc/wiki/index.php?title=Microduino-CoreUSB", 
+  "vendor": "Microduino"
+}
