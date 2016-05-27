@@ -50,7 +50,7 @@
     "tool-avrdude": {
       "type": "uploader",
       "optional": true,
-      "version": ">=1.60001.0,<=1.60100.0"
+      "version": ">=1.60001.0,<1.60101.0"
     },
     "tool-micronucleus": {
       "type": "uploader",
