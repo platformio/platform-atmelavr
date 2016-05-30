@@ -23,8 +23,8 @@ class AtmelavrPlatform(BasePlatform):
             disable_tool = "tool-micronucleus"
             if "digispark" in board_config.get("build.core", ""):
                 disable_tool = "tool-avrdude"
-            if disable_tool in self.get_packages():
-                del self.get_packages()[disable_tool]
+            if disable_tool in self.packages:
+                del self.packages[disable_tool]
 
         return BasePlatform.configure_default_packages(
             self, variables, targets)
