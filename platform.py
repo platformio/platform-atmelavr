@@ -12,10 +12,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from platformio.managers.platform import BasePlatform
+from platformio.managers.platform import PlatformBase
 
 
-class AtmelavrPlatform(BasePlatform):
+class AtmelavrPlatform(PlatformBase):
 
     def configure_default_packages(self, variables, targets):
         if variables.get("board"):
@@ -26,7 +26,7 @@ class AtmelavrPlatform(BasePlatform):
             if disable_tool in self.packages:
                 del self.packages[disable_tool]
 
-        return BasePlatform.configure_default_packages(
+        return PlatformBase.configure_default_packages(
             self, variables, targets)
 
     def on_run_err(self, line):  # pylint: disable=R0201
@@ -34,4 +34,4 @@ class AtmelavrPlatform(BasePlatform):
         if "avrdude" in line:
             self.on_run_out(line)
         else:
-            BasePlatform.on_run_err(self, line)
+            PlatformBase.on_run_err(self, line)
