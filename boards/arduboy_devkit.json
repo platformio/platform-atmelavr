@@ -1,7 +1,7 @@
 {
   "build": {
     "core": "arduino", 
-    "extra_flags": "-DARDUINO_ARCH_AVR -DARDUINO_AVR_ARDUBOY -DARDUBOY_10", 
+    "extra_flags": "-DARDUINO_ARCH_AVR -DARDUINO_AVR_ARDUBOY_DEVKIT -DAB_DEVKIT", 
     "f_cpu": "16000000L", 
     "hwids": [
       [
@@ -14,13 +14,13 @@
       ]
     ], 
     "mcu": "atmega32u4", 
-    "usb_product": "Arduboy", 
+    "usb_product": "Arduboy DevKit", 
     "variant": "leonardo"
   }, 
   "frameworks": [
     "arduino"
   ], 
-  "name": "Arduboy", 
+  "name": "Arduboy DevKit", 
   "upload": {
     "disable_flushing": true, 
     "maximum_ram_size": 2560, 
