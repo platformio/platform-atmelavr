@@ -9,7 +9,7 @@
   "frameworks": [
     "arduino"
   ],
-  "name": "BitWizard Raspduino",
+  "name": "emonpi",
   "upload": {
     "maximum_ram_size": 2048,
     "maximum_size": 32256,
