@@ -9,7 +9,7 @@
   "frameworks": [
     "arduino"
   ],
-  "name": "emonpi",
+  "name": "OpenEnergyMonitor emonPi",
   "upload": {
     "maximum_ram_size": 2048,
     "maximum_size": 32256,
