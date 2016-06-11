@@ -222,10 +222,9 @@ AlwaysBuild(upload)
 # Target: Upload EEPROM data (from EEMEM directive)
 #
 
-uploadeep = env.Alias(
-    "uploadeep",
-    env.ElfToEep(join("$BUILD_DIR", "firmware"), target_elf),
-    [BeforeUpload, "$UPLOADEEPCMD"])
+uploadeep = env.Alias("uploadeep",
+                      env.ElfToEep(join("$BUILD_DIR", "firmware"), target_elf),
+                      [BeforeUpload, "$UPLOADEEPCMD"])
 AlwaysBuild(uploadeep)
 
 #
