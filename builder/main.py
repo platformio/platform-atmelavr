@@ -179,7 +179,7 @@ else:
             "-p", "$BOARD_MCU",
             "-C",
             '"%s"' % join(
-                env.DevPlatform().get_package_dir("tool-avrdude") or "",
+                env.PioPlatform().get_package_dir("tool-avrdude") or "",
                 "avrdude.conf"),
             "-c", "$UPLOAD_PROTOCOL"
         ],
