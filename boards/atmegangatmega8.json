@@ -1,0 +1,22 @@
+{
+  "build": {
+    "core": "arduino", 
+    "extra_flags": "-DARDUINO_ARCH_AVR -DARDUINO_AVR_NG", 
+    "f_cpu": "16000000L", 
+    "mcu": "atmega8", 
+    "variant": "standard"
+  }, 
+  "frameworks": [
+    "arduino"
+  ], 
+  "name": "Arduino NG or older ATmega8", 
+  "upload": {
+    "maximum_ram_size": 1024, 
+    "maximum_size": 7168, 
+    "protocol": "arduino", 
+    "require_upload_port": true, 
+    "speed": 19200
+  }, 
+  "url": "http://arduino.cc/en/main/boards", 
+  "vendor": "Arduino"
+}

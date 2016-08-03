@@ -1,0 +1,22 @@
+{
+  "build": {
+    "core": "MightyCore", 
+    "extra_flags": "-DARDUINO_ARCH_AVR -DARDUINO_AVR_ATmega644", 
+    "f_cpu": "16000000L", 
+    "mcu": "atmega644p", 
+    "variant": "mightycore"
+  }, 
+  "frameworks": [
+    "arduino"
+  ], 
+  "name": "MightyCore ATmega644", 
+  "upload": {
+    "maximum_ram_size": 4096, 
+    "maximum_size": 64512, 
+    "protocol": "arduino", 
+    "require_upload_port": true, 
+    "speed": 115200
+  }, 
+  "url": "https://www.tindie.com/products/MCUdude/dip-40-arduino-compatible-development-board", 
+  "vendor": "Mcudude"
+}

@@ -1,0 +1,23 @@
+{
+  "build": {
+    "core": "arduino", 
+    "extra_flags": "-DARDUINO_ARCH_AVR -DARDUINO_AVR_BT", 
+    "f_cpu": "16000000L", 
+    "mcu": "atmega328p", 
+    "variant": "eightanaloginputs"
+  }, 
+  "frameworks": [
+    "arduino"
+  ], 
+  "name": "Arduino BT ATmega328", 
+  "upload": {
+    "disable_flushing": true, 
+    "maximum_ram_size": 2048, 
+    "maximum_size": 28672, 
+    "protocol": "arduino", 
+    "require_upload_port": true, 
+    "speed": 19200
+  }, 
+  "url": "http://arduino.cc/en/main/boards", 
+  "vendor": "Arduino"
+}

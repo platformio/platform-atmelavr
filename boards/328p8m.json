@@ -1,0 +1,22 @@
+{
+  "build": {
+    "board": "AVR_MICRODUINO_CORE", 
+    "core": "arduino", 
+    "f_cpu": "8000000L", 
+    "mcu": "atmega328p", 
+    "variant": "standard"
+  }, 
+  "frameworks": [
+    "arduino"
+  ], 
+  "name": "Microduino Core (Atmega328P@8M,3.3V)", 
+  "upload": {
+    "maximum_ram_size": 2048, 
+    "maximum_size": 32256, 
+    "protocol": "arduino", 
+    "require_upload_port": true, 
+    "speed": 57600
+  }, 
+  "url": "https://www.microduino.cc/wiki/index.php?title=Microduino-Core", 
+  "vendor": "Microduino"
+}

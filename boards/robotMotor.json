@@ -1,0 +1,44 @@
+{
+  "build": {
+    "core": "arduino", 
+    "extra_flags": "-DARDUINO_ARCH_AVR -DARDUINO_AVR_ROBOT_MOTOR", 
+    "f_cpu": "16000000L", 
+    "hwids": [
+      [
+        "0x2341", 
+        "0x0039"
+      ], 
+      [
+        "0x2341", 
+        "0x8039"
+      ], 
+      [
+        "0x2A03", 
+        "0x0039"
+      ], 
+      [
+        "0x2A03", 
+        "0x8039"
+      ]
+    ], 
+    "mcu": "atmega32u4", 
+    "usb_product": "Robot Motor", 
+    "variant": "robot_motor"
+  }, 
+  "frameworks": [
+    "arduino"
+  ], 
+  "name": "Arduino Robot Motor", 
+  "upload": {
+    "disable_flushing": true, 
+    "maximum_ram_size": 2560, 
+    "maximum_size": 28672, 
+    "protocol": "avr109", 
+    "require_upload_port": true, 
+    "speed": 57600, 
+    "use_1200bps_touch": true, 
+    "wait_for_upload_port": true
+  }, 
+  "url": "http://www.arduino.org/products/boards/4-arduino-boards/arduino-robot", 
+  "vendor": "Arduino"
+}

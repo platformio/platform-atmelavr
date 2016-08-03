@@ -1,0 +1,22 @@
+{
+  "build": {
+    "core": "arduino", 
+    "extra_flags": "-DARDUINO_ARCH_AVR -DAVR_RASPDUINO", 
+    "f_cpu": "16000000L", 
+    "mcu": "atmega328p", 
+    "variant": "standard"
+  }, 
+  "frameworks": [
+    "arduino"
+  ], 
+  "name": "BitWizard Raspduino", 
+  "upload": {
+    "maximum_ram_size": 2048, 
+    "maximum_size": 30720, 
+    "protocol": "arduino", 
+    "require_upload_port": true, 
+    "speed": 57600
+  }, 
+  "url": "http://www.bitwizard.nl/wiki/index.php/Raspduino", 
+  "vendor": "BitWizard"
+}

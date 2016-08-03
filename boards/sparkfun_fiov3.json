@@ -1,0 +1,36 @@
+{
+  "build": {
+    "core": "arduino", 
+    "extra_flags": "-DARDUINO_ARCH_AVR -DAVR_FIOV3", 
+    "f_cpu": "8000000L", 
+    "hwids": [
+      [
+        "0x1B4F", 
+        "0xF100"
+      ], 
+      [
+        "0x1B4F", 
+        "0xF101"
+      ]
+    ], 
+    "mcu": "atmega32u4", 
+    "usb_product": "SparkFun Fio v3", 
+    "variant": "sparkfun_promicro"
+  }, 
+  "frameworks": [
+    "arduino"
+  ], 
+  "name": "SparkFun Fio V3 3.3V/8MHz", 
+  "upload": {
+    "disable_flushing": true, 
+    "maximum_ram_size": 2560, 
+    "maximum_size": 28672, 
+    "protocol": "avr109", 
+    "require_upload_port": true, 
+    "speed": 57600, 
+    "use_1200bps_touch": true, 
+    "wait_for_upload_port": true
+  }, 
+  "url": "https://www.sparkfun.com/products/11520", 
+  "vendor": "SparkFun"
+}

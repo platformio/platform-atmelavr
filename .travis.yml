@@ -1,0 +1,20 @@
+language: python
+python:
+    - "2.7"
+
+env:
+    - PLATFORMIO_PROJECT_DIR=examples/arduino-blink
+    - PLATFORMIO_PROJECT_DIR=examples/arduino-external-libs
+    - PLATFORMIO_PROJECT_DIR=examples/arduino-internal-libs
+    - PLATFORMIO_PROJECT_DIR=examples/arduino-own-src_dir
+    - PLATFORMIO_PROJECT_DIR=examples/digitstump-mouse
+    - PLATFORMIO_PROJECT_DIR=examples/engduino-magnetometer
+    - PLATFORMIO_PROJECT_DIR=examples/native-blink
+    - PLATFORMIO_PROJECT_DIR=examples/simba-blink
+
+install:
+    - pip install -U https://github.com/platformio/platformio/archive/feature/platformio-30.zip
+    - platformio platform install file://.
+
+script:
+    - platformio run -d $PLATFORMIO_PROJECT_DIR

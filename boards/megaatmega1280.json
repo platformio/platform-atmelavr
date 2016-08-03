@@ -1,0 +1,22 @@
+{
+  "build": {
+    "core": "arduino", 
+    "extra_flags": "-DARDUINO_ARCH_AVR -DARDUINO_AVR_MEGA", 
+    "f_cpu": "16000000L", 
+    "mcu": "atmega1280", 
+    "variant": "mega"
+  }, 
+  "frameworks": [
+    "arduino"
+  ], 
+  "name": "Arduino Mega or Mega 2560 ATmega1280", 
+  "upload": {
+    "maximum_ram_size": 8192, 
+    "maximum_size": 126976, 
+    "protocol": "arduino", 
+    "require_upload_port": true, 
+    "speed": 57600
+  }, 
+  "url": "http://www.arduino.org/products/boards/4-arduino-boards/arduino-mega-2560", 
+  "vendor": "Arduino"
+}
