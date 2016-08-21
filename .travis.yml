@@ -1,20 +1,29 @@
 language: python
 python:
-    - "2.7"
+  - "2.7"
 
 env:
-    - PLATFORMIO_PROJECT_DIR=examples/arduino-blink
-    - PLATFORMIO_PROJECT_DIR=examples/arduino-external-libs
-    - PLATFORMIO_PROJECT_DIR=examples/arduino-internal-libs
-    - PLATFORMIO_PROJECT_DIR=examples/arduino-own-src_dir
-    - PLATFORMIO_PROJECT_DIR=examples/digitstump-mouse
-    - PLATFORMIO_PROJECT_DIR=examples/engduino-magnetometer
-    - PLATFORMIO_PROJECT_DIR=examples/native-blink
-    - PLATFORMIO_PROJECT_DIR=examples/simba-blink
+  - PLATFORMIO_PROJECT_DIR=examples/arduino-blink
+  - PLATFORMIO_PROJECT_DIR=examples/arduino-external-libs
+  - PLATFORMIO_PROJECT_DIR=examples/arduino-internal-libs
+  - PLATFORMIO_PROJECT_DIR=examples/arduino-own-src_dir
+  - PLATFORMIO_PROJECT_DIR=examples/digitstump-mouse
+  - PLATFORMIO_PROJECT_DIR=examples/engduino-magnetometer
+  - PLATFORMIO_PROJECT_DIR=examples/native-blink
+  - PLATFORMIO_PROJECT_DIR=examples/simba-blink
 
 install:
-    - pip install -U https://github.com/platformio/platformio/archive/develop.zip
-    - platformio platform install file://.
+  - pip install -U https://github.com/platformio/platformio/archive/develop.zip
+  - platformio platform install file://.
 
 script:
-    - platformio run -d $PLATFORMIO_PROJECT_DIR
+  - platformio run -d $PLATFORMIO_PROJECT_DIR
+
+notifications:
+  email: false
+
+  slack:
+    rooms:
+      secure: JZsFjgJTcERjMOY5NnVUOrVWK2nfnGKmDNhmblWMGGnF/OpkhgTtScuM6ZJtmI8FOjWmgLy0iV6JSMZLtiKFuaUbIKkJvGU7X1H4ctQNter179ZEPjch4taiUOAZf2Jpa5vpVbBNPsafSxnvuBhFX2iXMghnWED910G2zji8gvepDjKEHUl39pIR05Hx6rlMYd+FAI325ACjnAWX0DVLbCoWI2ho4IhBYko8pEA5Uuy9FQFSchFlI9FfYQOx60/F8zAAyLbf77X6mZj7f7Z0/Y4Y5pwW6oVHZ8/Ok1BpBaOQlI1bCJAoRM2NxQjLhg7KnWD/Mp0WtybCD5oWlZsOxieZfa8Fb5OQSNC3eIbw6EQtrez+6Ug+RsvO05//4IKatGQhSlECoBCR6ImNF5PDCa1nPbmDJ+vgE4LIS8FzgAsOfGXrtAujthnVAq6jzVJ6C/i2qBRXowmYFv7epfkP+c+evjOOtWg0OZIDbdSOPSYt2JdA42mEmH3kYF5t46m6934Im0nwVsd3MEEnmuGbPQIf1S8Fq+QOS+rB8+tF4cD626+0FJpLpZTI8oCDglABP+kdV6CG5yl/zHO2n+4POeuG8h+f/WHvUotnZY4q/5PmwpjWYl7A8qG5Qp51opc5B15aCMf1HD4aCFNFXGuQM6VNfgXMGgntu7isFe/kTUg=
+    on_failure: always
+    on_success: change
