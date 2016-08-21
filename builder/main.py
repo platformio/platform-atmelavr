@@ -175,7 +175,6 @@ else:
     env.Replace(
         UPLOADER="avrdude",
         UPLOADERFLAGS=[
-            "-v",
             "-p", "$BOARD_MCU",
             "-C",
             '"%s"' % join(
@@ -187,6 +186,8 @@ else:
         UPLOADEEPCMD='$UPLOADER $UPLOADERFLAGS -U eeprom:w:$SOURCES:i',
         PROGRAMHEXCMD='$UPLOADER $UPLOADERFLAGS -U flash:w:$SOURCES:i'
     )
+    if not env.GetOption("silent"):
+        env.Prepend(UPLOADERFLAGS=["-v"])
 
 #
 # Target: Build executable and linkable firmware
