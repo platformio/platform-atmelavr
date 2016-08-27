@@ -19,8 +19,8 @@
 from os.path import join
 from time import sleep
 
-from SCons.Script import (COMMAND_LINE_TARGETS, AlwaysBuild, Builder, Default,
-                          DefaultEnvironment)
+from SCons.Script import (ARGUMENTS, COMMAND_LINE_TARGETS, AlwaysBuild,
+                          Builder, Default, DefaultEnvironment)
 
 from platformio.util import get_serialports
 
@@ -132,7 +132,7 @@ env.Append(
 
     BUILDERS=dict(
         ElfToEep=Builder(
-            action=" ".join([
+            action=env.VerboseAction(" ".join([
                 "$OBJCOPY",
                 "-O",
                 "ihex",
@@ -143,19 +143,21 @@ env.Append(
                 "--change-section-lma",
                 ".eeprom=0",
                 "$SOURCES",
-                "$TARGET"]),
+                "$TARGET"
+            ]), "Building $TARGET"),
             suffix=".eep"
         ),
 
         ElfToHex=Builder(
-            action=" ".join([
+            action=env.VerboseAction(" ".join([
                 "$OBJCOPY",
                 "-O",
                 "ihex",
                 "-R",
                 ".eeprom",
                 "$SOURCES",
-                "$TARGET"]),
+                "$TARGET"
+            ]), "Building $TARGET"),
             suffix=".hex"
         )
     )
@@ -186,7 +188,7 @@ else:
         UPLOADEEPCMD='$UPLOADER $UPLOADERFLAGS -U eeprom:w:$SOURCES:i',
         PROGRAMHEXCMD='$UPLOADER $UPLOADERFLAGS -U flash:w:$SOURCES:i'
     )
-    if not env.GetOption("silent"):
+    if int(ARGUMENTS.get("PIOVERBOSE", 0)):
         env.Prepend(UPLOADERFLAGS=["-v"])
 
 #
@@ -208,31 +210,40 @@ else:
 # Target: Print binary size
 #
 
-target_size = env.Alias("size", target_elf, "$SIZEPRINTCMD")
+target_size = env.Alias(
+    "size", target_elf,
+    env.VerboseAction("$SIZEPRINTCMD", "Calculating size $SOURCE"))
 AlwaysBuild(target_size)
 
 #
 # Target: Upload by default .hex file
 #
 
-upload = env.Alias(["upload", "uploadlazy"], target_firm,
-                   [BeforeUpload, "$UPLOADHEXCMD"])
+upload = env.Alias(
+    ["upload", "uploadlazy"], target_firm,
+    [env.VerboseAction(BeforeUpload, "Looking for upload port..."),
+     env.VerboseAction("$UPLOADHEXCMD", "Uploading $SOURCE")])
 AlwaysBuild(upload)
 
 #
 # Target: Upload EEPROM data (from EEMEM directive)
 #
 
-uploadeep = env.Alias("uploadeep",
-                      env.ElfToEep(join("$BUILD_DIR", "firmware"), target_elf),
-                      [BeforeUpload, "$UPLOADEEPCMD"])
+uploadeep = env.Alias(
+    "uploadeep", env.ElfToEep(join("$BUILD_DIR", "firmware"), target_elf),
+    [env.VerboseAction(BeforeUpload, "Looking for upload port..."),
+     env.VerboseAction("$UPLOADEEPCMD", "Uploading $SOURCE")])
 AlwaysBuild(uploadeep)
 
 #
 # Target: Upload firmware using external programmer
 #
 
-program = env.Alias("program", target_firm, [BeforeUpload, "$PROGRAMHEXCMD"])
+program = env.Alias(
+    "program", target_firm,
+    [env.VerboseAction(BeforeUpload, "Looking for upload port..."),
+     env.VerboseAction("$PROGRAMHEXCMD", "Programming $SOURCE")])
+
 AlwaysBuild(program)
 
 #
