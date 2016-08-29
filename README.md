@@ -16,5 +16,5 @@ Atmel AVR 8- and 32-bit MCUs deliver a unique combination of performance, power 
 > platformio platform install atmelavr
 
 # install development version
-> platformio platform install https://github.com/platformio/platform-atmelavr/archive/develop.zip
+> platformio platform install https://github.com/platformio/platform-atmelavr.git
 ```
