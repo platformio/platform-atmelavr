@@ -2,7 +2,7 @@
   "build": {
     "core": "arduino", 
     "extra_flags": "-DARDUINO_ARCH_AVR -DARDUINO_AVR_PROTRINKET3FTDI", 
-    "f_cpu": "16000000L", 
+    "f_cpu": "12000000L", 
     "mcu": "atmega328p", 
     "variant": "eightanaloginputs"
   }, 
