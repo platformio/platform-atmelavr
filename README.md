@@ -12,7 +12,7 @@ Atmel AVR 8- and 32-bit MCUs deliver a unique combination of performance, power 
 1. [Install PlatformIO CLI](http://docs.platformio.org/en/latest/installation.html)
 2. Install Atmel AVR development platform:
 ```bash
-# isntall the latest stable version
+# install the latest stable version
 > platformio platform install atmelavr
 
 # install development version
