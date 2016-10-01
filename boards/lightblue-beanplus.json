@@ -1,0 +1,19 @@
+{
+  "build": {
+    "core": "bean",
+    "extra_flags": "-DARDUINO_ARCH_AVR",
+    "f_cpu": "16000000L",
+    "mcu": "atmega328p",
+    "variant": "bean+"
+  },
+  "frameworks": [
+    "arduino"
+  ],
+  "name": "LightBlue Bean+",
+  "upload": {
+    "maximum_ram_size": 2048,
+    "maximum_size": 32256
+  },
+  "url": "https://punchthrough.com/bean",
+  "vendor": "Punch Through"
+}
