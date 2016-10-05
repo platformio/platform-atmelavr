@@ -12,10 +12,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""
-    Builder for Atmel AVR series of microcontrollers
-"""
-
 from os.path import join
 from time import sleep
 
@@ -194,16 +190,15 @@ else:
 # Target: Build executable and linkable firmware
 #
 
-target_elf = env.BuildProgram()
-
-#
-# Target: Build the .hex file
-#
-
-if "uploadlazy" in COMMAND_LINE_TARGETS:
+target_elf = None
+if "nobuild" in COMMAND_LINE_TARGETS:
     target_firm = join("$BUILD_DIR", "firmware.hex")
 else:
+    target_elf = env.BuildProgram()
     target_firm = env.ElfToHex(join("$BUILD_DIR", "firmware"), target_elf)
+
+AlwaysBuild(env.Alias("nobuild", target_firm))
+target_buildprog = env.Alias("buildprog", target_firm)
 
 #
 # Target: Print binary size
@@ -218,36 +213,36 @@ AlwaysBuild(target_size)
 # Target: Upload by default .hex file
 #
 
-upload = env.Alias(
-    ["upload", "uploadlazy"], target_firm,
+target_upload = env.Alias(
+    "upload", target_firm,
     [env.VerboseAction(BeforeUpload, "Looking for upload port..."),
      env.VerboseAction("$UPLOADHEXCMD", "Uploading $SOURCE")])
-AlwaysBuild(upload)
+AlwaysBuild(target_upload)
 
 #
 # Target: Upload EEPROM data (from EEMEM directive)
 #
-
-uploadeep = env.Alias(
-    "uploadeep", env.ElfToEep(join("$BUILD_DIR", "firmware"), target_elf),
+target_uploadeep = env.Alias(
+    "uploadeep", join("$BUILD_DIR", "firmware.eep")
+    if "nobuild" in COMMAND_LINE_TARGETS else
+    env.ElfToEep(join("$BUILD_DIR", "firmware"), target_elf),
     [env.VerboseAction(BeforeUpload, "Looking for upload port..."),
      env.VerboseAction("$UPLOADEEPCMD", "Uploading $SOURCE")])
-AlwaysBuild(uploadeep)
+AlwaysBuild(target_uploadeep)
 
 #
 # Target: Upload firmware using external programmer
 #
 
-program = env.Alias(
+target_program = env.Alias(
     "program", target_firm,
     [env.VerboseAction(BeforeUpload, "Looking for upload port..."),
      env.VerboseAction("$PROGRAMHEXCMD", "Programming $SOURCE")])
 
-AlwaysBuild(program)
-
+AlwaysBuild(target_program)
 
 #
 # Setup default targets
 #
 
-Default([target_firm, target_size])
+Default([target_buildprog, target_size])
