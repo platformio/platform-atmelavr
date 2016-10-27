@@ -198,7 +198,7 @@ else:
     target_firm = env.ElfToHex(join("$BUILD_DIR", "firmware"), target_elf)
 
 AlwaysBuild(env.Alias("nobuild", target_firm))
-target_buildprog = env.Alias("buildprog", target_firm)
+target_buildprog = env.Alias("buildprog", target_firm, target_firm)
 
 #
 # Target: Print binary size
@@ -238,7 +238,6 @@ target_program = env.Alias(
     "program", target_firm,
     [env.VerboseAction(BeforeUpload, "Looking for upload port..."),
      env.VerboseAction("$PROGRAMHEXCMD", "Programming $SOURCE")])
-
 AlwaysBuild(target_program)
 
 #
