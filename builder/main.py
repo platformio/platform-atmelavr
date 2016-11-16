@@ -159,7 +159,7 @@ env.Append(
     )
 )
 
-if "BOARD" in env and "digispark" in env.BoardConfig().get("build.core", ""):
+if env.subst("$UPLOAD_PROTOCOL") in ("digispark", "micronucleus"):
     env.Replace(
         UPLOADER="micronucleus",
         UPLOADERFLAGS=[
