@@ -1,7 +1,7 @@
 {
   "build": {
     "core": "arduino",
-    "extra_flags": "-D__PROG_TYPES_COMPAT__ -fpermissive",
+    "extra_flags": "-D__PROG_TYPES_COMPAT__",
     "f_cpu": "16000000L",
     "mcu": "atmega256rfr2",
     "variant": "altair"

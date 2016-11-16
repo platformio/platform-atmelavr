@@ -104,6 +104,7 @@ env.Replace(
     CXXFLAGS=[
         "-fno-exceptions",
         "-fno-threadsafe-statics",
+        "-fpermissive",
         "-std=gnu++11"
     ],
 
