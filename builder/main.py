@@ -76,12 +76,12 @@ def BeforeUpload(target, source, env):  # pylint: disable=W0613,W0621
 env = DefaultEnvironment()
 
 env.Replace(
-    AR="avr-ar",
+    AR="avr-gcc-ar",
     AS="avr-as",
     CC="avr-gcc",
     CXX="avr-g++",
     OBJCOPY="avr-objcopy",
-    RANLIB="avr-ranlib",
+    RANLIB="avr-gcc-ranlib",
     SIZETOOL="avr-size",
 
     ARFLAGS=["rcs"],
@@ -89,7 +89,8 @@ env.Replace(
     ASFLAGS=["-x", "assembler-with-cpp"],
 
     CFLAGS=[
-        "-std=gnu11"
+        "-std=gnu11",
+        "-fno-fat-lto-objects"
     ],
 
     CCFLAGS=[
@@ -98,6 +99,7 @@ env.Replace(
         "-Wall",  # show warnings
         "-ffunction-sections",  # place each function in its own section
         "-fdata-sections",
+        "-flto",
         "-mmcu=$BOARD_MCU"
     ],
 
@@ -113,7 +115,9 @@ env.Replace(
     LINKFLAGS=[
         "-Os",
         "-mmcu=$BOARD_MCU",
-        "-Wl,--gc-sections,--relax"
+        "-Wl,--gc-sections",
+        "-flto",
+        "-fuse-linker-plugin"
     ],
 
     LIBS=["m"],
