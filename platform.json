@@ -48,7 +48,7 @@
     "tool-avrdude": {
       "type": "uploader",
       "optional": true,
-      "version": "~1.60001.0"
+      "version": "~1.60300.0"
     },
     "tool-micronucleus": {
       "type": "uploader",
