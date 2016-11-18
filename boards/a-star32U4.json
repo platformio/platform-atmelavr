@@ -1,22 +1,26 @@
 {
   "build": {
-    "extra_flags": "-DAVR_ENGDUINOV3",
     "core": "arduino",
-    "f_cpu": "8000000L",
+    "extra_flags": "-DARDUINO_ARCH_AVR -DARDUINO_AVR_A_STAR_32U4",
+    "f_cpu": "16000000L",
     "hwids": [
       [
-        "0x1B4F",
-        "0x9208"
+        "0x1ffb",
+        "0x2300"
+      ],
+      [
+        "0x1ffb",
+        "0x0101"
       ]
     ],
     "mcu": "atmega32u4",
-    "usb_product": "EngduinoV3",
-    "variant": "engduinov3"
+    "usb_product": "Pololu A-Star 32U4",
+    "variant": "leonardo"
   },
   "frameworks": [
     "arduino"
   ],
-  "name": "Engduino 3",
+  "name": "Pololu A-Star 32U4",
   "upload": {
     "disable_flushing": true,
     "maximum_ram_size": 2560,
@@ -27,6 +31,6 @@
     "use_1200bps_touch": true,
     "wait_for_upload_port": true
   },
-  "url": "http://www.engduino.org",
-  "vendor": "Engduino"
+  "url": "https://www.pololu.com/category/149/a-star-programmable-controllers",
+  "vendor": "Pololu Corporation"
 }

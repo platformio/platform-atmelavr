@@ -1,0 +1,22 @@
+{
+  "build": {
+    "core": "arduino",
+    "extra_flags": "-D__PROG_TYPES_COMPAT__",
+    "f_cpu": "16000000L",
+    "mcu": "atmega256rfr2",
+    "variant": "altair"
+  },
+  "frameworks": [
+    "arduino"
+  ],
+  "name": "Altair",
+  "upload": {
+    "maximum_ram_size": 32768,
+    "maximum_size": 253952,
+    "protocol": "wiring",
+    "require_upload_port": true,
+    "speed": 115200
+  },
+  "url": "http://www.aquila.io/en",
+  "vendor": "makerlab.mx"
+}

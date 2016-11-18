@@ -1,15 +1,15 @@
 {
   "build": {
-    "extra_flags": "-DAVR_MICRODUINO_CORE_PLUS",
+    "extra_flags": "-DARDUINO_AVR_SODAQ_TATU",
     "core": "arduino",
     "f_cpu": "8000000L",
     "mcu": "atmega1284p",
-    "variant": "plus"
+    "variant": "tatu"
   },
   "frameworks": [
     "arduino"
   ],
-  "name": "Microduino Core+ (ATmega1284P@8M,3.3V)",
+  "name": "SODAQ Tatu",
   "upload": {
     "maximum_ram_size": 16384,
     "maximum_size": 130048,
@@ -17,6 +17,6 @@
     "require_upload_port": true,
     "speed": 57600
   },
-  "url": "https://www.microduino.cc/wiki/index.php?title=Microduino-Core%2B",
-  "vendor": "Microduino"
+  "url": "http://support.sodaq.com/",
+  "vendor": "SODAQ"
 }

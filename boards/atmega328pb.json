@@ -1,0 +1,22 @@
+{
+  "build": {
+    "core": "arduino",
+    "extra_flags": "-DARDUINO_ARCH_AVR -DARDUINO_AVR_UNO",
+    "f_cpu": "16000000L",
+    "mcu": "atmega328pb",
+    "variant": "atmega328pb"
+  },
+  "frameworks": [
+    "arduino"
+  ],
+  "name": "Atmel ATmega328PB",
+  "upload": {
+    "maximum_ram_size": 2048,
+    "maximum_size": 32256,
+    "protocol": "arduino",
+    "require_upload_port": true,
+    "speed": 57600
+  },
+  "url": "http://www.atmel.com/devices/ATMEGA328PB.aspx",
+  "vendor": "Arduino"
+}

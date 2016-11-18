@@ -76,12 +76,12 @@ def BeforeUpload(target, source, env):  # pylint: disable=W0613,W0621
 env = DefaultEnvironment()
 
 env.Replace(
-    AR="avr-ar",
+    AR="avr-gcc-ar",
     AS="avr-as",
     CC="avr-gcc",
     CXX="avr-g++",
     OBJCOPY="avr-objcopy",
-    RANLIB="avr-ranlib",
+    RANLIB="avr-gcc-ranlib",
     SIZETOOL="avr-size",
 
     ARFLAGS=["rcs"],
@@ -89,7 +89,8 @@ env.Replace(
     ASFLAGS=["-x", "assembler-with-cpp"],
 
     CFLAGS=[
-        "-std=gnu11"
+        "-std=gnu11",
+        "-fno-fat-lto-objects"
     ],
 
     CCFLAGS=[
@@ -98,12 +99,14 @@ env.Replace(
         "-Wall",  # show warnings
         "-ffunction-sections",  # place each function in its own section
         "-fdata-sections",
+        "-flto",
         "-mmcu=$BOARD_MCU"
     ],
 
     CXXFLAGS=[
         "-fno-exceptions",
         "-fno-threadsafe-statics",
+        "-fpermissive",
         "-std=gnu++11"
     ],
 
@@ -112,7 +115,9 @@ env.Replace(
     LINKFLAGS=[
         "-Os",
         "-mmcu=$BOARD_MCU",
-        "-Wl,--gc-sections,--relax"
+        "-Wl,--gc-sections",
+        "-flto",
+        "-fuse-linker-plugin"
     ],
 
     LIBS=["m"],
@@ -159,14 +164,15 @@ env.Append(
     )
 )
 
-if "BOARD" in env and "digispark" in env.BoardConfig().get("build.core", ""):
+if env.subst("$UPLOAD_PROTOCOL") in ("digispark", "micronucleus"):
     env.Replace(
         UPLOADER="micronucleus",
         UPLOADERFLAGS=[
             "-c", "$UPLOAD_PROTOCOL",
             "--timeout", "60"
         ],
-        UPLOADHEXCMD='$UPLOADER $UPLOADERFLAGS $SOURCES'
+        UPLOADHEXCMD='$UPLOADER $UPLOADERFLAGS $SOURCES',
+        PROGRAMHEXCMD="$UPLOADHEXCMD"
     )
 
 else:
@@ -198,7 +204,7 @@ else:
     target_firm = env.ElfToHex(join("$BUILD_DIR", "firmware"), target_elf)
 
 AlwaysBuild(env.Alias("nobuild", target_firm))
-target_buildprog = env.Alias("buildprog", target_firm)
+target_buildprog = env.Alias("buildprog", target_firm, target_firm)
 
 #
 # Target: Print binary size
@@ -238,7 +244,6 @@ target_program = env.Alias(
     "program", target_firm,
     [env.VerboseAction(BeforeUpload, "Looking for upload port..."),
      env.VerboseAction("$PROGRAMHEXCMD", "Programming $SOURCE")])
-
 AlwaysBuild(target_program)
 
 #
