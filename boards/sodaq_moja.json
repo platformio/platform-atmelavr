@@ -1,6 +1,6 @@
 {
   "build": {
-    "extra_flags": "-DAVR_SODAQ_MOJA",
+    "extra_flags": "-DARDUINO_AVR_SODAQ_MOJA",
     "core": "arduino",
     "f_cpu": "8000000L",
     "mcu": "atmega328p",

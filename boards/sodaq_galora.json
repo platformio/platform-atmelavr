@@ -1,6 +1,6 @@
 {
   "build": {
-    "extra_flags": "-DAVR_SODAQ_GALORA",
+    "extra_flags": "-DARDUINO_AVR_SODAQ_GALORA",
     "core": "arduino",
     "f_cpu": "8000000L",
     "mcu": "atmega1284p",
