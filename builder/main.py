@@ -171,7 +171,8 @@ if env.subst("$UPLOAD_PROTOCOL") in ("digispark", "micronucleus"):
             "-c", "$UPLOAD_PROTOCOL",
             "--timeout", "60"
         ],
-        UPLOADHEXCMD='$UPLOADER $UPLOADERFLAGS $SOURCES'
+        UPLOADHEXCMD='$UPLOADER $UPLOADERFLAGS $SOURCES',
+        PROGRAMHEXCMD="$UPLOADHEXCMD"
     )
 
 else:
