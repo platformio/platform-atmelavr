@@ -110,7 +110,7 @@ env.Replace(
         "-std=gnu++11"
     ],
 
-    CPPDEFINES=["F_CPU=$BOARD_F_CPU"],
+    CPPDEFINES=[("F_CPU", "$BOARD_F_CPU")],
 
     LINKFLAGS=[
         "-Os",
