@@ -1,20 +1,21 @@
 {
   "build": {
-    "core": "arduino", 
-    "extra_flags": "-DARDUINO_ARCH_AVR -DARDUINO_AVR_ATTINY25", 
-    "f_cpu": "8000000L", 
-    "mcu": "attiny25", 
+    "core": "arduino",
+    "extra_flags": "-DARDUINO_ARCH_AVR -DARDUINO_AVR_ATTINY25",
+    "f_cpu": "8000000L",
+    "mcu": "attiny25",
     "variant": "tiny8"
-  }, 
+  },
   "frameworks": [
     "arduino"
-  ], 
-  "name": "Generic ATTiny25", 
+  ],
+  "name": "Generic ATTiny25",
   "upload": {
-    "maximum_ram_size": 128, 
-    "maximum_size": 2048, 
-    "protocol": "usbtiny"
-  }, 
-  "url": "http://www.atmel.com/devices/ATTINY25.aspx", 
+    "maximum_ram_size": 128,
+    "maximum_size": 2048,
+    "protocol": "usbtiny",
+    "extra_flags": "-e"
+  },
+  "url": "http://www.atmel.com/devices/ATTINY25.aspx",
   "vendor": "Generic ATTiny"
 }
