@@ -197,16 +197,16 @@ else:
     if int(ARGUMENTS.get("PIOVERBOSE", 0)):
         env.Prepend(UPLOADERFLAGS=["-v"])
 
-    if "BOARD" in env and "bootloader" in env.BoardConfig():
-        bootopts = env.BoardConfig().get("bootloader", {})
+    if "BOARD" in env and "fuses" in env.BoardConfig():
+        fuses = env.BoardConfig().get("fuses", {})
         env.Replace(FUSESCMD=" ".join([
             "$UPLOADER", "$UPLOADERFLAGS", "-e",
-            "-Ulock:w:%s:m" % bootopts.get("unlock_bits", ""),
-            "-Uefuse:w:%s:m" % bootopts.get("extended_fuses", ""),
-            "-Uhfuse:w:%s:m" % bootopts.get("high_fuses", ""),
-            "-Ulfuse:w:%s:m" % bootopts.get("low_fuses", "")
+            "-Ulfuse:w:%s:m" % fuses.get("low", ""),
+            "-Uhfuse:w:%s:m" % fuses.get("high", ""),
+            "-Uefuse:w:%s:m" % fuses.get("extended", ""),
+            "-Ulock:w:%s:m" % fuses.get("unlock", "")
         ]))
-        del bootopts
+        del fuses
 
 #
 # Target: Build executable and linkable firmware

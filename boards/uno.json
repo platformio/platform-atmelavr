@@ -32,12 +32,11 @@
     "require_upload_port": true,
     "speed": 115200
   },
-  "bootloader": {
-    "low_fuses": "0xFF",
-    "high_fuses": "0xDE",
-    "extended_fuses": "0x05",
-    "unlock_bits": "0x3F",
-    "lock_bits": "0x0F"
+  "fuses": {
+    "low": "0xFF",
+    "high": "0xDE",
+    "extended": "0x05",
+    "unlock": "0x3F"
   },
   "url": "http://www.arduino.org/products/boards/4-arduino-boards/arduino-uno",
   "vendor": "Arduino"
