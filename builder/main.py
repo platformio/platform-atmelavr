@@ -193,8 +193,20 @@ else:
         UPLOADEEPCMD='$UPLOADER $UPLOADERFLAGS -U eeprom:w:$SOURCES:i',
         PROGRAMHEXCMD='$UPLOADER $UPLOADERFLAGS -U flash:w:$SOURCES:i'
     )
+
     if int(ARGUMENTS.get("PIOVERBOSE", 0)):
         env.Prepend(UPLOADERFLAGS=["-v"])
+
+    if "BOARD" in env and "bootloader" in env.BoardConfig():
+        bootopts = env.BoardConfig().get("bootloader", {})
+        env.Replace(FUSESCMD=" ".join([
+            "$UPLOADER", "$UPLOADERFLAGS",
+            "-Ulock:w:%s:m" % bootopts.get("unlock_bits", ""),
+            "-Uefuse:w:%s:m" % bootopts.get("extended_fuses", ""),
+            "-Uhfuse:w:%s:m" % bootopts.get("high_fuses", ""),
+            "-Ulfuse:w:%s:m" % bootopts.get("low_fuses", "")
+        ]))
+        del bootopts
 
 #
 # Target: Build executable and linkable firmware
@@ -249,6 +261,16 @@ target_program = env.Alias(
     [env.VerboseAction(BeforeUpload, "Looking for upload port..."),
      env.VerboseAction("$PROGRAMHEXCMD", "Programming $SOURCE")])
 AlwaysBuild(target_program)
+
+#
+# Target: Setup fuses
+#
+
+target_fuses = env.Alias(
+    "fuses", None,
+    [env.VerboseAction(BeforeUpload, "Looking for upload port..."),
+     env.VerboseAction("$FUSESCMD", "Setting FUSEs")])
+AlwaysBuild(target_fuses)
 
 #
 # Setup default targets
