@@ -200,7 +200,7 @@ else:
     if "BOARD" in env and "bootloader" in env.BoardConfig():
         bootopts = env.BoardConfig().get("bootloader", {})
         env.Replace(FUSESCMD=" ".join([
-            "$UPLOADER", "$UPLOADERFLAGS",
+            "$UPLOADER", "$UPLOADERFLAGS", "-e",
             "-Ulock:w:%s:m" % bootopts.get("unlock_bits", ""),
             "-Uefuse:w:%s:m" % bootopts.get("extended_fuses", ""),
             "-Uhfuse:w:%s:m" % bootopts.get("high_fuses", ""),
