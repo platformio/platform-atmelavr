@@ -197,12 +197,12 @@ else:
     if int(ARGUMENTS.get("PIOVERBOSE", 0)):
         env.Prepend(UPLOADERFLAGS=["-v"])
 
-    if "BOARD" in env and "fuses" in env.BoardConfig():
-        env.Replace(FUSESCMD=" ".join(
-            ["$UPLOADER", "$UPLOADERFLAGS", "-e"] +
-            ["-U%s:w:%s:m" % (k, v)
-             for k, v in env.BoardConfig().get("fuses", {}).items()]
-        ))
+if "BOARD" in env and "fuses" in env.BoardConfig():
+    env.Replace(FUSESCMD=" ".join(
+        ["avrdude", "$UPLOADERFLAGS", "-e"] +
+        ["-U%s:w:%s:m" % (k, v)
+         for k, v in env.BoardConfig().get("fuses", {}).items()]
+    ))
 
 
 #
