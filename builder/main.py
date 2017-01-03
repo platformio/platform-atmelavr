@@ -198,15 +198,12 @@ else:
         env.Prepend(UPLOADERFLAGS=["-v"])
 
     if "BOARD" in env and "fuses" in env.BoardConfig():
-        fuses = env.BoardConfig().get("fuses", {})
-        env.Replace(FUSESCMD=" ".join([
-            "$UPLOADER", "$UPLOADERFLAGS", "-e",
-            "-Ulfuse:w:%s:m" % fuses.get("low", ""),
-            "-Uhfuse:w:%s:m" % fuses.get("high", ""),
-            "-Uefuse:w:%s:m" % fuses.get("extended", ""),
-            "-Ulock:w:%s:m" % fuses.get("unlock", "")
-        ]))
-        del fuses
+        env.Replace(FUSESCMD=" ".join(
+            ["$UPLOADER", "$UPLOADERFLAGS", "-e"] +
+            ["-U%s:w:%s:m" % (k, v)
+             for k, v in env.BoardConfig().get("fuses", {}).items()]
+        ))
+
 
 #
 # Target: Build executable and linkable firmware

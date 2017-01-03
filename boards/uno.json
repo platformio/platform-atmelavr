@@ -37,10 +37,10 @@
     "speed": 115200
   },
   "fuses": {
-    "low": "0xFF",
-    "high": "0xDE",
-    "extended": "0x05",
-    "unlock": "0x3F"
+    "lfuse": "0xFF",
+    "hfuse": "0xDE",
+    "efuse": "0x05",
+    "lock": "0x3F"
   },
   "url": "http://www.arduino.org/products/boards/4-arduino-boards/arduino-uno",
   "vendor": "Arduino"
