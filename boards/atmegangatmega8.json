@@ -9,6 +9,10 @@
   "frameworks": [
     "arduino"
   ], 
+  "fuses": {
+    "hfuse": "0xca", 
+    "lfuse": "0xdf"
+  }, 
   "name": "Arduino NG or older ATmega8", 
   "upload": {
     "maximum_ram_size": 1024, 

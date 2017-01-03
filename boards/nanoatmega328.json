@@ -10,6 +10,11 @@
     "arduino", 
     "simba"
   ], 
+  "fuses": {
+    "efuse": "0x05", 
+    "hfuse": "0xDA", 
+    "lfuse": "0xFF"
+  }, 
   "name": "Arduino Nano ATmega328", 
   "upload": {
     "maximum_ram_size": 2048, 

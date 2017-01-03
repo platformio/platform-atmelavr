@@ -9,6 +9,12 @@
   "frameworks": [
     "arduino"
   ], 
+  "fuses": {
+    "efuse": "0x05", 
+    "hfuse": "0xDA", 
+    "lfuse": "0xFF", 
+    "lock": "0x3F"
+  }, 
   "name": "Arduino Fio", 
   "upload": {
     "maximum_ram_size": 2048, 

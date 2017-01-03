@@ -9,6 +9,10 @@
   "frameworks": [
     "arduino"
   ], 
+  "fuses": {
+    "efuse": "0x00", 
+    "hfuse": "0xdd"
+  }, 
   "name": "Arduino BT ATmega168", 
   "upload": {
     "disable_flushing": true, 

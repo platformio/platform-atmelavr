@@ -9,6 +9,11 @@
   "frameworks": [
     "arduino"
   ], 
+  "fuses": {
+    "efuse": "0x05", 
+    "hfuse": "0xDA", 
+    "lfuse": "0xFF"
+  }, 
   "name": "Arduino Pro or Pro Mini ATmega328 (5V, 16 MHz)", 
   "upload": {
     "maximum_ram_size": 2048, 

@@ -9,6 +9,10 @@
   "frameworks": [
     "arduino"
   ], 
+  "fuses": {
+    "efuse": "0x05", 
+    "hfuse": "0xd8"
+  }, 
   "name": "Arduino BT ATmega328", 
   "upload": {
     "disable_flushing": true, 
