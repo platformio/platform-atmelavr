@@ -9,6 +9,10 @@
   "frameworks": [
     "arduino"
   ], 
+  "fuses": {
+    "efuse": "0x00", 
+    "hfuse": "0xdd"
+  }, 
   "name": "Arduino Duemilanove or Diecimila ATmega168", 
   "upload": {
     "maximum_ram_size": 1024, 

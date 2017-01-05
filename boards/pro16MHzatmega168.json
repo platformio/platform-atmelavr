@@ -9,6 +9,11 @@
   "frameworks": [
     "arduino"
   ], 
+  "fuses": {
+    "efuse": "0x00", 
+    "hfuse": "0xdd", 
+    "lfuse": "0xff"
+  }, 
   "name": "Arduino Pro or Pro Mini ATmega168 (5V, 16 MHz)", 
   "upload": {
     "maximum_ram_size": 1024, 

@@ -13,6 +13,10 @@
         "0x0001"
       ], 
       [
+        "0x2341", 
+        "0x0243"
+      ], 
+      [
         "0x2A03", 
         "0x0043"
       ]
@@ -24,6 +28,12 @@
     "arduino", 
     "simba"
   ], 
+  "fuses": {
+    "efuse": "0x05", 
+    "hfuse": "0xDE", 
+    "lfuse": "0xFF", 
+    "lock": "0x3F"
+  }, 
   "name": "Arduino Uno", 
   "upload": {
     "maximum_ram_size": 2048, 

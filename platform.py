@@ -20,14 +20,24 @@ class AtmelavrPlatform(PlatformBase):
     def configure_default_packages(self, variables, targets):
         if variables.get("board"):
             board_config = self.board_config(variables.get("board"))
-            disable_tool = "tool-micronucleus"
-            if "digispark" in board_config.get("build.core", ""):
-                disable_tool = "tool-avrdude"
-            if disable_tool in self.packages:
-                del self.packages[disable_tool]
+            disabled_tool = "tool-micronucleus"
+            required_tool = ""
 
-        return PlatformBase.configure_default_packages(
-            self, variables, targets)
+            if "digispark" in board_config.get("build.core", ""):
+                disabled_tool = "tool-avrdude"
+
+            if "fuses" in targets:
+                required_tool = "tool-avrdude"
+
+            if required_tool in self.packages:
+                self.packages[required_tool]['optional'] = False
+
+            if disabled_tool in self.packages and \
+                    disabled_tool != "required_tool":
+                del self.packages[disabled_tool]
+
+        return PlatformBase.configure_default_packages(self, variables,
+                                                       targets)
 
     def on_run_err(self, line):  # pylint: disable=R0201
         # fix STDERR "flash written" for avrdude

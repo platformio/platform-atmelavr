@@ -9,6 +9,10 @@
   "frameworks": [
     "arduino"
   ], 
+  "fuses": {
+    "efuse": "0xF5", 
+    "hfuse": "0xDA"
+  }, 
   "name": "Arduino Mega or Mega 2560 ATmega1280", 
   "upload": {
     "maximum_ram_size": 8192, 

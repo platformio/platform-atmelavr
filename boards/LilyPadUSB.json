@@ -20,6 +20,12 @@
   "frameworks": [
     "arduino"
   ], 
+  "fuses": {
+    "efuse": "0xce", 
+    "hfuse": "0xd8", 
+    "lfuse": "0xff", 
+    "lock": "0x3F"
+  }, 
   "name": "Arduino LilyPad USB", 
   "upload": {
     "disable_flushing": true, 

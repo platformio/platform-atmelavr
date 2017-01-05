@@ -9,6 +9,12 @@
   "frameworks": [
     "arduino"
   ], 
+  "fuses": {
+    "efuse": "0xFE", 
+    "hfuse": "0xD5", 
+    "lfuse": "0xF1", 
+    "lock": ""
+  }, 
   "name": "Adafruit Gemma", 
   "upload": {
     "maximum_ram_size": 512, 
