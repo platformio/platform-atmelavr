@@ -1,0 +1,22 @@
+{
+  "build": {
+    "core": "arduino",
+    "extra_flags": "-DARDUINO_ARCH_AVR-DARDUINO_AVR_ENVIRODIY_MAYFLY",
+    "f_cpu": "8000000L",
+    "mcu": "atmega1284p",
+    "variant": "mayfly"
+  },
+  "frameworks": [
+    "arduino"
+  ],
+  "name": "EnviroDIY Mayfly",
+  "upload": {
+    "maximum_ram_size": 16384,
+    "maximum_size": 130048,
+    "protocol": "arduino",
+    "require_upload_port": true,
+    "speed": 57600
+  },
+  "url": "http://envirodiy.org/forums/",
+  "vendor": "EnviroDIY"
+}
