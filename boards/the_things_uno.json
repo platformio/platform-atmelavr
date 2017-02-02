@@ -1,0 +1,50 @@
+{
+  "build": {
+    "core": "arduino",
+    "extra_flags": "-DARDUINO_ARCH_AVR -DARDUINO_AVR_THE_THINGS_UNO",
+    "f_cpu": "16000000L",
+    "hwids": [
+      [
+        "0x2341",
+        "0x0036"
+      ],
+      [
+        "0x2341",
+        "0x8036"
+      ],
+      [
+        "0x2A03",
+        "0x0036"
+      ],
+      [
+        "0x2A03",
+        "0x8036"
+      ]
+    ],
+    "mcu": "atmega32u4",
+    "usb_product": "The Things Uno",
+    "variant": "leonardo"
+  },
+  "frameworks": [
+    "arduino"
+  ],
+  "fuses": {
+    "efuse": "0xcb",
+    "hfuse": "0xd8",
+    "lfuse": "0xff",
+    "lock": "0x3F"
+  },
+  "name": "The Things Uno",
+  "upload": {
+    "disable_flushing": true,
+    "maximum_ram_size": 2560,
+    "maximum_size": 28672,
+    "protocol": "avr109",
+    "require_upload_port": true,
+    "speed": 57600,
+    "use_1200bps_touch": true,
+    "wait_for_upload_port": true
+  },
+  "url": "https://shop.thethingsnetwork.com/index.php/product/the-things-uno/",
+  "vendor": "The Things Network"
+}
