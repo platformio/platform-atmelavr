@@ -1,22 +1,22 @@
 {
   "build": {
-    "core": "arduino", 
-    "extra_flags": "-DARDUINO_ARCH_AVR -DAVR_SANGUINO", 
-    "f_cpu": "8000000L", 
-    "mcu": "atmega1284p", 
+    "core": "arduino",
+    "extra_flags": "-DARDUINO_ARCH_AVR -DARDUINO_AVR_SANGUINO",
+    "f_cpu": "8000000L",
+    "mcu": "atmega1284p",
     "variant": "sanguino"
-  }, 
+  },
   "frameworks": [
     "arduino"
-  ], 
-  "name": "Sanguino ATmega1284p (8MHz)", 
+  ],
+  "name": "Sanguino ATmega1284p (8MHz)",
   "upload": {
-    "maximum_ram_size": 16384, 
-    "maximum_size": 130048, 
-    "protocol": "arduino", 
-    "require_upload_port": true, 
+    "maximum_ram_size": 16384,
+    "maximum_size": 130048,
+    "protocol": "arduino",
+    "require_upload_port": true,
     "speed": 57600
-  }, 
-  "url": "https://code.google.com/p/sanguino/", 
+  },
+  "url": "https://code.google.com/p/sanguino/",
   "vendor": "Sanguino"
 }
