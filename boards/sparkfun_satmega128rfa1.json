@@ -1,0 +1,22 @@
+{
+  "build": {
+    "core": "arduino",
+    "extra_flags": "-DARDUINO_ARCH_AVR -DARDUINO_AVR_ATMEGA128RFA1_DEV_BOARD",
+    "f_cpu": "16000000L",
+    "mcu": "atmega128rfa1",
+    "variant": "sparkfun_rf128"
+  },
+  "frameworks": [
+    "arduino"
+  ],
+  "name": "SparkFun ATmega128RFA1 Dev Board",
+  "upload": {
+    "maximum_ram_size": 126976,
+    "maximum_size": 16384,
+    "protocol": "arduino",
+    "require_upload_port": true,
+    "speed": 57600
+  },
+  "url": "https://www.sparkfun.com/products/11197",
+  "vendor": "SparkFun"
+}

@@ -1,15 +1,15 @@
 {
   "build": {
-    "extra_flags": "-DARDUINO_AVR_MICRODUINO_CORE",
     "core": "arduino",
+    "extra_flags": "-DARDUINO_ARCH_AVR -DARDUINO_AVR_SERIAL_7_SEGMENT",
     "f_cpu": "8000000L",
     "mcu": "atmega328p",
-    "variant": "standard"
+    "variant": "sparkfun_ser7seg"
   },
   "frameworks": [
     "arduino"
   ],
-  "name": "Microduino Core (Atmega328P@8M,3.3V)",
+  "name": "SparkFun Serial 7-Segment Display",
   "upload": {
     "maximum_ram_size": 2048,
     "maximum_size": 32256,
@@ -17,6 +17,6 @@
     "require_upload_port": true,
     "speed": 57600
   },
-  "url": "https://www.microduino.cc/wiki/index.php?title=Microduino-Core",
-  "vendor": "Microduino"
+  "url": "https://www.sparkfun.com/products/11441",
+  "vendor": "SparkFun"
 }

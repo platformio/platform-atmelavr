@@ -1,22 +1,22 @@
 {
   "build": {
-    "core": "arduino", 
-    "extra_flags": "-DARDUINO_ARCH_AVR -DAVR_SANGUINO", 
-    "f_cpu": "16000000L", 
-    "mcu": "atmega644p", 
+    "core": "arduino",
+    "extra_flags": "-DARDUINO_ARCH_AVR -DARDUINO_AVR_SANGUINO",
+    "f_cpu": "16000000L",
+    "mcu": "atmega644p",
     "variant": "sanguino"
-  }, 
+  },
   "frameworks": [
     "arduino"
-  ], 
-  "name": "Sanguino ATmega644P or ATmega644PA (16 MHz)", 
+  ],
+  "name": "Sanguino ATmega644P or ATmega644PA (16 MHz)",
   "upload": {
-    "maximum_ram_size": 4096, 
-    "maximum_size": 64512, 
-    "protocol": "arduino", 
-    "require_upload_port": true, 
+    "maximum_ram_size": 4096,
+    "maximum_size": 64512,
+    "protocol": "arduino",
+    "require_upload_port": true,
     "speed": 115200
-  }, 
-  "url": "https://code.google.com/p/sanguino/", 
+  },
+  "url": "https://code.google.com/p/sanguino/",
   "vendor": "Sanguino"
 }

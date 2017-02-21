@@ -1,6 +1,6 @@
 {
   "build": {
-    "extra_flags": "-DAVR_ENGDUINOV3",
+    "extra_flags": "-DARDUINO_AVR_ENGDUINOV3",
     "core": "arduino",
     "f_cpu": "8000000L",
     "hwids": [

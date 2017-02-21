@@ -1,22 +1,22 @@
 {
   "build": {
-    "core": "arduino", 
-    "extra_flags": "-DARDUINO_ARCH_AVR -DAVR_EMONPI", 
-    "f_cpu": "16000000L", 
-    "mcu": "atmega328p", 
+    "core": "arduino",
+    "extra_flags": "-DARDUINO_ARCH_AVR -DARDUINO_AVR_EMONPI",
+    "f_cpu": "16000000L",
+    "mcu": "atmega328p",
     "variant": "standard"
-  }, 
+  },
   "frameworks": [
     "arduino"
-  ], 
-  "name": "OpenEnergyMonitor emonPi", 
+  ],
+  "name": "OpenEnergyMonitor emonPi",
   "upload": {
-    "maximum_ram_size": 2048, 
-    "maximum_size": 30720, 
-    "protocol": "arduino", 
-    "require_upload_port": true, 
+    "maximum_ram_size": 2048,
+    "maximum_size": 30720,
+    "protocol": "arduino",
+    "require_upload_port": true,
     "speed": 115200
-  }, 
-  "url": "https://github.com/openenergymonitor/emonpi", 
+  },
+  "url": "https://github.com/openenergymonitor/emonpi",
   "vendor": "OpenEnergyMonitor"
 }
