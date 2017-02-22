@@ -9,7 +9,7 @@ Atmel AVR 8- and 32-bit MCUs deliver a unique combination of performance, power 
 
 # Usage
 
-1. [Install PlatformIO Core](http://docs.platformio.org/en/latest/core.html)
+1. [Install PlatformIO Core](http://docs.platformio.org/page/core.html)
 2. Install Atmel AVR development platform:
 ```bash
 # install the latest stable version
