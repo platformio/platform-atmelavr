@@ -12,7 +12,7 @@
     "type": "git",
     "url": "https://github.com/platformio/platform-atmelavr.git"
   },
-  "version": "1.4.4.alpha.1",
+  "version": "1.4.4",
   "packageRepositories": [
     "https://dl.bintray.com/platformio/dl-packages/manifest.json",
     "https://sourceforge.net/projects/platformio-storage/files/packages/manifest.json/download",
