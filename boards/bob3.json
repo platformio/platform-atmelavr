@@ -1,0 +1,21 @@
+{
+  "build": {
+    "core": "nicai",
+    "extra_flags": "-DARDUINO_ARCH_AVR -DARDUINO_AVR_BOB3",
+    "f_cpu": "8000000L",
+    "mcu": "atmega88",
+    "variant": "bob3"
+  },
+  "frameworks": [
+    "arduino"
+  ],
+  "name": "nicai-systems BOB3 coding bot",
+  "upload": {
+    "maximum_ram_size": 1024,
+    "maximum_size": 8192,
+    "protocol": "stk500v2",
+    "speed": 115200
+  },
+  "url": "http://www.nicai-systems.com",
+  "vendor": "nicai-systems"
+}
