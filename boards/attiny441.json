@@ -1,21 +1,20 @@
 {
   "build": {
-    "core": "tiny",
-    "extra_flags": "-DARDUINO_ARCH_AVR -DARDUINO_AVR_ATTINYX4",
+    "core": "tinymodern",
+    "extra_flags": "-DARDUINO_ARCH_AVR -DARDUINO_AVR_ATTINYX41",
     "f_cpu": "8000000L",
-    "mcu": "attiny44",
-    "variant": "tinyX4"
+    "mcu": "attiny441"
   },
   "frameworks": [
     "arduino"
   ],
-  "name": "Generic ATTiny44",
+  "name": "Generic ATTiny441",
   "upload": {
     "maximum_ram_size": 256,
     "maximum_size": 4096,
     "protocol": "usbtiny",
     "extra_flags": "-e"
   },
-  "url": "http://www.atmel.com/devices/ATTINY44.aspx",
+  "url": "http://www.atmel.com/devices/ATTINY441.aspx",
   "vendor": "Generic ATTiny"
 }

@@ -1,0 +1,19 @@
+{
+  "build": {
+    "core": "tinymodern",
+    "extra_flags": "-DARDUINO_ARCH_AVR -DARDUINO_AVR_ATTINY1634",
+    "f_cpu": "8000000L",
+    "mcu": "attiny1634"
+  },
+  "frameworks": [
+    "arduino"
+  ],
+  "name": "Generic ATTiny1634",
+  "upload": {
+    "maximum_ram_size": 1024,
+    "maximum_size": 16384,
+    "protocol": "usbtiny"
+  },
+  "url": "http://www.atmel.com/devices/ATTINY1634.aspx",
+  "vendor": "Generic ATTiny"
+}
