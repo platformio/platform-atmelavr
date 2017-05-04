@@ -1,0 +1,22 @@
+{
+  "build": {
+    "core": "nicai",
+    "extra_flags": "-DARDUINO_ARCH_AVR -DARDUINO_AVR_NIBO2",
+    "f_cpu": "16000000L",
+    "mcu": "atmega128",
+    "variant": "nibo2"
+  },
+  "frameworks": [
+    "arduino"
+  ],
+  "name": "nicai-systems NIBO 2 robot",
+  "upload": {
+    "maximum_ram_size": 4096,
+    "maximum_size": 131072,
+    "protocol": "stk500v2",
+    "require_upload_port": true,
+    "speed": 115200
+  },
+  "url": "http://www.nicai-systems.com/en/nibo2",
+  "vendor": "nicai-systems"
+}

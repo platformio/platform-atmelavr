@@ -1,21 +1,21 @@
 {
   "build": {
     "core": "tiny",
-    "extra_flags": "-DARDUINO_ARCH_AVR -DARDUINO_AVR_ATTINYX4",
+    "extra_flags": "-DARDUINO_ARCH_AVR -DARDUINO_AVR_ATTINYX61",
     "f_cpu": "8000000L",
-    "mcu": "attiny24",
-    "variant": "tinyX4"
+    "mcu": "attiny261",
+    "variant": "tinyX61"
   },
   "frameworks": [
     "arduino"
   ],
-  "name": "Generic ATTiny24",
+  "name": "Generic ATTiny261",
   "upload": {
     "maximum_ram_size": 128,
     "maximum_size": 2048,
     "protocol": "usbtiny",
     "extra_flags": "-e"
   },
-  "url": "http://www.atmel.com/devices/ATTINY24.aspx",
+  "url": "http://www.atmel.com/devices/ATTINY261.aspx",
   "vendor": "Generic ATTiny"
 }

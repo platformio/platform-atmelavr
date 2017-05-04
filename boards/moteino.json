@@ -15,7 +15,7 @@
     "maximum_size": 31744,
     "protocol": "arduino",
     "require_upload_port": true,
-    "speed": 115200
+    "speed": 57600
   },
   "url": "https://lowpowerlab.com/shop/moteino-r4",
   "vendor": "LowPowerLab"

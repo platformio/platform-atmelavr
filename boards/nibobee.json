@@ -1,0 +1,21 @@
+{
+  "build": {
+    "core": "nicai",
+    "extra_flags": "-DARDUINO_ARCH_AVR -DARDUINO_AVR_NIBOBEE",
+    "f_cpu": "15000000L",
+    "mcu": "atmega16",
+    "variant": "nibobee"
+  },
+  "frameworks": [
+    "arduino"
+  ],
+  "name": "nicai-systems NIBObee robot",
+  "upload": {
+    "maximum_ram_size": 1024,
+    "maximum_size": 16384,
+    "protocol": "usbasp",
+    "speed": 115200
+  },
+  "url": "http://www.nicai-systems.com/en/nibobee",
+  "vendor": "nicai-systems"
+}

@@ -1,0 +1,43 @@
+{
+  "build": {
+    "core": "dwenguino", 
+    "extra_flags": "-DARDUINO_ARCH_AVR -DARDUINO_AVR_DWENGUINO", 
+    "f_cpu": "16000000L", 
+    "hwids": [
+      [
+        "0xd3e0", 
+        "0x601b"
+      ], 
+      [
+        "0xd3e0", 
+        "0x601a"
+      ]
+    ], 
+    "mcu": "at90usb646", 
+    "usb_product": "Dwenguino board",
+    "variant": "dwenguino"
+  }, 
+  "frameworks": [
+    "arduino"
+  ], 
+  "fuses": {
+    "efuse": "0xFB", 
+    "hfuse": "0xDA", 
+    "lfuse": "0xFF", 
+    "lock": "0x2F",
+    "unlock": "0x3F"
+  }, 
+  "name": "Dwenguino",
+  "upload": {
+    "maximum_ram_size": 2048, 
+    "maximum_size": 61440, 
+    "protocol": "avr109", 
+    "require_upload_port": true, 
+    "speed": 57600,
+    "wait_for_upload": true,
+    "use_1200bps_touch": true,
+    "disable_flushing": true
+  }, 
+  "url": "http://www.dwengo.org/",
+  "vendor": "Dwengo"
+}

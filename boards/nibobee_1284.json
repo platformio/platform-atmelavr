@@ -1,0 +1,21 @@
+{
+  "build": {
+    "core": "nicai",
+    "extra_flags": "-DARDUINO_ARCH_AVR -DARDUINO_AVR_NIBOBEE_1284 -DNIBOBEE",
+    "f_cpu": "20000000L",
+    "mcu": "atmega1284p",
+    "variant": "nibobee"
+  },
+  "frameworks": [
+    "arduino"
+  ],
+  "name": "nicai-systems NIBObee robot with Tuning Kit",
+  "upload": {
+    "maximum_ram_size": 16384,
+    "maximum_size": 131072,
+    "protocol": "usbasp",
+    "speed": 115200
+  },
+  "url": "http://www.nicai-systems.com/en/nibobee",
+  "vendor": "nicai-systems"
+}

@@ -1,7 +1,7 @@
 {
   "build": {
-    "core": "arduino",
-    "extra_flags": "-DARDUINO_ARCH_AVR -DARDUINO_AVR_ATTINY2313 -D__AVR_ATtinyX313__ -DATTINYX313",
+    "core": "tiny",
+    "extra_flags": "-DARDUINO_ARCH_AVR -DARDUINO_AVR_ATTINYX313",
     "f_cpu": "8000000L",
     "mcu": "attiny2313",
     "variant": "tinyX313"
@@ -14,6 +14,7 @@
     "maximum_ram_size": 128,
     "maximum_size": 2048,
     "protocol": "buspirate",
+    "extra_flags": "-e",
     "require_upload_port": true
   },
   "url": "http://www.microchip.com/wwwproducts/en/ATTINY2313",

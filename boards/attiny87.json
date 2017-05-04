@@ -1,21 +1,21 @@
 {
   "build": {
     "core": "tiny",
-    "extra_flags": "-DARDUINO_ARCH_AVR -DARDUINO_AVR_ATTINYX4",
+    "extra_flags": "-DARDUINO_ARCH_AVR -DARDUINO_AVR_ATTINYX7",
     "f_cpu": "8000000L",
-    "mcu": "attiny84",
-    "variant": "tinyX4"
+    "mcu": "attiny87",
+    "variant": "tinyX7"
   },
   "frameworks": [
     "arduino"
   ],
-  "name": "Generic ATTiny84",
+  "name": "Generic ATTiny87",
   "upload": {
     "maximum_ram_size": 512,
     "maximum_size": 8192,
     "protocol": "usbtiny",
     "extra_flags": "-e"
   },
-  "url": "http://www.atmel.com/devices/ATTINY84.aspx",
+  "url": "http://www.atmel.com/devices/ATTINY87.aspx",
   "vendor": "Generic ATTiny"
 }
