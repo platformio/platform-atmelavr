@@ -84,6 +84,7 @@ env.Replace(
     AR="avr-gcc-ar",
     AS="avr-as",
     CC="avr-gcc",
+    GDB="avr-gdb",
     CXX="avr-g++",
     OBJCOPY="avr-objcopy",
     RANLIB="avr-gcc-ranlib",
