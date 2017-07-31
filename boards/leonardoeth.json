@@ -16,7 +16,10 @@
     "mcu": "atmega32u4", 
     "usb_product": "Arduino Leonardo ETH", 
     "variant": "leonardo"
-  }, 
+  },
+  "connectivity": [
+    "ethernet"
+  ],
   "frameworks": [
     "arduino"
   ], 

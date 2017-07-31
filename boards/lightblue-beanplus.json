@@ -6,6 +6,9 @@
     "mcu": "atmega328p",
     "variant": "bean+"
   },
+  "connectivity": [
+    "bluetooth"
+  ],
   "frameworks": [
     "arduino"
   ],
