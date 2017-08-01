@@ -1,0 +1,27 @@
+{
+  "build": {
+      "core": "arduino",
+      "extra_flags": "-DARDUINO_ARCH_AVR -DARDUINO_AVR_MINIWIRELESS",
+      "f_cpu": "16000000L",
+      "mcu": "atmega328p",
+      "variant": "standard"
+    },
+  "frameworks": [
+      "arduino"
+    ],
+  "fuses": {
+      "efuse": "0x05", 
+      "hfuse": "0xDA",
+      "lfuse": "0xDE"
+    },   
+  "name": "Anarduino MiniWireless (w/ Mr. Light DualOptiboot 6)",
+  "upload": {
+      "maximum_ram_size": 2048,
+      "maximum_size": 31744,
+      "protocol": "arduino",
+      "require_upload_port": true,
+      "speed": 115200
+    },
+  "url": "http://www.anarduino.com/miniwireless/",
+  "vendor": "Anarduino"
+}
