@@ -24,7 +24,11 @@
     "mcu": "atmega32u4", 
     "usb_product": "Arduino Yun", 
     "variant": "yun"
-  }, 
+  },
+  "connectivity": [
+    "ethernet",
+    "wifi"
+  ],  
   "frameworks": [
     "arduino"
   ], 

@@ -13,6 +13,9 @@
     "usb_product": "Bluefruit Micro", 
     "variant": "bluefruitmicro"
   }, 
+  "connectivity": [
+    "bluetooth"
+  ],
   "frameworks": [
     "arduino"
   ], 

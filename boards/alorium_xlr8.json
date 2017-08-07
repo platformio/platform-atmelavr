@@ -1,18 +1,15 @@
 {
   "build": {
-    "core": "bean",
-    "extra_flags": "-DARDUINO_ARCH_AVR -DARDUINO_AVR_UNO",
+    "core": "arduino",
+    "extra_flags": "-DARDUINO_ARCH_AVR -DARDUINO_ARCH_XLR8",
     "f_cpu": "16000000L",
     "mcu": "atmega328p",
-    "variant": "bean+"
+    "variant": "standard"
   },
-  "connectivity": [
-    "bluetooth"
-  ],
   "frameworks": [
     "arduino"
   ],
-  "name": "LightBlue Bean+",
+  "name": "Alorium XLR8",
   "upload": {
     "maximum_ram_size": 2048,
     "maximum_size": 32256,
@@ -20,6 +17,6 @@
     "require_upload_port": true,
     "speed": 115200
   },
-  "url": "https://punchthrough.com/bean",
-  "vendor": "Punch Through"
+  "url": "http://www.aloriumtech.com/xlr8/",
+  "vendor": "Alorium Technolog"
 }

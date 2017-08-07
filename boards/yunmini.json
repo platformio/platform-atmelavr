@@ -16,7 +16,10 @@
     "mcu": "atmega32u4", 
     "usb_product": "Arduino Yun Mini", 
     "variant": "yun"
-  }, 
+  },
+  "connectivity": [
+    "wifi"
+  ],    
   "frameworks": [
     "arduino"
   ], 

@@ -5,7 +5,10 @@
     "f_cpu": "16000000L", 
     "mcu": "atmega168", 
     "variant": "eightanaloginputs"
-  }, 
+  },
+  "connectivity": [
+    "bluetooth"
+  ],  
   "frameworks": [
     "arduino"
   ], 
