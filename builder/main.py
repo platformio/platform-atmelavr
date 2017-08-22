@@ -90,7 +90,7 @@ env.Replace(
     RANLIB="avr-gcc-ranlib",
     SIZETOOL="avr-size",
 
-    ARFLAGS=["rcs"],
+    ARFLAGS=["rc"],
 
     ASFLAGS=["-x", "assembler-with-cpp"],
 
