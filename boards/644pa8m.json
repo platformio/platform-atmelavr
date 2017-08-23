@@ -17,6 +17,6 @@
     "require_upload_port": true,
     "speed": 57600
   },
-  "url": "https://www.microduino.cc/wiki/index.php?title=Microduino-Core%2B",
+  "url": "http://wiki.microduinoinc.com/Microduino-Module_Core%2B",
   "vendor": "Microduino"
 }

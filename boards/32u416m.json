@@ -26,6 +26,6 @@
     "use_1200bps_touch": true,
     "wait_for_upload_port": true
   },
-  "url": "https://www.microduino.cc/wiki/index.php?title=Microduino-CoreUSB",
+  "url": "http://wiki.microduinoinc.com/Microduino-Module_CoreUSB",
   "vendor": "Microduino"
 }
