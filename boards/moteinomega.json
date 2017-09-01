@@ -9,6 +9,12 @@
   "frameworks": [
     "arduino"
   ],
+  "fuses": {
+    "efuse": "0xFD",
+    "hfuse": "0xDE",
+    "lfuse": "0xDE",
+    "lock": "0xCF"
+  },
   "name": "LowPowerLab MoteinoMEGA",
   "upload": {
     "maximum_ram_size": 16384,
