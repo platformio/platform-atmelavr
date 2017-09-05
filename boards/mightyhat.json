@@ -15,7 +15,7 @@
     "lfuse": "0xDE",
     "lock": "0xCF"
   },
-  "name": "LowPowerLab Moteino",
+  "name": "LowPowerLab MightyHat",
   "upload": {
     "maximum_ram_size": 2048,
     "maximum_size": 31744,
