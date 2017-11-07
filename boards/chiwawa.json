@@ -32,6 +32,6 @@
     "via_ssh": true,
     "wait_for_upload_port": true
   },
-  "url": "https://www.arduino.cc/en/Main/ArduinoBoard101",
+  "url": "https://store.arduino.cc/arduino-industrial-101",
   "vendor": "Arduino"
 }
