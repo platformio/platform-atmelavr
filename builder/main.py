@@ -51,13 +51,19 @@ def BeforeUpload(target, source, env):  # pylint: disable=W0613,W0621
     env.AutodetectUploadPort()
     env.Append(UPLOADERFLAGS=["-P", '"$UPLOAD_PORT"'])
 
-    if env.subst("$BOARD") in ("raspduino", "emonpi"):
+    if env.subst("$BOARD") in ("raspduino", "emonpi", "sleepypi"):
 
         def _rpi_sysgpio(path, value):
             with open(path, "w") as f:
                 f.write(str(value))
 
-        pin_num = 18 if env.subst("$BOARD") == "raspduino" else 4
+        if env.subst("$BOARD") == "raspduino":
+            pin_num = 18
+        elif env.subst("$BOARD") == "sleepypi":
+            pin_num = 22
+        else:
+            pin_num = 4
+
         _rpi_sysgpio("/sys/class/gpio/export", pin_num)
         _rpi_sysgpio("/sys/class/gpio/gpio%d/direction" % pin_num, "out")
         _rpi_sysgpio("/sys/class/gpio/gpio%d/value" % pin_num, 1)
