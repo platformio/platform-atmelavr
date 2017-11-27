@@ -1,20 +1,20 @@
 {
   "build": {
-    "core": "arduino", 
-    "extra_flags": "-DARDUINO_ARCH_AVR -DARDUINO_AVR_TRINKET3", 
-    "f_cpu": "8000000L", 
-    "mcu": "attiny85", 
-    "variant": "tiny8"
-  }, 
+    "core": "arduino",
+    "extra_flags": "-DARDUINO_ARCH_AVR -DARDUINO_AVR_TRINKET3",
+    "f_cpu": "8000000L",
+    "mcu": "attiny85",
+    "variant": "trinket_tiny8"
+  },
   "frameworks": [
     "arduino"
-  ], 
-  "name": "Adafruit Trinket 3V/8MHz", 
+  ],
+  "name": "Adafruit Trinket 3V/8MHz",
   "upload": {
-    "maximum_ram_size": 512, 
-    "maximum_size": 8192, 
+    "maximum_ram_size": 512,
+    "maximum_size": 8192,
     "protocol": "usbtiny"
-  }, 
-  "url": "http://www.adafruit.com/products/1500", 
+  },
+  "url": "http://www.adafruit.com/products/1500",
   "vendor": "Adafruit"
 }
