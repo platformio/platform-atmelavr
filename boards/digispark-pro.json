@@ -1,20 +1,20 @@
 {
   "build": {
-    "core": "digispark_pro", 
-    "extra_flags": "-DARDUINO_ARCH_AVR -DARDUINO_AVR_DIGISPARKPRO", 
-    "f_cpu": "16000000L", 
-    "mcu": "attiny167", 
+    "core": "digispark_pro",
+    "extra_flags": "-DARDUINO_ARCH_AVR -DARDUINO_AVR_DIGISPARKPRO",
+    "f_cpu": "16000000L",
+    "mcu": "attiny167",
     "variant": "digispark_pro"
-  }, 
+  },
   "frameworks": [
     "arduino"
-  ], 
-  "name": "Digistump Digispark Pro (Default 16 MHz)", 
+  ],
+  "name": "Digispark Pro",
   "upload": {
-    "maximum_ram_size": 512, 
-    "maximum_size": 14844, 
+    "maximum_ram_size": 512,
+    "maximum_size": 14844,
     "protocol": "digispark"
-  }, 
-  "url": "http://digistump.com/products/109", 
+  },
+  "url": "http://digistump.com/products/109",
   "vendor": "Digistump"
 }

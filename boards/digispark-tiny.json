@@ -1,20 +1,20 @@
 {
   "build": {
-    "core": "digispark_tiny", 
-    "extra_flags": "-DARDUINO_ARCH_AVR -DARDUINO_AVR_DIGISPARK", 
-    "f_cpu": "16000000L", 
-    "mcu": "attiny85", 
-    "variant": "digispark_tiny"
-  }, 
+    "core": "digispark_tiny",
+    "extra_flags": "-DARDUINO_ARCH_AVR -DARDUINO_AVR_DIGISPARK",
+    "f_cpu": "16500000L",
+    "mcu": "attiny85",
+    "variant": "digispark"
+  },
   "frameworks": [
     "arduino"
-  ], 
-  "name": "Digistump Digispark (Default - 16 MHz)", 
+  ],
+  "name": "Digispark USB",
   "upload": {
-    "maximum_ram_size": 512, 
-    "maximum_size": 6012, 
+    "maximum_ram_size": 512,
+    "maximum_size": 6012,
     "protocol": "digispark"
-  }, 
-  "url": "http://digistump.com/products/1", 
+  },
+  "url": "http://digistump.com/products/1",
   "vendor": "Digistump"
 }

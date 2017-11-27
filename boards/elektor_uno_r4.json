@@ -1,7 +1,7 @@
 {
   "build": {
     "core": "arduino",
-    "extra_flags": "-DARDUINO_ARCH_AVR -DARDUINO_AVR_UNO",
+    "extra_flags": "-DARDUINO_ARCH_AVR -DARDUINO_AVR_ELEKTOR_UNO_R4",
     "f_cpu": "16000000L",
     "hwids": [
       [
@@ -21,12 +21,11 @@
         "0x0043"
       ]
     ],
-    "mcu": "atmega328p",
-    "variant": "standard"
+    "mcu": "atmega328pb",
+    "variant": "R4"
   },
   "frameworks": [
-    "arduino",
-    "simba"
+    "arduino"
   ],
   "fuses": {
     "efuse": "0x05",
@@ -34,7 +33,7 @@
     "lfuse": "0xFF",
     "lock": "0x3F"
   },
-  "name": "Arduino Uno",
+  "name": "Elektor Uno R4",
   "upload": {
     "maximum_ram_size": 2048,
     "maximum_size": 32256,
@@ -42,6 +41,6 @@
     "require_upload_port": true,
     "speed": 115200
   },
-  "url": "https://www.arduino.cc/en/Main/ArduinoBoardUno",
-  "vendor": "Arduino"
+  "url": "https://www.elektor.com/elektor-uno-r4",
+  "vendor": "Elektor"
 }

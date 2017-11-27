@@ -1,24 +1,12 @@
 {
   "build": {
     "core": "arduino",
-    "extra_flags": "-DARDUINO_ARCH_AVR -DARDUINO_AVR_UNO",
+    "extra_flags": "-DARDUINO_ARCH_AVR -DARDUINO_AVR_SEEEDUINO",
     "f_cpu": "16000000L",
     "hwids": [
       [
-        "0x2341",
-        "0x0043"
-      ],
-      [
-        "0x2341",
-        "0x0001"
-      ],
-      [
-        "0x2341",
-        "0x0243"
-      ],
-      [
-        "0x2A03",
-        "0x0043"
+        "0x2886",
+        "0x0004"
       ]
     ],
     "mcu": "atmega328p",
@@ -34,7 +22,7 @@
     "lfuse": "0xFF",
     "lock": "0x3F"
   },
-  "name": "Arduino Uno",
+  "name": "Seeeduino",
   "upload": {
     "maximum_ram_size": 2048,
     "maximum_size": 32256,
@@ -42,6 +30,6 @@
     "require_upload_port": true,
     "speed": 115200
   },
-  "url": "https://www.arduino.cc/en/Main/ArduinoBoardUno",
-  "vendor": "Arduino"
+  "url": "https://www.seeedstudio.com/Seeeduino-V4.2-p-2517.html",
+  "vendor": "Seeed"
 }
