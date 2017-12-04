@@ -1,7 +1,7 @@
 {
   "build": {
     "core": "arduino",
-    "extra_flags": "-DARDUINO_ARCH_AVR -DARDUINO_AVR_MOTEINO",
+    "extra_flags": "-DARDUINO_AVR_MOTEINO",
     "f_cpu": "16000000L",
     "mcu": "atmega328p",
     "variant": "standard"
@@ -14,7 +14,7 @@
     "hfuse": "0xDC",
     "lfuse": "0xDE",
     "lock": "0xCF"
-  }, 
+  },
   "name": "LowPowerLab Moteino",
   "upload": {
     "maximum_ram_size": 2048,

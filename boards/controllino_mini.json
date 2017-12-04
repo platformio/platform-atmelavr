@@ -1,7 +1,7 @@
 {
   "build": {
     "core": "controllino",
-    "extra_flags": "-DARDUINO_ARCH_AVR -DARDUINO_AVR_UNO",
+    "extra_flags": "-DARDUINO_AVR_UNO",
     "f_cpu": "16000000L",
     "hwids": [
       [

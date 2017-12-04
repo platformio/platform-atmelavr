@@ -1,7 +1,7 @@
 {
   "build": {
     "core": "arduino",
-    "extra_flags": "-DARDUINO_ARCH_AVR -DARDUINO_AVR_ADK",
+    "extra_flags": "-DARDUINO_AVR_ADK",
     "f_cpu": "16000000L",
     "mcu": "atmega2560",
     "variant": "mega"

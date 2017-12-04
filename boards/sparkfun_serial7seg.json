@@ -1,7 +1,7 @@
 {
   "build": {
     "core": "arduino",
-    "extra_flags": "-DARDUINO_ARCH_AVR -DARDUINO_AVR_SERIAL_7_SEGMENT",
+    "extra_flags": "-DARDUINO_AVR_SERIAL_7_SEGMENT",
     "f_cpu": "8000000L",
     "mcu": "atmega328p",
     "variant": "sparkfun_ser7seg"

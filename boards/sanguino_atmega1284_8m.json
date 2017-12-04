@@ -1,7 +1,7 @@
 {
   "build": {
     "core": "arduino",
-    "extra_flags": "-DARDUINO_ARCH_AVR -DARDUINO_AVR_SANGUINO",
+    "extra_flags": "-DARDUINO_AVR_SANGUINO",
     "f_cpu": "8000000L",
     "mcu": "atmega1284p",
     "variant": "sanguino"

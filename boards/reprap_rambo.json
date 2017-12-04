@@ -1,7 +1,7 @@
 {
   "build": {
     "core": "arduino",
-    "extra_flags": "-DARDUINO_ARCH_AVR -DARDUINO_AVR_RAMBO",
+    "extra_flags": "-DARDUINO_AVR_RAMBO",
     "f_cpu": "16000000L",
     "mcu": "atmega2560",
     "variant": "rambo"

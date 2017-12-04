@@ -1,7 +1,7 @@
 {
   "build": {
     "core": "tiny",
-    "extra_flags": "-DARDUINO_ARCH_AVR -DARDUINO_AVR_ATTINYX61",
+    "extra_flags": "-DARDUINO_AVR_ATTINYX61",
     "f_cpu": "8000000L",
     "mcu": "attiny461",
     "variant": "tinyX61"

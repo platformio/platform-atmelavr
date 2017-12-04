@@ -1,27 +1,27 @@
 {
   "build": {
-    "core": "arduino", 
-    "extra_flags": "-DARDUINO_ARCH_AVR -DARDUINO_AVR_LILYPAD", 
-    "f_cpu": "8000000L", 
-    "mcu": "atmega328p", 
+    "core": "arduino",
+    "extra_flags": "-DARDUINO_AVR_LILYPAD",
+    "f_cpu": "8000000L",
+    "mcu": "atmega328p",
     "variant": "standard"
-  }, 
+  },
   "frameworks": [
     "arduino"
-  ], 
+  ],
   "fuses": {
-    "efuse": "0x05", 
-    "hfuse": "0xDA", 
+    "efuse": "0x05",
+    "hfuse": "0xDA",
     "lfuse": "0xFF"
-  }, 
-  "name": "Arduino LilyPad ATmega328", 
+  },
+  "name": "Arduino LilyPad ATmega328",
   "upload": {
-    "maximum_ram_size": 2048, 
-    "maximum_size": 30720, 
-    "protocol": "arduino", 
-    "require_upload_port": true, 
+    "maximum_ram_size": 2048,
+    "maximum_size": 30720,
+    "protocol": "arduino",
+    "require_upload_port": true,
     "speed": 57600
-  }, 
-  "url": "http://arduino.cc/en/Main/ArduinoBoardLilyPad", 
+  },
+  "url": "http://arduino.cc/en/Main/ArduinoBoardLilyPad",
   "vendor": "Arduino"
 }

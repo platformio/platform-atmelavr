@@ -1,7 +1,7 @@
 {
   "build": {
     "core": "nicai",
-    "extra_flags": "-DARDUINO_ARCH_AVR -DARDUINO_AVR_NIBOBEE_1284 -DNIBOBEE",
+    "extra_flags": "-DARDUINO_AVR_NIBOBEE_1284 -DNIBOBEE",
     "f_cpu": "20000000L",
     "mcu": "atmega1284p",
     "variant": "nibobee"

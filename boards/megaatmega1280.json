@@ -1,7 +1,7 @@
 {
   "build": {
     "core": "arduino",
-    "extra_flags": "-DARDUINO_ARCH_AVR -DARDUINO_AVR_MEGA",
+    "extra_flags": "-DARDUINO_AVR_MEGA",
     "f_cpu": "16000000L",
     "mcu": "atmega1280",
     "variant": "mega"
