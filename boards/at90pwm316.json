@@ -4,6 +4,7 @@
     "extra_flags": "-D__AVR_AT90PWM316__",
     "mcu": "at90pwm316"
   },
+  "frameworks": [],
   "fuses": {
     "lfuse": "0x41",
     "hfuse": "0xDF",
