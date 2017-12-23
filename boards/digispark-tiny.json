@@ -1,7 +1,7 @@
 {
   "build": {
     "core": "digispark_tiny",
-    "extra_flags": "-DARDUINO_ARCH_AVR -DARDUINO_AVR_DIGISPARK",
+    "extra_flags": "-DARDUINO_AVR_DIGISPARK",
     "f_cpu": "16500000L",
     "mcu": "attiny85",
     "variant": "digispark"

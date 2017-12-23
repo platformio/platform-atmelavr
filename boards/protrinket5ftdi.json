@@ -1,22 +1,22 @@
 {
   "build": {
-    "core": "arduino", 
-    "extra_flags": "-DARDUINO_ARCH_AVR -DARDUINO_AVR_PROTRINKET5FTDI", 
-    "f_cpu": "16000000L", 
-    "mcu": "atmega328p", 
+    "core": "arduino",
+    "extra_flags": "-DARDUINO_AVR_PROTRINKET5FTDI",
+    "f_cpu": "16000000L",
+    "mcu": "atmega328p",
     "variant": "eightanaloginputs"
-  }, 
+  },
   "frameworks": [
     "arduino"
-  ], 
-  "name": "Adafruit Pro Trinket 5V/16MHz (FTDI)", 
+  ],
+  "name": "Adafruit Pro Trinket 5V/16MHz (FTDI)",
   "upload": {
-    "maximum_ram_size": 2048, 
-    "maximum_size": 28672, 
-    "protocol": "arduino", 
-    "require_upload_port": true, 
+    "maximum_ram_size": 2048,
+    "maximum_size": 28672,
+    "protocol": "arduino",
+    "require_upload_port": true,
     "speed": 115200
-  }, 
-  "url": "http://www.adafruit.com/products/2000", 
+  },
+  "url": "http://www.adafruit.com/products/2000",
   "vendor": "Adafruit"
 }

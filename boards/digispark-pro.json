@@ -1,7 +1,7 @@
 {
   "build": {
     "core": "digispark_pro",
-    "extra_flags": "-DARDUINO_ARCH_AVR -DARDUINO_AVR_DIGISPARKPRO",
+    "extra_flags": "-DARDUINO_AVR_DIGISPARKPRO",
     "f_cpu": "16000000L",
     "mcu": "attiny167",
     "variant": "digispark_pro"

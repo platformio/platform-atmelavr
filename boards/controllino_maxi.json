@@ -1,44 +1,44 @@
 {
   "build": {
-    "core": "arduino", 
-    "extra_flags": "-DARDUINO_ARCH_AVR -DARDUINO_AVR_MEGA2560", 
+    "core": "controllino",
+    "extra_flags": "-DARDUINO_AVR_MEGA2560",
     "f_cpu": "16000000L",
     "hwids": [
       [
-        "0x2341", 
+        "0x2341",
         "0x0010"
-      ], 
+      ],
       [
-        "0x2341", 
+        "0x2341",
         "0x0042"
       ],
       [
-        "0x2A03", 
+        "0x2A03",
         "0x0010"
       ],
       [
-        "0x2A03", 
+        "0x2A03",
         "0x0042"
       ]
-    ],     
-    "mcu": "atmega2560", 
+    ],
+    "mcu": "atmega2560",
     "variant": "Controllino_maxi"
-  }, 
+  },
   "frameworks": [
     "arduino"
-  ], 
-  "fuses": { 
-    "lfuse": "0xFF", 
+  ],
+  "fuses": {
+    "lfuse": "0xFF",
     "lock": "0x0F"
-  }, 
-  "name": "Controllino Maxi", 
+  },
+  "name": "Controllino Maxi",
   "upload": {
-    "maximum_ram_size": 8192, 
-    "maximum_size": 253952, 
-    "protocol": "wiring", 
-    "require_upload_port": true, 
+    "maximum_ram_size": 8192,
+    "maximum_size": 253952,
+    "protocol": "wiring",
+    "require_upload_port": true,
     "speed": 115200
-  }, 
-  "url": "https://controllino.biz/controllino/maxi/", 
+  },
+  "url": "https://controllino.biz/controllino/maxi/",
   "vendor": "Controllino"
 }

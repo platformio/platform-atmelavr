@@ -1,26 +1,26 @@
 {
   "build": {
-    "core": "arduino", 
-    "extra_flags": "-DARDUINO_ARCH_AVR -DARDUINO_AVR_DUEMILANOVE", 
-    "f_cpu": "16000000L", 
-    "mcu": "atmega168", 
+    "core": "arduino",
+    "extra_flags": "-DARDUINO_AVR_DUEMILANOVE",
+    "f_cpu": "16000000L",
+    "mcu": "atmega168",
     "variant": "standard"
-  }, 
+  },
   "frameworks": [
     "arduino"
-  ], 
+  ],
   "fuses": {
-    "efuse": "0x00", 
+    "efuse": "0x00",
     "hfuse": "0xdd"
-  }, 
-  "name": "Arduino Duemilanove or Diecimila ATmega168", 
+  },
+  "name": "Arduino Duemilanove or Diecimila ATmega168",
   "upload": {
-    "maximum_ram_size": 1024, 
-    "maximum_size": 14336, 
-    "protocol": "arduino", 
-    "require_upload_port": true, 
+    "maximum_ram_size": 1024,
+    "maximum_size": 14336,
+    "protocol": "arduino",
+    "require_upload_port": true,
     "speed": 19200
-  }, 
-  "url": "http://arduino.cc/en/Main/ArduinoBoardDiecimila", 
+  },
+  "url": "http://arduino.cc/en/Main/ArduinoBoardDiecimila",
   "vendor": "Arduino"
 }

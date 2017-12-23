@@ -1,27 +1,27 @@
 {
   "build": {
-    "core": "arduino", 
-    "extra_flags": "-DARDUINO_ARCH_AVR -DARDUINO_AVR_PRO", 
-    "f_cpu": "8000000L", 
-    "mcu": "atmega328p", 
+    "core": "arduino",
+    "extra_flags": "-DARDUINO_AVR_PRO",
+    "f_cpu": "8000000L",
+    "mcu": "atmega328p",
     "variant": "eightanaloginputs"
-  }, 
+  },
   "frameworks": [
     "arduino"
-  ], 
+  ],
   "fuses": {
-    "efuse": "0x05", 
-    "hfuse": "0xDA", 
+    "efuse": "0x05",
+    "hfuse": "0xDA",
     "lfuse": "0xFF"
-  }, 
-  "name": "Arduino Pro or Pro Mini ATmega328 (3.3V, 8 MHz)", 
+  },
+  "name": "Arduino Pro or Pro Mini ATmega328 (3.3V, 8 MHz)",
   "upload": {
-    "maximum_ram_size": 2048, 
-    "maximum_size": 30720, 
-    "protocol": "arduino", 
-    "require_upload_port": true, 
+    "maximum_ram_size": 2048,
+    "maximum_size": 30720,
+    "protocol": "arduino",
+    "require_upload_port": true,
     "speed": 57600
-  }, 
-  "url": "http://arduino.cc/en/Main/ArduinoBoardProMini", 
+  },
+  "url": "http://arduino.cc/en/Main/ArduinoBoardProMini",
   "vendor": "Arduino"
 }

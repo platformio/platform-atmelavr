@@ -1,7 +1,7 @@
 {
   "build": {
     "core": "nicai",
-    "extra_flags": "-DARDUINO_ARCH_AVR -DARDUINO_AVR_NIBO2",
+    "extra_flags": "-DARDUINO_AVR_NIBO2",
     "f_cpu": "16000000L",
     "mcu": "atmega128",
     "variant": "nibo2"

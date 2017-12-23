@@ -1,7 +1,7 @@
 {
   "build": {
     "core": "arduino",
-    "extra_flags": "-DARDUINO_ARCH_AVR -DARDUINO_AVR_SEEEDUINO",
+    "extra_flags": "-DARDUINO_AVR_SEEEDUINO",
     "f_cpu": "16000000L",
     "hwids": [
       [
@@ -31,5 +31,5 @@
     "speed": 115200
   },
   "url": "https://www.seeedstudio.com/Seeeduino-V4.2-p-2517.html",
-  "vendor": "Seeed"
+  "vendor": "SeeedStudio"
 }

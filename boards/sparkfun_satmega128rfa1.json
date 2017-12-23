@@ -1,7 +1,7 @@
 {
   "build": {
     "core": "arduino",
-    "extra_flags": "-DARDUINO_ARCH_AVR -DARDUINO_AVR_ATMEGA128RFA1_DEV_BOARD",
+    "extra_flags": "-DARDUINO_AVR_ATMEGA128RFA1_DEV_BOARD",
     "f_cpu": "16000000L",
     "mcu": "atmega128rfa1",
     "variant": "sparkfun_rf128"

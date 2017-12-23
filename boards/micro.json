@@ -1,7 +1,7 @@
 {
   "build": {
     "core": "arduino",
-    "extra_flags": "-DARDUINO_ARCH_AVR -DARDUINO_AVR_MICRO",
+    "extra_flags": "-DARDUINO_AVR_MICRO",
     "f_cpu": "16000000L",
     "hwids": [
       [

@@ -1,7 +1,7 @@
 {
   "build": {
     "core": "arduino",
-    "extra_flags": "-DARDUINO_ARCH_AVR -DARDUINO_AVR_RASPDUINO",
+    "extra_flags": "-DARDUINO_AVR_RASPDUINO",
     "f_cpu": "16000000L",
     "mcu": "atmega328p",
     "variant": "standard"

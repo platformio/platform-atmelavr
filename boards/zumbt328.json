@@ -1,23 +1,23 @@
 {
   "build": {
-    "core": "arduino", 
-    "extra_flags": "-DARDUINO_ARCH_AVR -DARDUINO_AVR_BT", 
-    "f_cpu": "16000000L", 
-    "mcu": "atmega328p", 
+    "core": "arduino",
+    "extra_flags": "-DARDUINO_AVR_BT",
+    "f_cpu": "16000000L",
+    "mcu": "atmega328p",
     "variant": "eightanaloginputs"
-  }, 
+  },
   "frameworks": [
     "arduino"
-  ], 
-  "name": "BQ ZUM BT-328", 
+  ],
+  "name": "BQ ZUM BT-328",
   "upload": {
-    "disable_flushing": true, 
-    "maximum_ram_size": 2048, 
-    "maximum_size": 28672, 
-    "protocol": "arduino", 
-    "require_upload_port": true, 
+    "disable_flushing": true,
+    "maximum_ram_size": 2048,
+    "maximum_size": 28672,
+    "protocol": "arduino",
+    "require_upload_port": true,
     "speed": 19200
-  }, 
-  "url": "http://www.bq.com/gb/products/zum.html", 
+  },
+  "url": "http://www.bq.com/gb/products/zum.html",
   "vendor": "BQ"
 }

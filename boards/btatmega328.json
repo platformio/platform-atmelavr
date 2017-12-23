@@ -1,30 +1,30 @@
 {
   "build": {
-    "core": "arduino", 
-    "extra_flags": "-DARDUINO_ARCH_AVR -DARDUINO_AVR_BT", 
-    "f_cpu": "16000000L", 
-    "mcu": "atmega328p", 
+    "core": "arduino",
+    "extra_flags": "-DARDUINO_AVR_BT",
+    "f_cpu": "16000000L",
+    "mcu": "atmega328p",
     "variant": "eightanaloginputs"
   },
   "connectivity": [
     "bluetooth"
-  ],  
+  ],
   "frameworks": [
     "arduino"
-  ], 
+  ],
   "fuses": {
-    "efuse": "0x05", 
+    "efuse": "0x05",
     "hfuse": "0xd8"
-  }, 
-  "name": "Arduino BT ATmega328", 
+  },
+  "name": "Arduino BT ATmega328",
   "upload": {
-    "disable_flushing": true, 
-    "maximum_ram_size": 2048, 
-    "maximum_size": 28672, 
-    "protocol": "arduino", 
-    "require_upload_port": true, 
+    "disable_flushing": true,
+    "maximum_ram_size": 2048,
+    "maximum_size": 28672,
+    "protocol": "arduino",
+    "require_upload_port": true,
     "speed": 19200
-  }, 
-  "url": "http://arduino.cc/en/main/boards", 
+  },
+  "url": "http://arduino.cc/en/main/boards",
   "vendor": "Arduino"
 }

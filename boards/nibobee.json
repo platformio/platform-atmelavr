@@ -1,7 +1,7 @@
 {
   "build": {
     "core": "nicai",
-    "extra_flags": "-DARDUINO_ARCH_AVR -DARDUINO_AVR_NIBOBEE",
+    "extra_flags": "-DARDUINO_AVR_NIBOBEE",
     "f_cpu": "15000000L",
     "mcu": "atmega16",
     "variant": "nibobee"

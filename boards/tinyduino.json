@@ -1,22 +1,22 @@
 {
   "build": {
-    "core": "arduino", 
-    "extra_flags": "-DARDUINO_ARCH_AVR -DARDUINO_AVR_LILYPAD", 
-    "f_cpu": "8000000L", 
-    "mcu": "atmega328p", 
+    "core": "arduino",
+    "extra_flags": "-DARDUINO_AVR_LILYPAD",
+    "f_cpu": "8000000L",
+    "mcu": "atmega328p",
     "variant": "standard"
-  }, 
+  },
   "frameworks": [
     "arduino"
-  ], 
-  "name": "TinyCircuits TinyDuino Processor Board", 
+  ],
+  "name": "TinyCircuits TinyDuino Processor Board",
   "upload": {
-    "maximum_ram_size": 2048, 
-    "maximum_size": 30720, 
-    "protocol": "arduino", 
-    "require_upload_port": true, 
+    "maximum_ram_size": 2048,
+    "maximum_size": 30720,
+    "protocol": "arduino",
+    "require_upload_port": true,
     "speed": 57600
-  }, 
-  "url": "https://tiny-circuits.com/tinyduino-processor-board.html", 
+  },
+  "url": "https://tiny-circuits.com/tinyduino-processor-board.html",
   "vendor": "TinyCircuits"
 }

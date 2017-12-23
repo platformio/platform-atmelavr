@@ -1,7 +1,7 @@
 {
   "build": {
     "core": "bean",
-    "extra_flags": "-DARDUINO_ARCH_AVR -DARDUINO_AVR_UNO",
+    "extra_flags": "-DARDUINO_AVR_UNO",
     "f_cpu": "8000000L",
     "mcu": "atmega328p",
     "variant": "bean"

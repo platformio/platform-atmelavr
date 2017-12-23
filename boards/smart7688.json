@@ -1,40 +1,32 @@
 {
   "build": {
     "core": "arduino",
-    "extra_flags": "-DARDUINO_AVR_ESPLORA",
-    "f_cpu": "16000000L",
+    "extra_flags": "-DARDUINO_AVR_LINKITSMART7688",
+    "f_cpu": "8000000L",
     "hwids": [
       [
-        "0x2341",
-        "0x003C"
+        "0x0E8D",
+        "0xAB01"
       ],
       [
-        "0x2341",
-        "0x803C"
-      ],
-      [
-        "0x2A03",
-        "0x003C"
-      ],
-      [
-        "0x2A03",
-        "0x803C"
+        "0x0E8D",
+        "0xAB00"
       ]
     ],
     "mcu": "atmega32u4",
-    "usb_product": "Arduino Esplora",
-    "variant": "leonardo"
+    "usb_product": "LinkIt Smart 7688 Duo",
+    "variant": "smart7688"
   },
   "frameworks": [
     "arduino"
   ],
   "fuses": {
-    "efuse": "0xcb",
+    "efuse": "0xce",
     "hfuse": "0xd8",
     "lfuse": "0xff",
-    "lock": "0x3F"
+    "lock": "0x2F"
   },
-  "name": "Arduino Esplora",
+  "name": "LinkIt Smart 7688 Duo",
   "upload": {
     "disable_flushing": true,
     "maximum_ram_size": 2560,
@@ -45,6 +37,6 @@
     "use_1200bps_touch": true,
     "wait_for_upload_port": true
   },
-  "url": "https://www.arduino.cc/en/Main/ArduinoBoardEsplora",
-  "vendor": "Arduino"
+  "url": "https://www.seeedstudio.com/LinkIt-Smart-7688-Duo-p-2574.html",
+  "vendor": "MediaTek Labs"
 }

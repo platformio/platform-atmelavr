@@ -1,7 +1,7 @@
 {
   "build": {
     "core": "tinymodern",
-    "extra_flags": "-DARDUINO_ARCH_AVR -DARDUINO_AVR_ATTINY1634",
+    "extra_flags": "-DARDUINO_AVR_ATTINY1634",
     "f_cpu": "8000000L",
     "mcu": "attiny1634"
   },

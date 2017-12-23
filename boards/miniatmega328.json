@@ -1,26 +1,26 @@
 {
   "build": {
-    "core": "arduino", 
-    "extra_flags": "-DARDUINO_ARCH_AVR -DARDUINO_AVR_MINI", 
-    "f_cpu": "16000000L", 
-    "mcu": "atmega328p", 
+    "core": "arduino",
+    "extra_flags": "-DARDUINO_AVR_MINI",
+    "f_cpu": "16000000L",
+    "mcu": "atmega328p",
     "variant": "eightanaloginputs"
-  }, 
+  },
   "frameworks": [
     "arduino"
-  ], 
+  ],
   "fuses": {
-    "efuse": "0x05", 
+    "efuse": "0x05",
     "hfuse": "0xd8"
-  }, 
-  "name": "Arduino Mini ATmega328", 
+  },
+  "name": "Arduino Mini ATmega328",
   "upload": {
-    "maximum_ram_size": 2048, 
-    "maximum_size": 28672, 
-    "protocol": "arduino", 
-    "require_upload_port": true, 
+    "maximum_ram_size": 2048,
+    "maximum_size": 28672,
+    "protocol": "arduino",
+    "require_upload_port": true,
     "speed": 115200
-  }, 
-  "url": "http://arduino.cc/en/Main/ArduinoBoardMini", 
+  },
+  "url": "http://arduino.cc/en/Main/ArduinoBoardMini",
   "vendor": "Arduino"
 }
