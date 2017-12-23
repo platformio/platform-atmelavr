@@ -1,0 +1,20 @@
+{
+  "build": {
+    "core": "atmelavr",
+    "extra_flags": "-D__AVR_AT90PWM216__",
+    "f_cpu": "16000000L",
+    "mcu": "at90pwm216"
+  },
+  "fuses": {
+    "lfuse": "0x62",
+    "hfuse": "0xDF",
+    "efuse": "0xF9"
+  },
+  "name": "Atmel AT90PWM216",
+  "upload": {
+    "maximum_ram_size": 1024,
+    "maximum_size": 16384
+  },
+  "url": "http://www.microchip.com/wwwproducts/en/AT90PWM216",
+  "vendor": "Microchip"
+}
