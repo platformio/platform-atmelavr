@@ -9,7 +9,6 @@
     "lfuse": "0x41",
     "hfuse": "0xDF",
     "efuse": "0xF9",
-    "lock": "0xFF"
   },
   "name": "Atmel AT90PWM316",
   "upload": {
