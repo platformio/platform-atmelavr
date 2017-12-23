@@ -2,6 +2,7 @@
   "build": {
     "core": "atmelavr",
     "extra_flags": "-D__AVR_AT90PWM316__",
+    "f_cpu": "16000000L",
     "mcu": "at90pwm316"
   },
   "fuses": {
