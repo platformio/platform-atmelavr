@@ -37,7 +37,8 @@
     "wait_for_upload": true,
     "wait_for_upload_force": true,
     "use_1200bps_touch": true,
-    "disable_flushing": true
+    "disable_flushing": true,
+    "wait_for_upload_port": true
   },
   "url": "http://www.dwengo.org/",
   "vendor": "Dwengo"
