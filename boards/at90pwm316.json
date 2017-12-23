@@ -6,9 +6,9 @@
     "mcu": "at90pwm316"
   },
   "fuses": {
-    "lfuse": "0x41",
+    "lfuse": "0x62",
     "hfuse": "0xDF",
-    "efuse": "0xF9",
+    "efuse": "0xF9"
   },
   "name": "Atmel AT90PWM316",
   "upload": {
