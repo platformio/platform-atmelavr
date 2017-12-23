@@ -5,6 +5,7 @@
     "f_cpu": "16000000L",
     "mcu": "at90pwm216"
   },
+  "frameworks": [],
   "fuses": {
     "lfuse": "0x62",
     "hfuse": "0xDF",
