@@ -33,7 +33,7 @@ class AtmelavrPlatform(PlatformBase):
                 self.packages[required_tool]['optional'] = False
 
             if disabled_tool in self.packages and \
-                    disabled_tool != "required_tool":
+                    disabled_tool != required_tool:
                 del self.packages[disabled_tool]
 
         return PlatformBase.configure_default_packages(self, variables,
