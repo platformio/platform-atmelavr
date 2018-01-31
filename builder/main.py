@@ -45,6 +45,9 @@ def BeforeUpload(target, source, env):  # pylint: disable=W0613,W0621
     if "extra_flags" in upload_options:
         env.Append(UPLOADERFLAGS=upload_options.get("extra_flags"))
 
+    # disable erasing by default
+    env.Append(UPLOADERFLAGS=["-D"])
+
     if upload_options and not upload_options.get("require_upload_port", False):
         return
 
@@ -199,7 +202,7 @@ else:
                  "avrdude.conf"),
             "-c", "$UPLOAD_PROTOCOL"
         ],
-        UPLOADHEXCMD='$UPLOADER $UPLOADERFLAGS -D -U flash:w:$SOURCES:i',
+        UPLOADHEXCMD='$UPLOADER $UPLOADERFLAGS -U flash:w:$SOURCES:i',
         UPLOADEEPCMD='$UPLOADER $UPLOADERFLAGS -U eeprom:w:$SOURCES:i',
         PROGRAMHEXCMD='$UPLOADER $UPLOADERFLAGS -U flash:w:$SOURCES:i'
     )
