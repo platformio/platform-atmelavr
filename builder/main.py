@@ -12,6 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+from __future__ import absolute_import
+from __future__ import print_function
 from os.path import join
 from time import sleep
 
@@ -27,7 +29,7 @@ def BeforeUpload(target, source, env):  # pylint: disable=W0613,W0621
         return
 
     if "micronucleus" in env['UPLOADER']:
-        print "Please unplug/plug device ..."
+        print("Please unplug/plug device ...")
 
     upload_options = {}
     if "BOARD" in env:

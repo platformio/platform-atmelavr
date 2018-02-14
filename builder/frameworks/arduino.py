@@ -22,6 +22,7 @@ kinds of creative coding, interactive objects, spaces or physical experiences.
 http://arduino.cc/en/Reference/HomePage
 """
 
+from __future__ import absolute_import
 from os.path import isdir, join
 
 from SCons.Script import DefaultEnvironment

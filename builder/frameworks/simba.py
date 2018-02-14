@@ -21,6 +21,7 @@ http://simba-os.readthedocs.org
 
 """
 
+from __future__ import absolute_import
 from os.path import join, sep
 
 from SCons.Script import DefaultEnvironment, SConscript
