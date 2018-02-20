@@ -11,10 +11,10 @@
   ],
   "name": "Generic ATTiny85",
   "upload": {
+    "extra_flags": "-e",
     "maximum_ram_size": 512,
     "maximum_size": 8192,
-    "protocol": "usbtiny",
-    "extra_flags": "-e"
+    "protocol": "usbtiny"
   },
   "url": "http://www.atmel.com/devices/ATTINY85.aspx",
   "vendor": "Generic ATTiny"

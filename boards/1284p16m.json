@@ -1,7 +1,7 @@
 {
   "build": {
-    "extra_flags": "-DARDUINO_AVR_MICRODUINO_CORE_PLUS",
     "core": "arduino",
+    "extra_flags": "-DARDUINO_AVR_MICRODUINO_CORE_PLUS",
     "f_cpu": "16000000L",
     "mcu": "atmega1284p",
     "variant": "plus"
