@@ -17,6 +17,6 @@
     "require_upload_port": true,
     "speed": 115200
   },
-  "url": "https://code.google.com/p/sanguino/",
+  "url": "https://github.com/Lauszus/Sanguino",
   "vendor": "Sanguino"
 }
