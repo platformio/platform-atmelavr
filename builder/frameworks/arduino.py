@@ -33,6 +33,12 @@ FRAMEWORK_DIR = platform.get_package_dir("framework-arduinoavr")
 FRAMEWORK_VERSION = platform.get_package_version("framework-arduinoavr")
 assert isdir(FRAMEWORK_DIR)
 
+# hack the version when it has no dots and is probably a commit id
+# not great to hard code the arduino version but there is no where
+# else to put it
+if "." not in FRAMEWORK_VERSION:
+    FRAMEWORK_VERSION = "~1.10620."+FRAMEWORK_VERSION
+
 # USB flags
 ARDUINO_USBDEFINES = [
     "ARDUINO_ARCH_AVR",
