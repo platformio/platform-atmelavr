@@ -45,6 +45,9 @@ def BeforeUpload(target, source, env):  # pylint: disable=W0613,W0621
     if "extra_flags" in upload_options:
         env.Append(UPLOADERFLAGS=upload_options.get("extra_flags"))
 
+    # disable erasing by default
+    env.Append(UPLOADERFLAGS=["-D"])
+
     if upload_options and not upload_options.get("require_upload_port", False):
         return
 
@@ -106,7 +109,6 @@ env.Replace(
     ],
 
     CCFLAGS=[
-        "-g",  # include debugging info (so errors include line numbers)
         "-Os",  # optimize for size
         "-Wall",  # show warnings
         "-ffunction-sections",  # place each function in its own section
@@ -136,7 +138,6 @@ env.Replace(
 
     SIZEPRINTCMD='$SIZETOOL --mcu=$BOARD_MCU -C -d $SOURCES',
 
-    PROGNAME="firmware",
     PROGSUFFIX=".elf"
 )
 
@@ -176,6 +177,10 @@ env.Append(
     )
 )
 
+# Allow user to override via pre:script
+if env.get("PROGNAME", "program") == "program":
+    env.Replace(PROGNAME="firmware")
+
 if env.subst("$UPLOAD_PROTOCOL") in ("digispark", "micronucleus"):
     env.Replace(
         UPLOADER="micronucleus",
@@ -197,7 +202,7 @@ else:
                  "avrdude.conf"),
             "-c", "$UPLOAD_PROTOCOL"
         ],
-        UPLOADHEXCMD='$UPLOADER $UPLOADERFLAGS -D -U flash:w:$SOURCES:i',
+        UPLOADHEXCMD='$UPLOADER $UPLOADERFLAGS -U flash:w:$SOURCES:i',
         UPLOADEEPCMD='$UPLOADER $UPLOADERFLAGS -U eeprom:w:$SOURCES:i',
         PROGRAMHEXCMD='$UPLOADER $UPLOADERFLAGS -U flash:w:$SOURCES:i'
     )
@@ -219,10 +224,10 @@ if "BOARD" in env and "fuses" in env.BoardConfig():
 
 target_elf = None
 if "nobuild" in COMMAND_LINE_TARGETS:
-    target_firm = join("$BUILD_DIR", "firmware.hex")
+    target_firm = join("$BUILD_DIR", "${PROGNAME}.hex")
 else:
     target_elf = env.BuildProgram()
-    target_firm = env.ElfToHex(join("$BUILD_DIR", "firmware"), target_elf)
+    target_firm = env.ElfToHex(join("$BUILD_DIR", "${PROGNAME}"), target_elf)
 
 AlwaysBuild(env.Alias("nobuild", target_firm))
 target_buildprog = env.Alias("buildprog", target_firm, target_firm)
@@ -250,11 +255,12 @@ AlwaysBuild(target_upload)
 # Target: Upload EEPROM data (from EEMEM directive)
 #
 target_uploadeep = env.Alias(
-    "uploadeep", join("$BUILD_DIR", "firmware.eep")
-    if "nobuild" in COMMAND_LINE_TARGETS else
-    env.ElfToEep(join("$BUILD_DIR", "firmware"), target_elf),
-    [env.VerboseAction(BeforeUpload, "Looking for upload port..."),
-     env.VerboseAction("$UPLOADEEPCMD", "Uploading $SOURCE")])
+    "uploadeep",
+    join("$BUILD_DIR", "${PROGNAME}.eep")
+    if "nobuild" in COMMAND_LINE_TARGETS else env.ElfToEep(target_elf), [
+        env.VerboseAction(BeforeUpload, "Looking for upload port..."),
+        env.VerboseAction("$UPLOADEEPCMD", "Uploading $SOURCE")
+    ])
 AlwaysBuild(target_uploadeep)
 
 #

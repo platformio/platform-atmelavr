@@ -30,13 +30,12 @@ env = DefaultEnvironment()
 platform = env.PioPlatform()
 
 FRAMEWORK_DIR = platform.get_package_dir("framework-arduinoavr")
-FRAMEWORK_VERSION = platform.get_package_version("framework-arduinoavr")
 assert isdir(FRAMEWORK_DIR)
 
 # USB flags
 ARDUINO_USBDEFINES = [
     "ARDUINO_ARCH_AVR",
-    ("ARDUINO", int(FRAMEWORK_VERSION.split(".")[1]))
+    ("ARDUINO", 10805)
 ]
 if "build.usb_product" in env.BoardConfig():
     ARDUINO_USBDEFINES += [

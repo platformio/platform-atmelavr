@@ -11,10 +11,10 @@
   ],
   "name": "Generic ATTiny167",
   "upload": {
+    "extra_flags": "-e",
     "maximum_ram_size": 512,
     "maximum_size": 16384,
-    "protocol": "usbtiny",
-    "extra_flags": "-e"
+    "protocol": "usbtiny"
   },
   "url": "http://www.atmel.com/devices/ATTINY167.aspx",
   "vendor": "Generic ATTiny"

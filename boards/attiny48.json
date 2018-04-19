@@ -11,10 +11,10 @@
   ],
   "name": "Generic ATTiny48",
   "upload": {
+    "extra_flags": "-e",
     "maximum_ram_size": 256,
     "maximum_size": 4096,
-    "protocol": "usbtiny",
-    "extra_flags": "-e"
+    "protocol": "usbtiny"
   },
   "url": "http://www.atmel.com/devices/ATTINY48.aspx",
   "vendor": "Generic ATTiny"

@@ -1,7 +1,7 @@
 {
   "build": {
-    "extra_flags": "-DARDUINO_AVR_SODAQ_TATU",
     "core": "arduino",
+    "extra_flags": "-DARDUINO_AVR_SODAQ_TATU",
     "f_cpu": "8000000L",
     "mcu": "atmega1284p",
     "variant": "tatu"

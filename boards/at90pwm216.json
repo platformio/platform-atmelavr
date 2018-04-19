@@ -7,9 +7,9 @@
   },
   "frameworks": [],
   "fuses": {
-    "lfuse": "0x62",
+    "efuse": "0xF9",
     "hfuse": "0xDF",
-    "efuse": "0xF9"
+    "lfuse": "0x62"
   },
   "name": "Atmel AT90PWM216",
   "upload": {
