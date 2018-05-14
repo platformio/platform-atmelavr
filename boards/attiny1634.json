@@ -10,10 +10,11 @@
   ],
   "name": "Generic ATTiny1634",
   "upload": {
+    "extra_flags": "-e",
     "maximum_ram_size": 1024,
     "maximum_size": 16384,
     "protocol": "usbtiny"
   },
   "url": "http://www.atmel.com/devices/ATTINY1634.aspx",
-  "vendor": "Generic ATTiny"
+  "vendor": "Atmel"
 }

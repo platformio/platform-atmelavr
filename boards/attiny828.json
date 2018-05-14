@@ -1,21 +1,20 @@
 {
   "build": {
-    "core": "tiny",
-    "extra_flags": "-DARDUINO_AVR_ATTINYX8",
+    "core": "tinymodern",
+    "extra_flags": "-DARDUINO_AVR_AVR_ATTINY828",
     "f_cpu": "8000000L",
-    "mcu": "attiny88",
-    "variant": "tinyX8"
+    "mcu": "attiny828"
   },
   "frameworks": [
     "arduino"
   ],
-  "name": "Generic ATTiny88",
+  "name": "Generic ATTiny828",
   "upload": {
     "extra_flags": "-e",
     "maximum_ram_size": 512,
     "maximum_size": 8192,
     "protocol": "usbtiny"
   },
-  "url": "http://www.atmel.com/devices/ATTINY88.aspx",
+  "url": "http://www.atmel.com/devices/ATTINY828.aspx",
   "vendor": "Atmel"
 }
