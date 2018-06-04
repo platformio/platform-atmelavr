@@ -1,0 +1,29 @@
+{
+  "build": {
+    "core": "arduino",
+    "extra_flags": "-DARDUINO_AVR_FEATHER328P",
+    "f_cpu": "8000000L",
+    "hwids": [
+      [
+        "0x239A",
+        "0x800C"
+      ]
+    ],
+    "mcu": "atmega328p",
+    "usb_product": "Feather 328P",
+    "variant": "standard"
+  },
+  "frameworks": [
+    "arduino"
+  ],
+  "name": "Adafruit Feather 328P",
+  "upload": {
+    "maximum_ram_size": 2048,
+    "maximum_size": 32256,
+    "protocol": "arduino",
+    "require_upload_port": true,
+    "speed": 57600
+  },
+  "url": "https://www.adafruit.com/product/3458",
+  "vendor": "Adafruit"
+}
