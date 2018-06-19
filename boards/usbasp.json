@@ -9,7 +9,7 @@
   "frameworks": [
     "arduino"
   ],
-  "name": "USBASP stick",
+  "name": "USBasp stick",
   "upload": {
     "maximum_ram_size": 1024,
     "maximum_size": 8192,
@@ -17,5 +17,5 @@
     "flags": "-Pusb -s"
   },
   "url": "https://www.fischl.de/usbasp/",
-  "vendor": "Many"
+  "vendor": "Atmel"
 }
