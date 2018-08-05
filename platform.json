@@ -36,7 +36,7 @@
     "framework-arduinoavr": {
       "type": "framework",
       "optional": true,
-      "version": "~1.10621.1"
+      "version": "~1.10621.2"
     },
     "framework-simba": {
       "type": "framework",
