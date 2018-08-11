@@ -101,40 +101,6 @@ env.Replace(
 
     ARFLAGS=["rc"],
 
-    ASFLAGS=["-x", "assembler-with-cpp"],
-
-    CFLAGS=[
-        "-std=gnu11",
-        "-fno-fat-lto-objects"
-    ],
-
-    CCFLAGS=[
-        "-Os",  # optimize for size
-        "-Wall",  # show warnings
-        "-ffunction-sections",  # place each function in its own section
-        "-fdata-sections",
-        "-flto",
-        "-mmcu=$BOARD_MCU"
-    ],
-
-    CXXFLAGS=[
-        "-fno-exceptions",
-        "-fno-threadsafe-statics",
-        "-fpermissive",
-        "-std=gnu++11"
-    ],
-
-    CPPDEFINES=[("F_CPU", "$BOARD_F_CPU")],
-
-    LINKFLAGS=[
-        "-Os",
-        "-mmcu=$BOARD_MCU",
-        "-Wl,--gc-sections",
-        "-flto",
-        "-fuse-linker-plugin"
-    ],
-
-    LIBS=["m"],
 
     SIZEPROGREGEXP=r"^(?:\.text|\.data|\.bootloader)\s+(\d+).*",
     SIZEDATAREGEXP=r"^(?:\.data|\.bss|\.noinit)\s+(\d+).*",
@@ -145,8 +111,6 @@ env.Replace(
 )
 
 env.Append(
-    ASFLAGS=env.get("CCFLAGS", [])[:],
-
     BUILDERS=dict(
         ElfToEep=Builder(
             action=env.VerboseAction(" ".join([
@@ -220,6 +184,8 @@ if "BOARD" in env and "fuses" in env.BoardConfig():
          for k, v in env.BoardConfig().get("fuses", {}).items()]
     ))
 
+if not env.get("PIOFRAMEWORK"):
+    env.SConscript("frameworks/_bare.py", exports="env")
 
 #
 # Target: Build executable and linkable firmware
