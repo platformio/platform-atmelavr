@@ -1,0 +1,21 @@
+{
+  "build": {
+    "core": "arduino",
+    "extra_flags": "-DARDUINO_AVR_USBASP",
+    "f_cpu": "12000000L",
+    "mcu": "atmega8",
+    "variant": "standard"
+  },
+  "frameworks": [
+    "arduino"
+  ],
+  "name": "USBasp stick",
+  "upload": {
+    "maximum_ram_size": 1024,
+    "maximum_size": 8192,
+    "protocol": "usbasp",
+    "flags": "-Pusb -s"
+  },
+  "url": "https://www.fischl.de/usbasp/",
+  "vendor": "Atmel"
+}
