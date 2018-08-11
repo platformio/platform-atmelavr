@@ -1,0 +1,28 @@
+{
+  "build": {
+    "core": "arduino",
+    "extra_flags": "-DARDUINO_AVR_NANO",
+    "f_cpu": "16000000L",
+    "mcu": "atmega328p",
+    "variant": "eightanaloginputs"
+  },
+  "frameworks": [
+    "arduino",
+    "simba"
+  ],
+  "fuses": {
+    "efuse": "0x05",
+    "hfuse": "0xDA",
+    "lfuse": "0xFF"
+  },
+  "name": "Arduino Nano ATmega328 (New Bootloader)",
+  "upload": {
+    "maximum_ram_size": 2048,
+    "maximum_size": 30720,
+    "protocol": "arduino",
+    "require_upload_port": true,
+    "speed": 115200
+  },
+  "url": "https://www.arduino.cc/en/Main/ArduinoBoardNano",
+  "vendor": "Arduino"
+}
