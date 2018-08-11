@@ -32,13 +32,13 @@ platform = env.PioPlatform()
 FRAMEWORK_DIR = platform.get_package_dir("framework-arduinoavr")
 assert isdir(FRAMEWORK_DIR)
 
-# USB flags
-ARDUINO_USBDEFINES = [
+CPPDEFINES = [
+    ("F_CPU", "$BOARD_F_CPU"),
     "ARDUINO_ARCH_AVR",
     ("ARDUINO", 10805)
 ]
 if "build.usb_product" in env.BoardConfig():
-    ARDUINO_USBDEFINES += [
+    CPPDEFINES += [
         ("USB_VID", env.BoardConfig().get("build.hwids")[0][0]),
         ("USB_PID", env.BoardConfig().get("build.hwids")[0][1]),
         ("USB_PRODUCT", '\\"%s\\"' %
@@ -48,12 +48,48 @@ if "build.usb_product" in env.BoardConfig():
     ]
 
 env.Append(
-    CPPDEFINES=ARDUINO_USBDEFINES,
+    ASFLAGS=["-x", "assembler-with-cpp"],
+
+    CFLAGS=[
+        "-std=gnu11",
+        "-fno-fat-lto-objects"
+    ],
+
+    CCFLAGS=[
+        "-Os",  # optimize for size
+        "-Wall",  # show warnings
+        "-ffunction-sections",  # place each function in its own section
+        "-fdata-sections",
+        "-flto",
+        "-mmcu=$BOARD_MCU"
+    ],
+
+    CXXFLAGS=[
+        "-fno-exceptions",
+        "-fno-threadsafe-statics",
+        "-fpermissive",
+        "-std=gnu++11"
+    ],
+
+    LINKFLAGS=[
+        "-Os",
+        "-mmcu=$BOARD_MCU",
+        "-Wl,--gc-sections",
+        "-flto",
+        "-fuse-linker-plugin"
+    ],
+
+    CPPDEFINES=CPPDEFINES,
+
+    LIBS=["m"],
 
     CPPPATH=[
         join(FRAMEWORK_DIR, "cores", env.BoardConfig().get("build.core"))
     ]
 )
+
+# copy CCFLAGS to ASFLAGS (-x assembler-with-cpp mode)
+env.Append(ASFLAGS=env.get("CCFLAGS", [])[:])
 
 #
 # Lookup for specific core's libraries
