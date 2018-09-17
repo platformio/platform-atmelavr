@@ -9,7 +9,7 @@
   "frameworks": [
     "arduino"
   ],
-  "name": "Alorium XLR8",
+  "name": "Alorium Sno",
   "upload": {
     "maximum_ram_size": 2048,
     "maximum_size": 32256,
@@ -17,6 +17,6 @@
     "require_upload_port": true,
     "speed": 115200
   },
-  "url": "http://www.aloriumtech.com/xlr8/",
+  "url": "https://www.aloriumtech.com/sno/",
   "vendor": "Alorium Technology"
 }
