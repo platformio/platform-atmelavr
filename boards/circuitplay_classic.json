@@ -10,13 +10,13 @@
       ]
     ],
     "mcu": "atmega32u4",
-    "usb_product": "Adafruit Circuit Playground Classic",
+    "usb_product": "Adafruit",
     "variant": "circuitplay32u4"
   },
   "frameworks": [
     "arduino"
   ],
-  "name": "Adafruit Flora",
+  "name": "Adafruit Circuit Playground Classic",
   "upload": {
     "disable_flushing": true,
     "maximum_ram_size": 2560,
