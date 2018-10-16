@@ -3,7 +3,7 @@
     "core": "MightyCore",
     "extra_flags": "-DARDUINO_AVR_ATmega8535",
     "f_cpu": "16000000L",
-    "mcu": "atmega16",
+    "mcu": "atmega8535",
     "variant": "mightycore"
   },
   "frameworks": [
