@@ -1,0 +1,32 @@
+{
+  "build": {
+    "core": "arduino",
+    "extra_flags": "-DARDUINO_AVR_CIRCUIT_PLAYGROUND_CLASSIC",
+    "f_cpu": "8000000L",
+    "hwids": [
+      [
+        "0x239A",
+        "0x8011"
+      ]
+    ],
+    "mcu": "atmega32u4",
+    "usb_product": "Adafruit",
+    "variant": "circuitplay32u4"
+  },
+  "frameworks": [
+    "arduino"
+  ],
+  "name": "Adafruit Circuit Playground Classic",
+  "upload": {
+    "disable_flushing": true,
+    "maximum_ram_size": 2560,
+    "maximum_size": 28672,
+    "protocol": "avr109",
+    "require_upload_port": true,
+    "speed": 57600,
+    "use_1200bps_touch": true,
+    "wait_for_upload_port": true
+  },
+  "url": "http://www.adafruit.com/product/3000",
+  "vendor": "Adafruit"
+}
