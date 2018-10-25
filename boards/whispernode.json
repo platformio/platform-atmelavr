@@ -1,0 +1,28 @@
+{
+  "build": {
+    "core": "arduino",
+    "extra_flags": "-DARDUINO_AVR_UNO",
+    "f_cpu": "16000000L",
+    "mcu": "atmega328p",
+    "variant": "eightanaloginputs"
+  },
+  "frameworks": [
+    "arduino"
+  ],
+  "fuses": {
+    "efuse": "0x05",
+    "hfuse": "0xDA",
+    "lfuse": "0xEF",
+    "lock": "0x2F"
+  },
+  "name": "Talk2 Whisper Node",
+  "upload": {
+    "maximum_ram_size": 2048,
+    "maximum_size": 32256,
+    "protocol": "arduino",
+    "require_upload_port": true,
+    "speed": 115200
+  },
+  "url": "https://wisen.com.au/store/products/whisper-node-avr/",
+  "vendor": "Wisen"
+}
