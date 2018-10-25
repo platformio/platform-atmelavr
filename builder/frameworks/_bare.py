@@ -39,6 +39,7 @@ env.Append(
     ],
 
     CXXFLAGS=[
+        "-Wno-error=narrowing",
         "-fno-exceptions",
         "-fno-threadsafe-statics",
         "-fpermissive",
