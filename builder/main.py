@@ -27,7 +27,7 @@ def BeforeUpload(target, source, env):  # pylint: disable=W0613,W0621
         return
 
     if "micronucleus" in env['UPLOADER']:
-        print "Please unplug/plug device ..."
+        print("Please unplug/plug device ...")
 
     upload_options = {}
     if "BOARD" in env:
