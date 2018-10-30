@@ -3,6 +3,12 @@
     "core": "arduino",
     "extra_flags": "-DARDUINO_AVR_MEGA2560",
     "f_cpu": "16000000L",
+    "hwids": [
+      [
+        "0x2341",
+        "0x0042"
+      ]
+    ],
     "mcu": "atmega2560",
     "variant": "mega"
   },
