@@ -74,9 +74,14 @@ def BeforeUpload(target, source, env):  # pylint: disable=W0613,W0621
         _rpi_sysgpio("/sys/class/gpio/gpio%d/value" % pin_num, 0)
         _rpi_sysgpio("/sys/class/gpio/unexport", pin_num)
     else:
+        upload_port = env.get("UPLOAD_PORT", "")
         if not upload_options.get("disable_flushing", False) \
-            and not env.get("UPLOAD_PORT", "").startswith("net:"):
-            env.FlushSerialBuffer("$UPLOAD_PORT")
+            and not upload_port.startswith("net:") \
+            and not upload_port.startswith("usb"):
+            try:
+                env.FlushSerialBuffer("$UPLOAD_PORT")
+            except Exception as e:
+                print("FlushSerialBuffer failed:", e)
 
         before_ports = get_serialports()
 
