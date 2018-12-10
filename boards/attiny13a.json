@@ -1,15 +1,15 @@
 {
   "build": {
     "core": "core13",
-    "extra_flags": "-DARDUINO_AVR_ATTINY13",
+    "extra_flags": "-DARDUINO_AVR_ATTINY13A",
     "f_cpu": "1200000L",
-    "mcu": "attiny13"
+    "mcu": "attiny13a"
   },
   "frameworks": [
     "arduino"
   ],
   "platform": "atmelavr",
-  "name": "Generic ATTiny13",
+  "name": "Generic ATTiny13A",
   "upload": {
     "extra_flags": "-e",
     "maximum_ram_size": 64,
@@ -18,6 +18,6 @@
     "require_upload_port": true,
     "speed": 19200
   },
-  "url": "http://www.atmel.com/devices/ATTINY13.aspx",
+  "url": "http://www.atmel.com/devices/ATTINY13A.aspx",
   "vendor": "Atmel"
 }
