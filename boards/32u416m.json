@@ -10,7 +10,7 @@
       ]
     ],
     "mcu": "atmega32u4",
-    "variant": "32u4"
+    "variant": "microduino_32u4"
   },
   "frameworks": [
     "arduino"

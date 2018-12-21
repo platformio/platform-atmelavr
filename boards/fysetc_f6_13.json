@@ -5,29 +5,29 @@
     "f_cpu": "16000000L",
     "hwids": [
       [
-        "0x2341",
-        "0x0042"
+        "0x27b2",
+        "0x0002"
       ]
     ],
     "mcu": "atmega2560",
-    "variant": "mega"
+    "variant": "fysetcf6"
   },
   "frameworks": [
-    "arduino",
-    "simba"
+    "arduino"
   ],
   "fuses": {
     "efuse": "0xFD",
-    "hfuse": "0xD8"
+    "hfuse": "0xD8",
+    "lfuse": "0xFF"
   },
-  "name": "Arduino Mega or Mega 2560 ATmega2560 (Mega 2560)",
+  "name": "FYSETC F6 V1.3",
   "upload": {
     "maximum_ram_size": 8192,
-    "maximum_size": 253952,
+    "maximum_size": 258048,
     "protocol": "wiring",
     "require_upload_port": true,
     "speed": 115200
   },
-  "url": "https://www.arduino.cc/en/Main/ArduinoBoardMega2560",
-  "vendor": "Arduino"
+  "url": "https://www.fysetc.com/",
+  "vendor": "FYSETC"
 }

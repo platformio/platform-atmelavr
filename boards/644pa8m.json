@@ -4,7 +4,7 @@
     "extra_flags": "-DARDUINO_AVR_MICRODUINO_CORE_PLUS",
     "f_cpu": "8000000L",
     "mcu": "atmega644p",
-    "variant": "plus"
+    "variant": "microduino_plus"
   },
   "frameworks": [
     "arduino"
