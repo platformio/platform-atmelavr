@@ -2,7 +2,7 @@
   "build": {
     "core": "core13",
     "extra_flags": "-DARDUINO_AVR_ATTINY13A",
-    "f_cpu": "12000000L",
+    "f_cpu": "1200000L",
     "mcu": "attiny13a"
   },
   "frameworks": [
