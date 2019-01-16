@@ -148,7 +148,7 @@ env.Append(
 if env.get("PROGNAME", "program") == "program":
     env.Replace(PROGNAME="firmware")
 
-if env.subst("$UPLOAD_PROTOCOL") in ("digispark", "micronucleus"):
+if env.subst("$UPLOAD_PROTOCOL") == "micronucleus":
     env.Replace(
         UPLOADER="micronucleus",
         UPLOADERFLAGS=[

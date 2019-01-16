@@ -18,26 +18,31 @@ from platformio.managers.platform import PlatformBase
 class AtmelavrPlatform(PlatformBase):
 
     def configure_default_packages(self, variables, targets):
-        if variables.get("board"):
-            board_config = self.board_config(variables.get("board"))
-            disabled_tool = "tool-micronucleus"
-            required_tool = ""
+        if not variables.get("board"):
+            return super(AtmelavrPlatform, self).configure_default_packages(
+                variables, targets)
 
-            if "digispark" in board_config.get("build.core", ""):
-                disabled_tool = "tool-avrdude"
+        upload_protocol = variables.get(
+            "upload_protocol",
+            self.board_config(variables.get("board")).get(
+                "upload.protocol", ""))
+        disabled_tool = "tool-micronucleus"
+        required_tool = ""
 
-            if "fuses" in targets:
-                required_tool = "tool-avrdude"
+        if upload_protocol == "micronucleus":
+            disabled_tool = "tool-avrdude"
 
-            if required_tool in self.packages:
-                self.packages[required_tool]['optional'] = False
+        if "fuses" in targets:
+            required_tool = "tool-avrdude"
 
-            if disabled_tool in self.packages and \
-                    disabled_tool != required_tool:
-                del self.packages[disabled_tool]
+        if required_tool in self.packages:
+            self.packages[required_tool]['optional'] = False
 
-        return PlatformBase.configure_default_packages(self, variables,
-                                                       targets)
+        if disabled_tool in self.packages and disabled_tool != required_tool:
+            del self.packages[disabled_tool]
+
+        return super(AtmelavrPlatform, self).configure_default_packages(
+            variables, targets)
 
     def on_run_err(self, line):  # pylint: disable=R0201
         # fix STDERR "flash written" for avrdude

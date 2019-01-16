@@ -1,0 +1,22 @@
+{
+  "build": {
+    "core": "MightyCore",
+    "extra_flags": "-DARDUINO_AVR_ATmega128",
+    "f_cpu": "8000000L",
+    "mcu": "atmega128",
+    "variant": "megacore"
+  },
+  "frameworks": [
+    "arduino"
+  ],
+  "name": "MegaCore ATmega128",
+  "upload": {
+    "maximum_ram_size": 4096,
+    "maximum_size": 130048,
+    "protocol": "arduino",
+    "require_upload_port": true,
+    "speed": 38400
+  },
+  "url": "https://www.tindie.com/products/MCUdude/dip-40-arduino-compatible-development-board",
+  "vendor": "Mcudude"
+}
