@@ -2,7 +2,7 @@
   "build": {
     "core": "arduino",
     "extra_flags": "-DARDUINO_AVR_MOTEINO",
-    "f_cpu": "16000000L",
+    "f_cpu": "8000000L",
     "mcu": "atmega328p",
     "variant": "Moteino"
   },
@@ -10,19 +10,19 @@
     "arduino"
   ],
   "fuses": {
-    "efuse": "0xFD",
+    "efuse": "0xFE",
     "hfuse": "0xDC",
-    "lfuse": "0xDE",
+    "lfuse": "0xD2",
     "lock": "0xCF"
   },
-  "name": "LowPowerLab Moteino",
+  "name": "LowPowerLab Moteino (8Mhz)",
   "upload": {
     "maximum_ram_size": 2048,
     "maximum_size": 32256,
     "protocol": "arduino",
     "require_upload_port": true,
-    "speed": 115200
+    "speed": 57600
   },
-  "url": "https://lowpowerlab.com/shop/product/99",
+  "url": "https://lowpowerlab.com/shop/product/159",
   "vendor": "LowPowerLab"
 }

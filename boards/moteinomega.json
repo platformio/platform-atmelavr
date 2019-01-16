@@ -4,7 +4,7 @@
     "extra_flags": "-DARDUINO_AVR_MOTEINOMEGA",
     "f_cpu": "16000000L",
     "mcu": "atmega1284p",
-    "variant": "moteinomega"
+    "variant": "MoteinoMEGA"
   },
   "frameworks": [
     "arduino"
@@ -23,6 +23,6 @@
     "require_upload_port": true,
     "speed": 115200
   },
-  "url": "http://lowpowerlab.com/blog/2014/08/09/moteinomega-available-now/",
+  "url": "https://lowpowerlab.com/shop/product/119",
   "vendor": "LowPowerLab"
 }
