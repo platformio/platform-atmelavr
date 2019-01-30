@@ -8,7 +8,7 @@
   "frameworks": [
     "arduino"
   ],
-  "name": "Generic ATTiny441",
+  "name": "Generic ATtiny441",
   "upload": {
     "extra_flags": "-e",
     "maximum_ram_size": 256,
