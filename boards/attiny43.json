@@ -1,0 +1,21 @@
+{
+  "build": {
+    "core": "tiny",
+    "extra_flags": "-DARDUINO_AVR_ATTINY43",
+    "f_cpu": "8000000L",
+    "mcu": "attiny43u",
+    "variant": "tiny43"
+  },
+  "frameworks": [
+    "arduino"
+  ],
+  "name": "Generic ATtiny43U",
+  "upload": {
+    "extra_flags": "-e",
+    "maximum_ram_size": 256,
+    "maximum_size": 4096,
+    "protocol": "usbtiny"
+  },
+  "url": "https://www.microchip.com/wwwproducts/en/ATtiny43U",
+  "vendor": "Atmel"
+}
