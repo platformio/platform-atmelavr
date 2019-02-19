@@ -9,7 +9,7 @@
   "frameworks": [
     "arduino"
   ],
-  "name": "Generic ATTiny2313",
+  "name": "Generic ATtiny2313",
   "upload": {
     "extra_flags": "-e",
     "maximum_ram_size": 128,
