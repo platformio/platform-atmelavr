@@ -9,7 +9,7 @@
   "frameworks": [
     "arduino"
   ],
-  "name": "ATmega168/A",
+  "name": "ATMEGA168/A",
   "upload": {
     "maximum_ram_size": 1024,
     "maximum_size": 15872,

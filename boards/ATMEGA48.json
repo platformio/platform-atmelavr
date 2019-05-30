@@ -9,7 +9,7 @@
   "frameworks": [
     "arduino"
   ],
-  "name": "ATmega48/A",
+  "name": "ATMEGA48/A",
   "upload": {
     "maximum_ram_size": 512,
     "maximum_size": 4096,
