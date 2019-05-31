@@ -1,15 +1,15 @@
 {
   "build": {
     "core": "MiniCore",
-    "extra_flags": "-DARDUINO_AVR_ATmega328PB",
+    "extra_flags": "-DARDUINO_AVR_ATmega328P",
     "f_cpu": "16000000L",
-    "mcu": "atmega328pb",
-    "variant": "minicore_pb-variant"
+    "mcu": "atmega328p",
+    "variant": "minicore_standard"
   },
   "frameworks": [
     "arduino"
   ],
-  "name": "ATMEGA328PB",
+  "name": "ATMEGA328P/PA",
   "upload": {
     "maximum_ram_size": 2048,
     "maximum_size": 32256,
@@ -17,6 +17,6 @@
     "require_upload_port": true,
     "speed": 115200
   },
-  "url": "https://www.microchip.com/wwwproducts/en/ATmega328PB",
+  "url": "https://www.microchip.com/wwwproducts/en/ATmega328P",
   "vendor": "Microchip"
 }
