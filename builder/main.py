@@ -18,17 +18,10 @@ from time import sleep
 from SCons.Script import (ARGUMENTS, COMMAND_LINE_TARGETS, AlwaysBuild,
                           Builder, Default, DefaultEnvironment)
 
-from platformio.util import get_serialports
+from platformio.util import get_serial_ports
 
 
 def BeforeUpload(target, source, env):  # pylint: disable=W0613,W0621
-
-    if "program" in COMMAND_LINE_TARGETS:
-        return
-
-    if "micronucleus" in env['UPLOADER']:
-        print("Please unplug/plug device ...")
-
     upload_options = {}
     if "BOARD" in env:
         upload_options = env.BoardConfig().get("upload", {})
@@ -74,11 +67,11 @@ def BeforeUpload(target, source, env):  # pylint: disable=W0613,W0621
         _rpi_sysgpio("/sys/class/gpio/gpio%d/value" % pin_num, 0)
         _rpi_sysgpio("/sys/class/gpio/unexport", pin_num)
     else:
-        if not upload_options.get("disable_flushing", False) \
-            and not env.get("UPLOAD_PORT", "").startswith("net:"):
+        if (not upload_options.get("disable_flushing", False)
+                and not env.get("UPLOAD_PORT", "").startswith("net:")):
             env.FlushSerialBuffer("$UPLOAD_PORT")
 
-        before_ports = get_serialports()
+        before_ports = get_serial_ports()
 
         if upload_options.get("use_1200bps_touch", False):
             env.TouchSerialPort("$UPLOAD_PORT", 1200)
@@ -100,7 +93,6 @@ env.Replace(
     SIZETOOL="avr-size",
 
     ARFLAGS=["rc"],
-
 
     SIZEPROGREGEXP=r"^(?:\.text|\.data|\.bootloader)\s+(\d+).*",
     SIZEDATAREGEXP=r"^(?:\.data|\.bss|\.noinit)\s+(\d+).*",
@@ -148,42 +140,6 @@ env.Append(
 if env.get("PROGNAME", "program") == "program":
     env.Replace(PROGNAME="firmware")
 
-if env.subst("$UPLOAD_PROTOCOL") == "micronucleus":
-    env.Replace(
-        UPLOADER="micronucleus",
-        UPLOADERFLAGS=[
-            "-c", "$UPLOAD_PROTOCOL",
-            "--timeout", "60"
-        ],
-        UPLOADHEXCMD='$UPLOADER $UPLOADERFLAGS $SOURCES',
-        PROGRAMHEXCMD="$UPLOADHEXCMD"
-    )
-
-else:
-    env.Replace(
-        UPLOADER="avrdude",
-        UPLOADERFLAGS=[
-            "-p", "$BOARD_MCU",
-            "-C",
-            join(env.PioPlatform().get_package_dir("tool-avrdude") or "",
-                 "avrdude.conf"),
-            "-c", "$UPLOAD_PROTOCOL"
-        ],
-        UPLOADHEXCMD='$UPLOADER $UPLOADERFLAGS -U flash:w:$SOURCES:i',
-        UPLOADEEPCMD='$UPLOADER $UPLOADERFLAGS -U eeprom:w:$SOURCES:i',
-        PROGRAMHEXCMD='$UPLOADER $UPLOADERFLAGS -U flash:w:$SOURCES:i'
-    )
-
-    if int(ARGUMENTS.get("PIOVERBOSE", 0)):
-        env.Prepend(UPLOADERFLAGS=["-v"])
-
-if "BOARD" in env and "fuses" in env.BoardConfig():
-    env.Replace(FUSESCMD=" ".join(
-        ["avrdude", "$UPLOADERFLAGS", "-e"] +
-        ["-U%s:w:%s:m" % (k, v)
-         for k, v in env.BoardConfig().get("fuses", {}).items()]
-    ))
-
 if not env.get("PIOFRAMEWORK"):
     env.SConscript("frameworks/_bare.py", exports="env")
 
@@ -214,11 +170,45 @@ AlwaysBuild(target_size)
 # Target: Upload by default .hex file
 #
 
-target_upload = env.Alias(
-    "upload", target_firm,
-    [env.VerboseAction(BeforeUpload, "Looking for upload port..."),
-     env.VerboseAction("$UPLOADHEXCMD", "Uploading $SOURCE")])
-AlwaysBuild(target_upload)
+upload_protocol = env.subst("$UPLOAD_PROTOCOL")
+
+if upload_protocol == "micronucleus":
+    env.Replace(
+        UPLOADER="micronucleus",
+        UPLOADERFLAGS=[
+            "-c", "$UPLOAD_PROTOCOL",
+            "--timeout", "60"
+        ],
+        UPLOADCMD="$UPLOADER $UPLOADERFLAGS $SOURCES"
+    )
+    upload_actions = [env.VerboseAction("$UPLOADCMD", "Uploading $SOURCE")]
+
+elif upload_protocol == "custom":
+    upload_actions = [env.VerboseAction("$UPLOADCMD", "Uploading $SOURCE")]
+
+else:
+    env.Replace(
+        UPLOADER="avrdude",
+        UPLOADERFLAGS=[
+            "-p", "$BOARD_MCU",
+            "-C",
+            join(env.PioPlatform().get_package_dir("tool-avrdude") or "",
+                 "avrdude.conf"),
+            "-c", "$UPLOAD_PROTOCOL"
+        ],
+        UPLOADCMD='$UPLOADER $UPLOADERFLAGS -U flash:w:$SOURCES:i',
+        UPLOADEEPCMD='$UPLOADER $UPLOADERFLAGS -U eeprom:w:$SOURCES:i'
+    )
+
+    if int(ARGUMENTS.get("PIOVERBOSE", 0)):
+        env.Prepend(UPLOADERFLAGS=["-v"])
+
+    upload_actions = [
+        env.VerboseAction(BeforeUpload, "Looking for upload port..."),
+        env.VerboseAction("$UPLOADCMD", "Uploading $SOURCE")
+    ]
+
+AlwaysBuild(env.Alias("upload", target_firm, upload_actions))
 
 #
 # Target: Upload EEPROM data (from EEMEM directive)
@@ -238,19 +228,26 @@ AlwaysBuild(target_uploadeep)
 
 target_program = env.Alias(
     "program", target_firm,
-    [env.VerboseAction(BeforeUpload, "Looking for upload port..."),
-     env.VerboseAction("$PROGRAMHEXCMD", "Programming $SOURCE")])
+    [env.VerboseAction(env.AutodetectUploadPort, "Looking for upload port..."),
+     env.VerboseAction("$UPLOADCMD", "Programming $SOURCE")])
 AlwaysBuild(target_program)
 
 #
 # Target: Setup fuses
 #
 
-target_fuses = env.Alias(
-    "fuses", None,
-    [env.VerboseAction(BeforeUpload, "Looking for upload port..."),
-     env.VerboseAction("$FUSESCMD", "Setting FUSEs")])
-AlwaysBuild(target_fuses)
+if "BOARD" in env and "fuses" in env.BoardConfig():
+    env.Replace(FUSESCMD=" ".join(
+        ["avrdude", "$UPLOADERFLAGS", "-e"] +
+        ["-U%s:w:%s:m" % (k, v)
+         for k, v in env.BoardConfig().get("fuses", {}).items()]
+    ))
+
+    target_fuses = env.Alias(
+        "fuses", None,
+        [env.VerboseAction(BeforeUpload, "Looking for upload port..."),
+         env.VerboseAction("$FUSESCMD", "Setting FUSEs")])
+    AlwaysBuild(target_fuses)
 
 #
 # Setup default targets
