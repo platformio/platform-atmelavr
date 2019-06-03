@@ -1,0 +1,22 @@
+{
+  "build": {
+    "core": "MiniCore",
+    "extra_flags": "-DARDUINO_AVR_ATmega168PB",
+    "f_cpu": "16000000L",
+    "mcu": "atmega168pb",
+    "variant": "minicore_pb-variant"
+  },
+  "frameworks": [
+    "arduino"
+  ],
+  "name": "ATMEGA168PB",
+  "upload": {
+    "maximum_ram_size": 1024,
+    "maximum_size": 15872,
+    "protocol": "arduino",
+    "require_upload_port": true,
+    "speed": 115200
+  },
+  "url": "https://www.microchip.com/wwwproducts/en/ATmega168PB",
+  "vendor": "Microchip"
+}
