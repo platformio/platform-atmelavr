@@ -9,7 +9,7 @@
   "frameworks": [
     "arduino"
   ],
-  "name": "MightyCore ATmega644",
+  "name": "ATMEGA644P/PA",
   "upload": {
     "maximum_ram_size": 4096,
     "maximum_size": 64512,
@@ -17,6 +17,6 @@
     "require_upload_port": true,
     "speed": 115200
   },
-  "url": "https://www.tindie.com/products/MCUdude/dip-40-arduino-compatible-development-board",
-  "vendor": "MCUdude"
+  "url": "https://www.microchip.com/wwwproducts/en/ATmega644p",
+  "vendor": "Microchip"
 }

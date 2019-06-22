@@ -3,13 +3,13 @@
     "core": "MightyCore",
     "extra_flags": "-DARDUINO_AVR_ATmega1284",
     "f_cpu": "16000000L",
-    "mcu": "atmega1284p",
+    "mcu": "atmega1284",
     "variant": "mightycore_standard"
   },
   "frameworks": [
     "arduino"
   ],
-  "name": "MightyCore ATmega1284",
+  "name": "ATMEGA1284",
   "upload": {
     "maximum_ram_size": 16384,
     "maximum_size": 130048,
@@ -17,6 +17,6 @@
     "require_upload_port": true,
     "speed": 115200
   },
-  "url": "https://www.tindie.com/products/MCUdude/dip-40-arduino-compatible-development-board",
-  "vendor": "MCUdude"
+  "url": "https://www.microchip.com/wwwproducts/en/ATmega1284",
+  "vendor": "Microchip"
 }

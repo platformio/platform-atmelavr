@@ -9,7 +9,7 @@
   "frameworks": [
     "arduino"
   ],
-  "name": "MightyCore ATmega164",
+  "name": "ATMEGA164P/PA",
   "upload": {
     "maximum_ram_size": 1024,
     "maximum_size": 15872,
@@ -17,6 +17,6 @@
     "require_upload_port": true,
     "speed": 115200
   },
-  "url": "https://www.tindie.com/products/MCUdude/dip-40-arduino-compatible-development-board",
-  "vendor": "MCUdude"
+  "url": "https://www.microchip.com/wwwproducts/en/ATmega164p",
+  "vendor": "Microchip"
 }

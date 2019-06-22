@@ -9,7 +9,7 @@
   "frameworks": [
     "arduino"
   ],
-  "name": "MightyCore ATmega8535",
+  "name": "ATMEGA8535",
   "upload": {
     "maximum_ram_size": 512,
     "maximum_size": 7680,
@@ -17,6 +17,6 @@
     "require_upload_port": true,
     "speed": 115200
   },
-  "url": "https://www.tindie.com/products/MCUdude/dip-40-arduino-compatible-development-board",
-  "vendor": "MCUdude"
+  "url": "https://www.microchip.com/wwwproducts/en/ATmega8535",
+  "vendor": "Microchip"
 }
