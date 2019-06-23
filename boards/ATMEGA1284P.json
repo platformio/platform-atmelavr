@@ -9,7 +9,7 @@
   "frameworks": [
     "arduino"
   ],
-  "name": "ATMEGA1284P",
+  "name": "ATmega1284P",
   "upload": {
     "maximum_ram_size": 16384,
     "maximum_size": 130048,

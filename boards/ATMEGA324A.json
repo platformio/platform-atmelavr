@@ -9,7 +9,7 @@
   "frameworks": [
     "arduino"
   ],
-  "name": "ATMEGA324A",
+  "name": "ATmega324A",
   "upload": {
     "maximum_ram_size": 2048,
     "maximum_size": 32256,

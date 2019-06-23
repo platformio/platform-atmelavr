@@ -9,7 +9,7 @@
   "frameworks": [
     "arduino"
   ],
-  "name": "ATMEGA164P/PA",
+  "name": "ATmega164P/PA",
   "upload": {
     "maximum_ram_size": 1024,
     "maximum_size": 15872,

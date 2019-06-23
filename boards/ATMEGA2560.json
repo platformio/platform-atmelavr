@@ -9,7 +9,7 @@
   "frameworks": [
     "arduino"
   ],
-  "name": "ATMEGA2560",
+  "name": "ATmega2560",
   "upload": {
     "maximum_ram_size": 8192,
     "maximum_size": 261120,

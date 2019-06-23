@@ -9,7 +9,7 @@
   "frameworks": [
     "arduino"
   ],
-  "name": "ATMEGA644/A",
+  "name": "ATmega644/A",
   "upload": {
     "maximum_ram_size": 4096,
     "maximum_size": 64512,

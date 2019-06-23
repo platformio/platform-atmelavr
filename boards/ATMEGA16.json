@@ -9,7 +9,7 @@
   "frameworks": [
     "arduino"
   ],
-  "name": "ATMEGA16",
+  "name": "ATmega16",
   "upload": {
     "maximum_ram_size": 1024,
     "maximum_size": 15872,
