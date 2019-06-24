@@ -1,0 +1,22 @@
+{
+  "build": {
+    "core": "MightyCore",
+    "extra_flags": "-DARDUINO_AVR_ATmega8535",
+    "f_cpu": "16000000L",
+    "mcu": "atmega8535",
+    "variant": "mightycore_standard"
+  },
+  "frameworks": [
+    "arduino"
+  ],
+  "name": "ATmega8535",
+  "upload": {
+    "maximum_ram_size": 512,
+    "maximum_size": 7680,
+    "protocol": "arduino",
+    "require_upload_port": true,
+    "speed": 115200
+  },
+  "url": "https://www.microchip.com/wwwproducts/en/ATmega8535",
+  "vendor": "Microchip"
+}

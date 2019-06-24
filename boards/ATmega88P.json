@@ -1,0 +1,22 @@
+{
+  "build": {
+    "core": "MiniCore",
+    "extra_flags": "-DARDUINO_AVR_ATmega88P",
+    "f_cpu": "16000000L",
+    "mcu": "atmega88p",
+    "variant": "minicore_standard"
+  },
+  "frameworks": [
+    "arduino"
+  ],
+  "name": "ATmega88P/PA",
+  "upload": {
+    "maximum_ram_size": 1024,
+    "maximum_size": 7680,
+    "protocol": "arduino",
+    "require_upload_port": true,
+    "speed": 115200
+  },
+  "url": "https://www.microchip.com/wwwproducts/en/ATmega88P",
+  "vendor": "Microchip"
+}

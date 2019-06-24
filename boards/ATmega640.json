@@ -1,0 +1,22 @@
+{
+  "build": {
+    "core": "MegaCore",
+    "extra_flags": "-DARDUINO_AVR_ATmega640",
+    "f_cpu": "16000000L",
+    "mcu": "atmega640",
+    "variant": "100-pin-arduino-mega"
+  },
+  "frameworks": [
+    "arduino"
+  ],
+  "name": "ATmega640",
+  "upload": {
+    "maximum_ram_size": 8192,
+    "maximum_size": 64512,
+    "protocol": "arduino",
+    "require_upload_port": true,
+    "speed": 115200
+  },
+  "url": "https://www.microchip.com/wwwproducts/ATmega640",
+  "vendor": "Microchip"
+}
