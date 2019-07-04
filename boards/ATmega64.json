@@ -1,0 +1,22 @@
+{
+  "build": {
+    "core": "MegaCore",
+    "extra_flags": "-DARDUINO_AVR_ATmega64",
+    "f_cpu": "16000000L",
+    "mcu": "atmega64",
+    "variant": "64-pin-avr"
+  },
+  "frameworks": [
+    "arduino"
+  ],
+  "name": "ATmega64/A",
+  "upload": {
+    "maximum_ram_size": 4096,
+    "maximum_size": 64512,
+    "protocol": "arduino",
+    "require_upload_port": true,
+    "speed": 115200
+  },
+  "url": "https://www.microchip.com/wwwproducts/ATmega64",
+  "vendor": "Microchip"
+}

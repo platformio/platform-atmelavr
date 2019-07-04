@@ -9,7 +9,7 @@
   "frameworks": [
     "arduino"
   ],
-  "name": "ATMEGA48P/PA",
+  "name": "ATmega8P/PA",
   "upload": {
     "maximum_ram_size": 512,
     "maximum_size": 4096,
