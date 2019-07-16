@@ -7,8 +7,7 @@
     "variant": "eightanaloginputs"
   },
   "frameworks": [
-    "arduino",
-    "simba"
+    "arduino"
   ],
   "fuses": {
     "efuse": "0x05",
