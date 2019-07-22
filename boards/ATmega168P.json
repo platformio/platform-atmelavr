@@ -1,22 +1,22 @@
 {
   "build": {
     "core": "MiniCore",
-    "extra_flags": "-DARDUINO_AVR_ATmega8",
+    "extra_flags": "-DARDUINO_AVR_ATmega168P",
     "f_cpu": "16000000L",
-    "mcu": "atmega8",
+    "mcu": "atmega168p",
     "variant": "minicore_standard"
   },
   "frameworks": [
     "arduino"
   ],
-  "name": "ATMEGA8/A",
+  "name": "ATmega168P/PA",
   "upload": {
     "maximum_ram_size": 1024,
-    "maximum_size": 7680,
+    "maximum_size": 15872,
     "protocol": "arduino",
     "require_upload_port": true,
     "speed": 115200
   },
-  "url": "https://www.microchip.com/wwwproducts/en/ATmega8",
+  "url": "https://www.microchip.com/wwwproducts/en/ATmega168P",
   "vendor": "Microchip"
 }

@@ -1,15 +1,15 @@
 {
   "build": {
-    "core": "MiniCore",
-    "extra_flags": "-DARDUINO_AVR_ATmega168",
+    "core": "MightyCore",
+    "extra_flags": "-DARDUINO_AVR_ATmega164",
     "f_cpu": "16000000L",
-    "mcu": "atmega168",
-    "variant": "minicore_standard"
+    "mcu": "atmega164a",
+    "variant": "mightycore_standard"
   },
   "frameworks": [
     "arduino"
   ],
-  "name": "ATMEGA168/A",
+  "name": "ATmega164A",
   "upload": {
     "maximum_ram_size": 1024,
     "maximum_size": 15872,
@@ -17,6 +17,6 @@
     "require_upload_port": true,
     "speed": 115200
   },
-  "url": "https://www.microchip.com/wwwproducts/en/ATmega168",
+  "url": "https://www.microchip.com/wwwproducts/en/ATmega164a",
   "vendor": "Microchip"
 }

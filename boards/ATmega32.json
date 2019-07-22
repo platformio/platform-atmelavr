@@ -1,15 +1,15 @@
 {
   "build": {
     "core": "MightyCore",
-    "extra_flags": "-DARDUINO_AVR_ATmega324",
+    "extra_flags": "-DARDUINO_AVR_ATmega32",
     "f_cpu": "16000000L",
-    "mcu": "atmega324p",
+    "mcu": "atmega32",
     "variant": "mightycore_standard"
   },
   "frameworks": [
     "arduino"
   ],
-  "name": "MightyCore ATmega324",
+  "name": "ATmega32",
   "upload": {
     "maximum_ram_size": 2048,
     "maximum_size": 32256,
@@ -17,6 +17,6 @@
     "require_upload_port": true,
     "speed": 115200
   },
-  "url": "https://www.tindie.com/products/MCUdude/dip-40-arduino-compatible-development-board",
-  "vendor": "MCUdude"
+  "url": "https://www.microchip.com/wwwproducts/en/ATmega32",
+  "vendor": "Microchip"
 }

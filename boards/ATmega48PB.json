@@ -1,21 +1,21 @@
 {
   "build": {
     "core": "MiniCore",
-    "extra_flags": "-DARDUINO_AVR_ATmega48",
+    "extra_flags": "-DARDUINO_AVR_ATmega48PB",
     "f_cpu": "16000000L",
-    "mcu": "atmega48",
-    "variant": "minicore_standard"
+    "mcu": "atmega48pb",
+    "variant": "minicore_pb-variant"
   },
   "frameworks": [
     "arduino"
   ],
-  "name": "ATMEGA48/A",
+  "name": "ATmega48PB",
   "upload": {
     "maximum_ram_size": 512,
     "maximum_size": 4096,
     "protocol": "arduino",
     "require_upload_port": false
   },
-  "url": "https://www.microchip.com/wwwproducts/en/ATmega48",
+  "url": "https://www.microchip.com/wwwproducts/en/ATmega48PB",
   "vendor": "Microchip"
 }
