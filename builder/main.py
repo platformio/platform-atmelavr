@@ -229,8 +229,7 @@ AlwaysBuild(target_uploadeep)
 
 target_program = env.Alias(
     "program", target_firm,
-    [env.VerboseAction(env.AutodetectUploadPort, "Looking for upload port..."),
-     env.VerboseAction("$UPLOADCMD", "Programming $SOURCE")])
+    env.VerboseAction("$UPLOADCMD", "Programming $SOURCE"))
 AlwaysBuild(target_program)
 
 #
