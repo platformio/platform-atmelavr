@@ -1,0 +1,20 @@
+{
+  "build": {
+    "core": "prusa_rambo",
+    "extra_flags": "-DARDUINO_AVR_RAMBO",
+    "f_cpu": "16000000L",
+    "mcu": "atmega2560",
+    "variant": "rambo"
+  },
+  "frameworks": ["arduino"],
+  "name": "Prusa RAMBo",
+  "upload": {
+    "maximum_ram_size": 8192,
+    "maximum_size": 258048,
+    "protocol": "wiring",
+    "require_upload_port": true,
+    "speed": 115200
+  },
+  "url": "http://www.prusa3d.com",
+  "vendor": "Prusa 3D"
+}
