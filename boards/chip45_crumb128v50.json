@@ -1,0 +1,22 @@
+{
+    "build": {
+        "core": "MegaCore",
+        "f_cpu": "16000000L",
+        "mcu": "atmega128"
+    },
+    "name": "Crumb128 V5.0 AVR ATmega Module",
+    "upload": {
+        "maximum_ram_size": 4096,
+        "maximum_size": 131072,
+        "protocol": "usbasp",
+        "port": "usb",
+        "speed": 115200
+    },
+    "fuses": {
+        "efuse": "0xFF",
+        "hfuse": "0xC8",
+        "lfuse": "0xDF"
+    },
+    "url": "https://www.chip45.com/products/crumb128-5.0_avr_atmega_module_board_atmega128_usb_rs232.php",
+    "vendor": "Chip45"
+}
