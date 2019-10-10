@@ -1,6 +1,6 @@
 {
   "build": {
-    "core": "atmelavr",
+    "core": "arduino",
     "extra_flags": "-D__AVR_AT90PWM216__",
     "f_cpu": "16000000L",
     "mcu": "at90pwm216"

@@ -1,6 +1,6 @@
 {
   "build": {
-    "core": "rambo",
+    "core": "prusa_rambo",
     "extra_flags": "-DARDUINO_AVR_RAMBO",
     "f_cpu": "16000000L",
     "mcu": "atmega2560",

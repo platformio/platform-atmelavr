@@ -4,7 +4,7 @@
     "extra_flags": "-DARDUINO_AVR_ATmega88P",
     "f_cpu": "16000000L",
     "mcu": "atmega88p",
-    "variant": "minicore_standard"
+    "variant": "standard"
   },
   "frameworks": [
     "arduino"

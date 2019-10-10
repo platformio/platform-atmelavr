@@ -4,7 +4,7 @@
     "extra_flags": "-DARDUINO_AVR_ATmega324",
     "f_cpu": "16000000L",
     "mcu": "atmega324a",
-    "variant": "mightycore_standard"
+    "variant": "standard"
   },
   "frameworks": [
     "arduino"
