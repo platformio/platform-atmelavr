@@ -6,18 +6,20 @@
     "mcu": "atmega328p",
     "variant": "ethernet"
   },
+  "bootloader": {
+    "efuse": "0xFD", 
+    "file": "optiboot/optiboot_atmega328.hex", 
+    "hfuse": "0xDE", 
+    "lock_bits": "0x0F", 
+    "lfuse": "0xFF", 
+    "unlock_bits": "0x3F"
+  },
   "connectivity": [
     "ethernet"
   ],
   "frameworks": [
     "arduino"
   ],
-  "fuses": {
-    "efuse": "0x05",
-    "hfuse": "0xde",
-    "lfuse": "0xff",
-    "lock": "0x3F"
-  },
   "name": "Arduino Ethernet",
   "upload": {
     "maximum_ram_size": 2048,

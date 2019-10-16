@@ -6,15 +6,15 @@
     "mcu": "attiny85",
     "variant": "trinket_tiny8"
   },
+  "bootloader": {
+    "efuse": "0xFE", 
+    "file": "gemma/gemma_v1.hex", 
+    "hfuse": "0xD5", 
+    "lfuse": "0xF1"
+  },
   "frameworks": [
     "arduino"
   ],
-  "fuses": {
-    "efuse": "0xFE",
-    "hfuse": "0xD5",
-    "lfuse": "0xF1",
-    "lock": ""
-  },
   "name": "Adafruit Gemma",
   "upload": {
     "maximum_ram_size": 512,

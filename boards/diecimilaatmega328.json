@@ -6,13 +6,17 @@
     "mcu": "atmega328p",
     "variant": "standard"
   },
+  "bootloader": {
+    "efuse": "0xFD", 
+    "file": "atmega/ATmegaBOOT_168_atmega328.hex", 
+    "hfuse": "0xDA", 
+    "lock_bits": "0x0F", 
+    "lfuse": "0xFF", 
+    "unlock_bits": "0x3F"
+  },
   "frameworks": [
     "arduino"
   ],
-  "fuses": {
-    "efuse": "0x05",
-    "hfuse": "0xDA"
-  },
   "name": "Arduino Duemilanove or Diecimila ATmega328",
   "upload": {
     "maximum_ram_size": 2048,

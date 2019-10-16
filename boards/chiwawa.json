@@ -17,6 +17,14 @@
     "usb_product": "Arduino Industrial 101",
     "variant": "yun"
   },
+  "bootloader": {
+    "efuse": "0xFB", 
+    "file": "caterina/Caterina-Industrial101.hex", 
+    "hfuse": "0xD8", 
+    "lock_bits": "0x2F", 
+    "lfuse": "0xFF", 
+    "unlock_bits": "0x3F"
+  },
   "frameworks": [
     "arduino"
   ],

@@ -13,6 +13,14 @@
     "usb_product": "Adafruit Flora",
     "variant": "flora"
   },
+  "bootloader": {
+    "efuse": "0xCB", 
+    "file": "caterina/Caterina-Flora8.hex", 
+    "hfuse": "0xD8", 
+    "lock_bits": "0x2F", 
+    "lfuse": "0xff", 
+    "unlock_bits": "0x3F"
+  },
   "frameworks": [
     "arduino"
   ],

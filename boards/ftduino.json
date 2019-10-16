@@ -20,12 +20,6 @@
   "frameworks": [
     "arduino"
   ],
-  "fuses": {
-    "efuse": "0xcb",
-    "hfuse": "0xd8",
-    "lfuse": "0xff",
-    "lock": "0x2F"
-  },
   "name": "ftDuino",
   "upload": {
     "disable_flushing": true,
