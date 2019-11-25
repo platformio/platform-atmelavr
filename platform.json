@@ -12,7 +12,7 @@
     "type": "git",
     "url": "https://github.com/platformio/platform-atmelavr.git"
   },
-  "version": "1.15.0",
+  "version": "2.0.0",
   "packageRepositories": [
     "https://dl.bintray.com/platformio/dl-packages/manifest.json",
     "http://dl.platformio.org/packages/manifest.json",
@@ -20,7 +20,7 @@
   ],
   "frameworks": {
     "arduino": {
-      "package": "framework-arduinoavr",
+      "package": "framework-arduino-avr",
       "script": "builder/frameworks/arduino.py"
     },
     "simba": {
@@ -33,10 +33,65 @@
       "type": "toolchain",
       "version": "~1.50400.0"
     },
-    "framework-arduinoavr": {
+    "framework-arduino-avr": {
       "type": "framework",
       "optional": true,
-      "version": "~4.1.1"
+      "version": "~5.0.0"
+    },
+    "framework-arduino-avr-attiny": {
+      "type": "framework",
+      "optional": true,
+      "version": "~1.3.2"
+    },
+    "framework-arduino-avr-bean": {
+      "type": "framework",
+      "optional": true,
+      "version": "~2.0.3"
+    },
+    "framework-arduino-avr-core13": {
+      "type": "framework",
+      "optional": true,
+      "version": "~0.0.22"
+    },
+    "framework-arduino-avr-digistump": {
+      "type": "framework",
+      "optional": true,
+      "version": "~1.6.7"
+    },
+    "framework-arduino-avr-dwenguino": {
+      "type": "framework",
+      "optional": true,
+      "version": "~2.2.1"
+    },
+    "framework-arduino-avr-megacore": {
+      "type": "framework",
+      "optional": true,
+      "version": "~2.0.2"
+    },
+    "framework-arduino-avr-mightycore": {
+      "type": "framework",
+      "optional": true,
+      "version": "~2.0.3"
+    },
+    "framework-arduino-avr-minicore": {
+      "type": "framework",
+      "optional": true,
+      "version": "~2.0.3"
+    },
+    "framework-arduino-avr-nicai": {
+      "type": "framework",
+      "optional": true,
+      "version": "~3.5.0"
+    },
+    "framework-arduino-avr-panstamp": {
+      "type": "framework",
+      "optional": true,
+      "version": "~1.5.7"
+    },
+    "framework-arduino-avr-prusa_rambo": {
+      "type": "framework",
+      "optional": true,
+      "version": "~1.0.1"
     },
     "framework-simba": {
       "type": "framework",

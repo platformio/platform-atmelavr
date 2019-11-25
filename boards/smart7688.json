@@ -20,12 +20,6 @@
   "frameworks": [
     "arduino"
   ],
-  "fuses": {
-    "efuse": "0xce",
-    "hfuse": "0xd8",
-    "lfuse": "0xff",
-    "lock": "0x2F"
-  },
   "name": "LinkIt Smart 7688 Duo",
   "upload": {
     "disable_flushing": true,

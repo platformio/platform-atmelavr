@@ -1,16 +1,11 @@
 {
   "build": {
-    "core": "atmelavr",
+    "core": "arduino",
     "extra_flags": "-D__AVR_AT90PWM216__",
     "f_cpu": "16000000L",
     "mcu": "at90pwm216"
   },
   "frameworks": [],
-  "fuses": {
-    "efuse": "0xF9",
-    "hfuse": "0xDF",
-    "lfuse": "0x62"
-  },
   "name": "Atmel AT90PWM216",
   "upload": {
     "maximum_ram_size": 1024,

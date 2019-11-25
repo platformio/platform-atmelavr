@@ -6,13 +6,17 @@
     "mcu": "atmega168",
     "variant": "eightanaloginputs"
   },
+  "bootloader": {
+    "efuse": "0xF8", 
+    "file": "atmega/ATmegaBOOT_168_ng.hex", 
+    "hfuse": "0xDD", 
+    "lock_bits": "0x0F", 
+    "lfuse": "0xFF", 
+    "unlock_bits": "0x3F"
+  },
   "frameworks": [
     "arduino"
   ],
-  "fuses": {
-    "efuse": "0x00",
-    "hfuse": "0xdd"
-  },
   "name": "Arduino Mini ATmega168",
   "upload": {
     "maximum_ram_size": 1024,

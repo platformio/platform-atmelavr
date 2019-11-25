@@ -17,6 +17,14 @@
     "usb_product": "Arduino Yun Mini",
     "variant": "yun"
   },
+  "bootloader": {
+    "efuse": "0xFB", 
+    "file": "caterina/Caterina-Yunmini.hex", 
+    "hfuse": "0xD8", 
+    "lock_bits": "0x2F", 
+    "lfuse": "0xFF", 
+    "unlock_bits": "0x3F"
+  },
   "connectivity": [
     "wifi"
   ],

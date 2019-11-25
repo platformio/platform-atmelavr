@@ -4,7 +4,7 @@
     "extra_flags": "-DARDUINO_AVR_ATmega168PB",
     "f_cpu": "16000000L",
     "mcu": "atmega168pb",
-    "variant": "minicore_pb-variant"
+    "variant": "pb-variant"
   },
   "frameworks": [
     "arduino"

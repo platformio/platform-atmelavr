@@ -6,14 +6,17 @@
     "mcu": "atmega328p",
     "variant": "eightanaloginputs"
   },
+  "bootloader": {
+    "efuse": "0xFD", 
+    "file": "atmega/ATmegaBOOT_168_atmega328_pro_8MHz.hex", 
+    "hfuse": "0xDA", 
+    "lock_bits": "0x0F", 
+    "lfuse": "0xFF", 
+    "unlock_bits": "0x3F"
+  },
   "frameworks": [
     "arduino"
   ],
-  "fuses": {
-    "efuse": "0x05",
-    "hfuse": "0xDA",
-    "lfuse": "0xFF"
-  },
   "name": "Arduino Pro or Pro Mini ATmega328 (3.3V, 8 MHz)",
   "upload": {
     "maximum_ram_size": 2048,

@@ -28,23 +28,34 @@ from SCons.Script import DefaultEnvironment
 
 env = DefaultEnvironment()
 platform = env.PioPlatform()
+board = env.BoardConfig()
+build_core = board.get("build.core", "")
 
-FRAMEWORK_DIR = platform.get_package_dir("framework-arduinoavr")
+FRAMEWORK_DIR = platform.get_package_dir("framework-arduino-avr")
+if build_core in ("dtiny", "pro"):
+    FRAMEWORK_DIR = platform.get_package_dir("framework-arduino-avr-digistump")
+elif build_core in ("tiny", "tinymodern"):
+    FRAMEWORK_DIR = platform.get_package_dir("framework-arduino-avr-attiny")
+elif build_core != "arduino":
+    FRAMEWORK_DIR = platform.get_package_dir(
+        "framework-arduino-avr-%s" % build_core.lower())
+
 assert isdir(FRAMEWORK_DIR)
 
 CPPDEFINES = [
     ("F_CPU", "$BOARD_F_CPU"),
     "ARDUINO_ARCH_AVR",
-    ("ARDUINO", 10805)
+    ("ARDUINO", 10808)
 ]
-if "build.usb_product" in env.BoardConfig():
+
+if "build.usb_product" in board:
     CPPDEFINES += [
-        ("USB_VID", env.BoardConfig().get("build.hwids")[0][0]),
-        ("USB_PID", env.BoardConfig().get("build.hwids")[0][1]),
+        ("USB_VID", board.get("build.hwids")[0][0]),
+        ("USB_PID", board.get("build.hwids")[0][1]),
         ("USB_PRODUCT", '\\"%s\\"' %
-         env.BoardConfig().get("build.usb_product", "").replace('"', "")),
+         board.get("build.usb_product", "").replace('"', "")),
         ("USB_MANUFACTURER", '\\"%s\\"' %
-         env.BoardConfig().get("vendor", "").replace('"', ""))
+         board.get("vendor", "").replace('"', ""))
     ]
 
 env.Append(
@@ -83,8 +94,12 @@ env.Append(
 
     LIBS=["m"],
 
+    LIBSOURCE_DIRS=[
+        join(FRAMEWORK_DIR, "libraries")
+    ],
+
     CPPPATH=[
-        join(FRAMEWORK_DIR, "cores", env.BoardConfig().get("build.core"))
+        join(FRAMEWORK_DIR, "cores", build_core)
     ]
 )
 
@@ -92,40 +107,29 @@ env.Append(
 env.Append(ASFLAGS=env.get("CCFLAGS", [])[:])
 
 #
-# Lookup for specific core's libraries
-#
-
-BOARD_CORELIBDIRNAME = (
-    "digispark" if "digispark" in env.BoardConfig().get("build.core", "")
-    else env.BoardConfig().get("build.core", ""))
-env.Append(
-    LIBSOURCE_DIRS=[
-        join(FRAMEWORK_DIR, "libraries", "__cores__", BOARD_CORELIBDIRNAME),
-        join(FRAMEWORK_DIR, "libraries")
-    ]
-)
-
-#
 # Target: Build Core Library
 #
 
 libs = []
 
-if "build.variant" in env.BoardConfig():
+if "build.variant" in board:
+    variants_dir = join(
+        "$PROJECT_DIR", board.get("build.variants_dir")) if board.get(
+            "build.variants_dir", "") else join(FRAMEWORK_DIR, "variants")
+
     env.Append(
         CPPPATH=[
-            join(FRAMEWORK_DIR, "variants",
-                 env.BoardConfig().get("build.variant"))
+            join(variants_dir, board.get("build.variant"))
         ]
     )
     libs.append(env.BuildLibrary(
         join("$BUILD_DIR", "FrameworkArduinoVariant"),
-        join(FRAMEWORK_DIR, "variants", env.BoardConfig().get("build.variant"))
+        join(variants_dir, board.get("build.variant"))
     ))
 
 libs.append(env.BuildLibrary(
     join("$BUILD_DIR", "FrameworkArduino"),
-    join(FRAMEWORK_DIR, "cores", env.BoardConfig().get("build.core"))
+    join(FRAMEWORK_DIR, "cores", build_core)
 ))
 
 env.Prepend(LIBS=libs)

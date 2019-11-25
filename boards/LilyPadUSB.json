@@ -17,15 +17,17 @@
     "usb_product": "LilyPad USB",
     "variant": "leonardo"
   },
+  "bootloader": {
+    "efuse": "0xCE", 
+    "file": "caterina-LilyPadUSB/Caterina-LilyPadUSB.hex", 
+    "hfuse": "0xD8", 
+    "lock_bits": "0x2F", 
+    "lfuse": "0xFF", 
+    "unlock_bits": "0x3F"
+  },
   "frameworks": [
     "arduino"
   ],
-  "fuses": {
-    "efuse": "0xce",
-    "hfuse": "0xd8",
-    "lfuse": "0xff",
-    "lock": "0x3F"
-  },
   "name": "Arduino LilyPad USB",
   "upload": {
     "disable_flushing": true,

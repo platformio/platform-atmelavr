@@ -9,12 +9,6 @@
   "frameworks": [
     "arduino"
   ],
-  "fuses": {
-    "efuse": "0xFD",
-    "hfuse": "0xDC",
-    "lfuse": "0xDE",
-    "lock": "0xCF"
-  },
   "name": "LowPowerLab Moteino",
   "upload": {
     "maximum_ram_size": 2048,

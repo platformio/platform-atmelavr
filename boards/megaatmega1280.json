@@ -6,13 +6,17 @@
     "mcu": "atmega1280",
     "variant": "mega"
   },
+  "bootloader": {
+    "efuse": "0xF5", 
+    "file": "atmega/ATmegaBOOT_168_atmega1280.hex", 
+    "hfuse": "0xDA", 
+    "lock_bits": "0x0F", 
+    "lfuse": "0xFF", 
+    "unlock_bits": "0x3F"
+  },
   "frameworks": [
     "arduino"
   ],
-  "fuses": {
-    "efuse": "0xF5",
-    "hfuse": "0xDA"
-  },
   "name": "Arduino Mega or Mega 2560 ATmega1280",
   "upload": {
     "maximum_ram_size": 8192,

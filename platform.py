@@ -22,6 +22,23 @@ class AtmelavrPlatform(PlatformBase):
             return super(AtmelavrPlatform, self).configure_default_packages(
                 variables, targets)
 
+        build_core = variables.get(
+            "board_build.core", self.board_config(variables.get("board")).get(
+                "build.core", "arduino"))
+
+        if "arduino" in variables.get(
+                "pioframework", []) and build_core != "arduino":
+
+            framework_package = "framework-arduino-avr-%s" % build_core.lower()
+            if build_core in ("dtiny", "pro"):
+                framework_package = "framework-arduino-avr-digistump"
+            elif build_core in ("tiny", "tinymodern"):
+                framework_package = "framework-arduino-avr-attiny"
+
+            self.frameworks["arduino"]["package"] = framework_package
+            self.packages[framework_package]["optional"] = False
+            self.packages["framework-arduino-avr"]["optional"] = True
+
         upload_protocol = variables.get(
             "upload_protocol",
             self.board_config(variables.get("board")).get(

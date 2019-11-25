@@ -6,11 +6,11 @@
     "hwids": [
       [
         "0x2341",
-        "0x0037"
+        "0x8037"
       ],
       [
         "0x2341",
-        "0x8037"
+        "0x0037"
       ],
       [
         "0x2A03",
@@ -25,15 +25,17 @@
     "usb_product": "Arduino Micro",
     "variant": "micro"
   },
+  "bootloader": {
+    "efuse": "0xCB",
+    "file": "caterina/Caterina-Micro.hex",
+    "hfuse": "0xD8",
+    "lock_bits": "0x2F",
+    "lfuse": "0xFF",
+    "unlock_bits": "0x3F"
+  },
   "frameworks": [
     "arduino"
   ],
-  "fuses": {
-    "efuse": "0xcb",
-    "hfuse": "0xd8",
-    "lfuse": "0xff",
-    "lock": "0x3F"
-  },
   "name": "Arduino Micro",
   "upload": {
     "disable_flushing": true,

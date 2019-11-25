@@ -17,16 +17,17 @@
     "usb_product": "Dwenguino board",
     "variant": "dwenguino"
   },
+  "bootloader": {
+    "efuse": "0xFB", 
+    "file": "dwenguino/BootloaderDwenguino-Welcome.hex", 
+    "hfuse": "0xD2", 
+    "lock_bits": "0x2F", 
+    "lfuse": "0xFF", 
+    "unlock_bits": "0x3F"
+  },
   "frameworks": [
     "arduino"
   ],
-  "fuses": {
-    "efuse": "0xFB",
-    "hfuse": "0xDA",
-    "lfuse": "0xFF",
-    "lock": "0x2F",
-    "unlock": "0x3F"
-  },
   "name": "Dwenguino",
   "upload": {
     "disable_flushing": true,

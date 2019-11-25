@@ -13,6 +13,14 @@
     "usb_product": "Feather 32u4",
     "variant": "feather32u4"
   },
+  "bootloader": {
+    "efuse": "0xCB", 
+    "file": "caterina/Caterina-Feather32u4.hex", 
+    "hfuse": "0xD8", 
+    "lock_bits": "0x2F", 
+    "lfuse": "0xFF", 
+    "unlock_bits": "0x3F"
+  },
   "frameworks": [
     "arduino"
   ],

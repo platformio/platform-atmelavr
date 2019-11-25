@@ -4,7 +4,7 @@
     "extra_flags": "-DARDUINO_AVR_AT90CAN64",
     "f_cpu": "16000000L",
     "mcu": "at90can64",
-    "variant": "megacore_64-pin-avr"
+    "variant": "64-pin-avr"
   },
   "frameworks": [
     "arduino"

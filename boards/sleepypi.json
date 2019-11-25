@@ -9,11 +9,6 @@
   "frameworks": [
     "arduino"
   ],
-  "fuses": {
-    "efuse": "0x05",
-    "hfuse": "0xDA",
-    "lfuse": "0xFF"
-  },
   "name": "SpellFoundry Sleepy Pi 2",
   "upload": {
     "maximum_ram_size": 2048,

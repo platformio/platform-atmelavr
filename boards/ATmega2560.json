@@ -4,7 +4,7 @@
     "extra_flags": "-DARDUINO_AVR_ATmega2560",
     "f_cpu": "16000000L",
     "mcu": "atmega2560",
-    "variant": "megacore_100-pin-arduino-mega"
+    "variant": "100-pin-arduino-mega"
   },
   "frameworks": [
     "arduino"

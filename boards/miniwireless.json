@@ -9,10 +9,6 @@
   "frameworks": [
     "arduino"
   ],
-  "fuses": {
-    "efuse": "0x05",
-    "hfuse": "0xDA"
-  },
   "name": "Anarduino MiniWireless",
   "upload": {
     "maximum_ram_size": 2048,

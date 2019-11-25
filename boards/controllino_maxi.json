@@ -27,10 +27,6 @@
   "frameworks": [
     "arduino"
   ],
-  "fuses": {
-    "lfuse": "0xFF",
-    "lock": "0x0F"
-  },
   "name": "Controllino Maxi",
   "upload": {
     "maximum_ram_size": 8192,

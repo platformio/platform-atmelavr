@@ -16,12 +16,6 @@
     "arduino",
     "simba"
   ],
-  "fuses": {
-    "efuse": "0x05",
-    "hfuse": "0xDE",
-    "lfuse": "0xFF",
-    "lock": "0x3F"
-  },
   "name": "Seeeduino",
   "upload": {
     "maximum_ram_size": 2048,

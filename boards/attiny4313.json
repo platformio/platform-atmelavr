@@ -1,6 +1,6 @@
 {
   "build": {
-    "core": "arduino",
+    "core": "tinymodern",
     "extra_flags": "-DARDUINO_AVR_ATTINYX313",
     "f_cpu": "8000000L",
     "mcu": "attiny4313",

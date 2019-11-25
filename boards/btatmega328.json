@@ -6,16 +6,20 @@
     "mcu": "atmega328p",
     "variant": "eightanaloginputs"
   },
+  "bootloader": {
+    "efuse": "0xFD", 
+    "file": "bt/ATmegaBOOT_168_atmega328_bt.hex", 
+    "hfuse": "0xD8", 
+    "lock_bits": "0x0F", 
+    "lfuse": "0xFF", 
+    "unlock_bits": "0x3F"
+  },
   "connectivity": [
     "bluetooth"
   ],
   "frameworks": [
     "arduino"
   ],
-  "fuses": {
-    "efuse": "0x05",
-    "hfuse": "0xd8"
-  },
   "name": "Arduino BT ATmega328",
   "upload": {
     "disable_flushing": true,
