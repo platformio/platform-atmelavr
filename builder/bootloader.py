@@ -29,6 +29,8 @@ def get_suitable_optiboot_binary(framework_dir, board_config):
     f_cpu = board_config.get("build.f_cpu", "16000000L").upper()
     uart = board_config.get("hardware.uart", "uart0").upper()
     bootloader_led = board_config.get("bootloader.led_pin", "").upper()
+    if core == "MightyCore" and board_config.get("build.variant", "") == "bobuino":
+        bootloader_led = "B7"
     bootloader_file = "optiboot_flash_%s_%s_%s_%s_%s.hex" % (
         mcu, uart, env.subst("$UPLOAD_SPEED"), f_cpu, bootloader_led)
     bootloader_path = join(framework_dir, "bootloaders", "optiboot_flash",
