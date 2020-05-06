@@ -148,6 +148,7 @@ def get_efuse(mcu, uart, bod):
         "atmega88p", "atmega88pb")
     mcus_4 = ("atmega128", "atmega64", "atmega48", "atmega48p")
     mcus_5 = ("at90can128", "at90can64", "at90can32")
+    mcus_6 = ("atmega162",)
 
     mcu_without_efuse = ("atmega8535", "atmega8515", "atmega8", "atmega16",
         "atmega32")
@@ -196,6 +197,16 @@ def get_efuse(mcu, uart, bod):
             return 0xf3
         elif bod == "2.5v":
             return 0xf1
+        else:
+            return 0xff
+
+    elif mcu in mcus_6:
+        if bod == "4.3v":
+            return 0xf9
+        elif bod == "2.7v":
+            return 0xfb
+        elif bod == "1.8v":
+            return 0xfd
         else:
             return 0xff
 
