@@ -6,6 +6,9 @@
     "mcu": "atmega128",
     "variant": "64-pin-avr"
   },
+  "bootloader":{
+    "led_pin": "B5"
+  },
   "frameworks": [
     "arduino"
   ],

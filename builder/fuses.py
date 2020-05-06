@@ -236,12 +236,12 @@ efuse = board.get("fuses.efuse", "")
 lock = board.get("fuses.lock", get_lock_bits(target))
 
 if (not lfuse or not hfuse) and core not in (
-    "MiniCore", "MegaCore", "MightyCore"):
+    "MiniCore", "MegaCore", "MightyCore", "MajorCore"):
     sys.stderr.write("Error: Dynamic fuses generation for %s is not supported."
         " Please specify fuses in platformio.ini\n" % target)
     env.Exit(1)
 
-if core in ("MiniCore", "MegaCore", "MightyCore"):
+if core in ("MiniCore", "MegaCore", "MightyCore", "MajorCore"):
     f_cpu = board.get("build.f_cpu", "16000000L").upper()
     oscillator = board.get("hardware.oscillator", "external").lower()
     bod = board.get("hardware.bod", "2.7v").lower()

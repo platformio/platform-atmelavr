@@ -6,6 +6,9 @@
     "mcu": "atmega48p",
     "variant": "standard"
   },
+  "bootloader":{
+    "led_pin": "B5"
+  },
   "frameworks": [
     "arduino"
   ],

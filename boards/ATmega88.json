@@ -6,6 +6,9 @@
     "mcu": "atmega88",
     "variant": "standard"
   },
+  "bootloader":{
+    "led_pin": "B5"
+  },
   "frameworks": [
     "arduino"
   ],

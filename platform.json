@@ -66,17 +66,22 @@
     "framework-arduino-avr-megacore": {
       "type": "framework",
       "optional": true,
-      "version": "~2.0.2"
+      "version": "~2.0.3"
     },
     "framework-arduino-avr-mightycore": {
       "type": "framework",
       "optional": true,
-      "version": "~2.0.3"
+      "version": "~2.0.5"
     },
     "framework-arduino-avr-minicore": {
       "type": "framework",
       "optional": true,
-      "version": "~2.0.3"
+      "version": "~2.0.5"
+    },
+    "framework-arduino-avr-majorcore": {
+      "type": "framework",
+      "optional": true,
+      "version": "~2.0.2"
     },
     "framework-arduino-avr-nicai": {
       "type": "framework",

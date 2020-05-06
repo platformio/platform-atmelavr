@@ -6,6 +6,9 @@
     "mcu": "atmega324pa",
     "variant": "standard"
   },
+  "bootloader":{
+    "led_pin": "B0"
+  },
   "frameworks": [
     "arduino"
   ],
