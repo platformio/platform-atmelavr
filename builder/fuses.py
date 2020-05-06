@@ -259,7 +259,7 @@ if core in ("MiniCore", "MegaCore", "MightyCore", "MajorCore"):
 
 fuses_cmd = [
     "avrdude", "-p", "$BOARD_MCU", "-C",
-    join(platform.get_package_dir("tool-avrdude"), "avrdude.conf"),
+    '"%s"' % join(platform.get_package_dir("tool-avrdude"), "avrdude.conf"),
     "-c", "$UPLOAD_PROTOCOL", "$UPLOAD_FLAGS"
 ]
 

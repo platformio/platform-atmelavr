@@ -42,7 +42,7 @@ def get_suitable_optiboot_binary(framework_dir, board_config):
 
 common_cmd = [
     "avrdude", "-p", "$BOARD_MCU", "-e", "-C",
-    join(platform.get_package_dir("tool-avrdude"), "avrdude.conf"),
+    '"%s"' % join(platform.get_package_dir("tool-avrdude"), "avrdude.conf"),
     "-c", "$UPLOAD_PROTOCOL", "$UPLOAD_FLAGS"
 ]
 
