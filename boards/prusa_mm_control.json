@@ -1,0 +1,36 @@
+{
+  "build": {
+    "core": "prusa_rambo",
+    "extra_flags": "-DARDUINO_AVR_prusa_mm_control",
+    "f_cpu": "16000000L",
+    "hwids": [
+      [
+        "0x2c99",
+        "0x0004"
+      ],
+      [
+        "0x2c99",
+        "0x0003"
+      ]
+    ],
+    "mcu": "atmega32u4",
+    "usb_product": "Prusa i3 MK3 Multi Material 2.0 Upgrade",
+    "variant": "prusa_mm_control"
+  },
+  "frameworks": [
+    "arduino"
+  ],
+  "name": "Original Prusa i3 MK3 Multi Material 2.0 Upgrade",
+  "upload": {
+    "disable_flushing": true,
+    "maximum_ram_size": 2560,
+    "maximum_size": 28672,
+    "protocol": "avr109",
+    "require_upload_port": true,
+    "speed": 57600,
+    "use_1200bps_touch": true,
+    "wait_for_upload_port": true
+  },
+  "url": "https://shop.prusa3d.com/en/upgrades/183-original-prusa-i3-mk25smk3s-multi-material-2s-upgrade-kit-mmu2s.html",
+  "vendor": "Prusa 3D"
+}

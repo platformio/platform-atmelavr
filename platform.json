@@ -96,7 +96,7 @@
     "framework-arduino-avr-prusa_rambo": {
       "type": "framework",
       "optional": true,
-      "version": "~1.0.1"
+      "version": "~1.0.3"
     },
     "framework-simba": {
       "type": "framework",
