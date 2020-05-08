@@ -32,7 +32,8 @@ def get_suitable_optiboot_binary(framework_dir, board_config):
     if core == "MightyCore" and board_config.get("build.variant", "") == "bobuino":
         bootloader_led = "B7"
     bootloader_file = "optiboot_flash_%s_%s_%s_%s_%s.hex" % (
-        mcu, uart, env.subst("$UPLOAD_SPEED"), f_cpu, bootloader_led)
+        mcu, uart, board_config.get(
+            "bootloader.speed", env.subst("$UPLOAD_SPEED")), f_cpu, bootloader_led)
     bootloader_path = join(framework_dir, "bootloaders", "optiboot_flash",
         "bootloaders", mcu, f_cpu, bootloader_file)
 
