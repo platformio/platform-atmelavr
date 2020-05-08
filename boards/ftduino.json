@@ -17,6 +17,9 @@
     "usb_product": "ftDuino",
     "variant": "ftduino"
   },
+  "debug": {
+    "simavr_target": "atmega32u4"
+  },
   "frameworks": [
     "arduino"
   ],

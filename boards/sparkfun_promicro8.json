@@ -25,6 +25,9 @@
     "usb_product": "SparkFun Pro Micro",
     "variant": "sparkfun_promicro"
   },
+  "debug": {
+    "simavr_target": "atmega32u4"
+  },
   "frameworks": [
     "arduino"
   ],

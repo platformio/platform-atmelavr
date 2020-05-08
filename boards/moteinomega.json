@@ -6,6 +6,9 @@
     "mcu": "atmega1284p",
     "variant": "moteinomega"
   },
+  "debug": {
+    "simavr_target": "atmega1284p"
+  },
   "frameworks": [
     "arduino"
   ],

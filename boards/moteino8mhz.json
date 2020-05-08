@@ -6,6 +6,9 @@
     "mcu": "atmega328p",
     "variant": "Moteino"
   },
+  "debug": {
+    "simavr_target": "atmega328p"
+  },
   "frameworks": [
     "arduino"
   ],

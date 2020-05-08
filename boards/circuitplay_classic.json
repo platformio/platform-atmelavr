@@ -13,6 +13,9 @@
     "usb_product": "Adafruit",
     "variant": "circuitplay32u4"
   },
+  "debug": {
+    "simavr_target": "atmega32u4"
+  },
   "frameworks": [
     "arduino"
   ],

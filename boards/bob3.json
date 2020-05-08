@@ -6,6 +6,9 @@
     "mcu": "atmega88",
     "variant": "bob3"
   },
+  "debug": {
+    "simavr_target": "atmega88"
+  },
   "frameworks": [
     "arduino"
   ],

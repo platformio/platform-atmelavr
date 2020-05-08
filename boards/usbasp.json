@@ -6,6 +6,9 @@
     "mcu": "atmega8",
     "variant": "standard"
   },
+  "debug": {
+    "simavr_target": "atmega8"
+  },
   "frameworks": [
     "arduino"
   ],

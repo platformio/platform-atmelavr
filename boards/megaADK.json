@@ -7,12 +7,15 @@
     "variant": "mega"
   },
   "bootloader": {
-    "efuse": "0xFD", 
-    "file": "stk500v2/stk500boot_v2_mega2560.hex", 
-    "hfuse": "0xD8", 
-    "lock_bits": "0x0F", 
-    "lfuse": "0xFF", 
+    "efuse": "0xFD",
+    "file": "stk500v2/stk500boot_v2_mega2560.hex",
+    "hfuse": "0xD8",
+    "lock_bits": "0x0F",
+    "lfuse": "0xFF",
     "unlock_bits": "0x3F"
+  },
+  "debug": {
+    "simavr_target": "atmega2560"
   },
   "frameworks": [
     "arduino"

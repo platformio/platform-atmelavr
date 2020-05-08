@@ -25,6 +25,9 @@
     "usb_product": "The Things Uno",
     "variant": "leonardo"
   },
+  "debug": {
+    "simavr_target": "atmega32u4"
+  },
   "frameworks": [
     "arduino"
   ],

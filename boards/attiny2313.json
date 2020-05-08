@@ -6,6 +6,9 @@
     "mcu": "attiny2313",
     "variant": "tinyX313"
   },
+  "debug": {
+    "simavr_target": "attiny2313"
+  },
   "frameworks": [
     "arduino"
   ],

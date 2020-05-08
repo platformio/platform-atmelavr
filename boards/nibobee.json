@@ -6,6 +6,9 @@
     "mcu": "atmega16",
     "variant": "nibobee"
   },
+  "debug": {
+    "simavr_target": "atmega16"
+  },
   "frameworks": [
     "arduino"
   ],

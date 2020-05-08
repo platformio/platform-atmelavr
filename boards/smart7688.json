@@ -17,6 +17,9 @@
     "usb_product": "LinkIt Smart 7688 Duo",
     "variant": "smart7688"
   },
+  "debug": {
+    "simavr_target": "atmega32u4"
+  },
   "frameworks": [
     "arduino"
   ],

@@ -13,6 +13,9 @@
     "usb_product": "EngduinoV3",
     "variant": "engduinov3"
   },
+  "debug": {
+    "simavr_target": "atmega32u4"
+  },
   "frameworks": [
     "arduino"
   ],

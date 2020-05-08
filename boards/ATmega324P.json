@@ -9,6 +9,9 @@
   "bootloader":{
     "led_pin": "B0"
   },
+  "debug": {
+    "simavr_target": "atmega324p"
+  },
   "frameworks": [
     "arduino"
   ],

@@ -6,6 +6,9 @@
     "mcu": "attiny85",
     "variant": "digispark"
   },
+  "debug": {
+    "simavr_target": "attiny85"
+  },
   "frameworks": [
     "arduino"
   ],

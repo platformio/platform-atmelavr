@@ -13,6 +13,9 @@
     "usb_product": "Feather 328P",
     "variant": "standard"
   },
+  "debug": {
+    "simavr_target": "atmega328p"
+  },
   "frameworks": [
     "arduino"
   ],

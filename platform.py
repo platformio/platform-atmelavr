@@ -67,3 +67,47 @@ class AtmelavrPlatform(PlatformBase):
             self.on_run_out(line)
         else:
             PlatformBase.on_run_err(self, line)
+
+    def get_boards(self, id_=None):
+        result = PlatformBase.get_boards(self, id_)
+        if not result:
+            return result
+        if id_:
+            return self._add_default_debug_tools(result)
+        else:
+            for key, value in result.items():
+                result[key] = self._add_default_debug_tools(result[key])
+        return result
+
+    def _add_default_debug_tools(self, board):
+        debug = board.manifest.get("debug", {})
+        build = board.manifest.get("build", {})
+        if "tools" not in debug:
+            debug["tools"] = {}
+
+        if debug.get("simavr_target", ""):
+            debug["tools"]["simavr"] = {
+                "init_cmds": [
+                    "define pio_reset_halt_target",
+                    "end",
+                    "define pio_reset_run_target",
+                    "end",
+                    "target remote $DEBUG_PORT",
+                    "$INIT_BREAK",
+                    "$LOAD_CMD"
+                ],
+                "port": ":1234",
+                "server": {
+                    "package": "tool-simavr",
+                    "arguments": [
+                        "-g",
+                        "-m", debug["simavr_target"],
+                        "-f", build.get("f_cpu", "")
+                    ],
+                    "executable": "bin/simavr"
+                },
+                "onboard": True
+            }
+
+        board.manifest["debug"] = debug
+        return board

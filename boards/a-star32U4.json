@@ -17,6 +17,9 @@
     "usb_product": "Pololu A-Star 32U4",
     "variant": "leonardo"
   },
+  "debug": {
+    "simavr_target": "atmega32u4"
+  },
   "frameworks": [
     "arduino"
   ],

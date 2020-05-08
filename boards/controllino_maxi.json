@@ -24,6 +24,9 @@
     "mcu": "atmega2560",
     "variant": "Controllino_maxi"
   },
+  "debug": {
+    "simavr_target": "atmega2560"
+  },
   "frameworks": [
     "arduino"
   ],

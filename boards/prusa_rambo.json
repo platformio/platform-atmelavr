@@ -6,6 +6,9 @@
     "mcu": "atmega2560",
     "variant": "prusa_einsy_rambo"
   },
+  "debug": {
+    "simavr_target": "atmega2560"
+  },
   "frameworks": ["arduino"],
   "name": "Prusa RAMBo",
   "upload": {

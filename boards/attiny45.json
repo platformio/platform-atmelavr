@@ -6,6 +6,9 @@
     "mcu": "attiny45",
     "variant": "tinyX5"
   },
+  "debug": {
+    "simavr_target": "attiny45"
+  },
   "frameworks": [
     "arduino"
   ],

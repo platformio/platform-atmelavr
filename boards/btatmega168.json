@@ -7,16 +7,19 @@
     "variant": "eightanaloginputs"
   },
   "bootloader": {
-    "efuse": "0xF8", 
-    "file": "bt/ATmegaBOOT_168.hex", 
-    "hfuse": "0xDD", 
-    "lock_bits": "0x0F", 
-    "lfuse": "0xFF", 
+    "efuse": "0xF8",
+    "file": "bt/ATmegaBOOT_168.hex",
+    "hfuse": "0xDD",
+    "lock_bits": "0x0F",
+    "lfuse": "0xFF",
     "unlock_bits": "0x3F"
   },
   "connectivity": [
     "bluetooth"
   ],
+  "debug": {
+    "simavr_target": "atmega168"
+  },
   "frameworks": [
     "arduino"
   ],

@@ -17,6 +17,9 @@
     "usb_product": "Prusa i3 MK3 Multi Material 2.0 Upgrade",
     "variant": "prusa_mm_control"
   },
+  "debug": {
+    "simavr_target": "atmega32u4"
+  },
   "frameworks": [
     "arduino"
   ],

@@ -6,6 +6,9 @@
     "mcu": "atmega2560",
     "variant": "rambo"
   },
+  "debug": {
+    "simavr_target": "atmega2560"
+  },
   "frameworks": [
     "arduino"
   ],

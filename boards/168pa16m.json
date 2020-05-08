@@ -6,6 +6,9 @@
     "mcu": "atmega168p",
     "variant": "standard"
   },
+  "debug": {
+    "simavr_target": "atmega168p"
+  },
   "frameworks": [
     "arduino"
   ],

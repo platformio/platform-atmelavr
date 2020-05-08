@@ -7,16 +7,19 @@
     "variant": "ethernet"
   },
   "bootloader": {
-    "efuse": "0xFD", 
-    "file": "optiboot/optiboot_atmega328.hex", 
-    "hfuse": "0xDE", 
-    "lock_bits": "0x0F", 
-    "lfuse": "0xFF", 
+    "efuse": "0xFD",
+    "file": "optiboot/optiboot_atmega328.hex",
+    "hfuse": "0xDE",
+    "lock_bits": "0x0F",
+    "lfuse": "0xFF",
     "unlock_bits": "0x3F"
   },
   "connectivity": [
     "ethernet"
   ],
+  "debug": {
+    "simavr_target": "atmega328p"
+  },
   "frameworks": [
     "arduino"
   ],

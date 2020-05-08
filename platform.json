@@ -112,6 +112,11 @@
       "type": "uploader",
       "optional": true,
       "version": "~1.200.0"
+    },
+    "tool-simavr": {
+      "type": "debugger",
+      "optional": true,
+      "version": "~1.6.0"
     }
   }
 }

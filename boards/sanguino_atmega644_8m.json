@@ -6,6 +6,9 @@
     "mcu": "atmega644",
     "variant": "sanguino"
   },
+  "debug": {
+    "simavr_target": "atmega644"
+  },
   "frameworks": [
     "arduino"
   ],

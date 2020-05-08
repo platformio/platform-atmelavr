@@ -13,6 +13,9 @@
     "usb_product": "RedBearLab Blend",
     "variant": "leonardo"
   },
+  "debug": {
+    "simavr_target": "atmega32u4"
+  },
   "frameworks": [
     "arduino"
   ],
