@@ -25,6 +25,9 @@
     "usb_product": "Quirkbot",
     "variant": "quirkbot"
   },
+  "debug": {
+    "simavr_target": "atmega32u4"
+  },
   "frameworks": [
     "arduino"
   ],

@@ -6,6 +6,12 @@
     "mcu": "atmega328p",
     "variant": "standard"
   },
+  "bootloader":{
+    "led_pin": "B5"
+  },
+  "debug": {
+    "simavr_target": "atmega328p"
+  },
   "frameworks": [
     "arduino"
   ],

@@ -6,6 +6,12 @@
     "mcu": "atmega644p",
     "variant": "standard"
   },
+  "bootloader":{
+    "led_pin": "B0"
+  },
+  "debug": {
+    "simavr_target": "atmega644p"
+  },
   "frameworks": [
     "arduino"
   ],

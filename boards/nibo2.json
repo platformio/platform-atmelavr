@@ -6,6 +6,9 @@
     "mcu": "atmega128",
     "variant": "nibo2"
   },
+  "debug": {
+    "simavr_target": "atmega128"
+  },
   "frameworks": [
     "arduino"
   ],

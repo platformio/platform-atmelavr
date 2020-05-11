@@ -6,6 +6,12 @@
     "mcu": "atmega16",
     "variant": "standard"
   },
+  "bootloader":{
+    "led_pin": "B0"
+  },
+  "debug": {
+    "simavr_target": "atmega16"
+  },
   "frameworks": [
     "arduino"
   ],

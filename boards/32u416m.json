@@ -12,6 +12,9 @@
     "mcu": "atmega32u4",
     "variant": "microduino_32u4"
   },
+  "debug": {
+    "simavr_target": "atmega32u4"
+  },
   "frameworks": [
     "arduino"
   ],

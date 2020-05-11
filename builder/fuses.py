@@ -148,6 +148,7 @@ def get_efuse(mcu, uart, bod):
         "atmega88p", "atmega88pb")
     mcus_4 = ("atmega128", "atmega64", "atmega48", "atmega48p")
     mcus_5 = ("at90can128", "at90can64", "at90can32")
+    mcus_6 = ("atmega162",)
 
     mcu_without_efuse = ("atmega8535", "atmega8515", "atmega8", "atmega16",
         "atmega32")
@@ -199,6 +200,16 @@ def get_efuse(mcu, uart, bod):
         else:
             return 0xff
 
+    elif mcu in mcus_6:
+        if bod == "4.3v":
+            return 0xf9
+        elif bod == "2.7v":
+            return 0xfb
+        elif bod == "1.8v":
+            return 0xfd
+        else:
+            return 0xff
+
     else:
         sys.stderr.write("Error: Couldn't calculate efuse for %s\n" % mcu)
         env.Exit(1)
@@ -236,12 +247,12 @@ efuse = board.get("fuses.efuse", "")
 lock = board.get("fuses.lock", get_lock_bits(target))
 
 if (not lfuse or not hfuse) and core not in (
-    "MiniCore", "MegaCore", "MightyCore"):
+    "MiniCore", "MegaCore", "MightyCore", "MajorCore"):
     sys.stderr.write("Error: Dynamic fuses generation for %s is not supported."
         " Please specify fuses in platformio.ini\n" % target)
     env.Exit(1)
 
-if core in ("MiniCore", "MegaCore", "MightyCore"):
+if core in ("MiniCore", "MegaCore", "MightyCore", "MajorCore"):
     f_cpu = board.get("build.f_cpu", "16000000L").upper()
     oscillator = board.get("hardware.oscillator", "external").lower()
     bod = board.get("hardware.bod", "2.7v").lower()
@@ -259,7 +270,7 @@ if core in ("MiniCore", "MegaCore", "MightyCore"):
 
 fuses_cmd = [
     "avrdude", "-p", "$BOARD_MCU", "-C",
-    join(platform.get_package_dir("tool-avrdude"), "avrdude.conf"),
+    '"%s"' % join(platform.get_package_dir("tool-avrdude"), "avrdude.conf"),
     "-c", "$UPLOAD_PROTOCOL", "$UPLOAD_FLAGS"
 ]
 

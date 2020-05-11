@@ -7,10 +7,13 @@
     "variant": "trinket_tiny8"
   },
   "bootloader": {
-    "efuse": "0xFE", 
-    "file": "gemma/gemma_v1.hex", 
-    "hfuse": "0xD5", 
+    "efuse": "0xFE",
+    "file": "gemma/gemma_v1.hex",
+    "hfuse": "0xD5",
     "lfuse": "0xF1"
+  },
+  "debug": {
+    "simavr_target": "attiny85"
   },
   "frameworks": [
     "arduino"

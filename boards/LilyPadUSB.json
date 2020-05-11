@@ -18,12 +18,15 @@
     "variant": "leonardo"
   },
   "bootloader": {
-    "efuse": "0xCE", 
-    "file": "caterina-LilyPadUSB/Caterina-LilyPadUSB.hex", 
-    "hfuse": "0xD8", 
-    "lock_bits": "0x2F", 
-    "lfuse": "0xFF", 
+    "efuse": "0xCE",
+    "file": "caterina-LilyPadUSB/Caterina-LilyPadUSB.hex",
+    "hfuse": "0xD8",
+    "lock_bits": "0x2F",
+    "lfuse": "0xFF",
     "unlock_bits": "0x3F"
+  },
+  "debug": {
+    "simavr_target": "atmega32u4"
   },
   "frameworks": [
     "arduino"

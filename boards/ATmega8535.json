@@ -6,6 +6,9 @@
     "mcu": "atmega8535",
     "variant": "standard"
   },
+  "bootloader":{
+    "led_pin": "B0"
+  },
   "frameworks": [
     "arduino"
   ],

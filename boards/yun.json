@@ -26,17 +26,20 @@
     "variant": "yun"
   },
   "bootloader": {
-    "efuse": "0xFB", 
-    "file": "caterina/Caterina-Yun.hex", 
-    "hfuse": "0xD8", 
-    "lock_bits": "0x2F", 
-    "lfuse": "0xFF", 
+    "efuse": "0xFB",
+    "file": "caterina/Caterina-Yun.hex",
+    "hfuse": "0xD8",
+    "lock_bits": "0x2F",
+    "lfuse": "0xFF",
     "unlock_bits": "0x3F"
   },
   "connectivity": [
     "ethernet",
     "wifi"
   ],
+  "debug": {
+    "simavr_target": "atmega32u4"
+  },
   "frameworks": [
     "arduino"
   ],

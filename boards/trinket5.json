@@ -6,6 +6,9 @@
     "mcu": "attiny85",
     "variant": "trinket_tiny8"
   },
+  "debug": {
+    "simavr_target": "attiny85"
+  },
   "frameworks": [
     "arduino"
   ],

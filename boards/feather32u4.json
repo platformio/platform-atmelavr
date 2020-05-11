@@ -14,12 +14,15 @@
     "variant": "feather32u4"
   },
   "bootloader": {
-    "efuse": "0xCB", 
-    "file": "caterina/Caterina-Feather32u4.hex", 
-    "hfuse": "0xD8", 
-    "lock_bits": "0x2F", 
-    "lfuse": "0xFF", 
+    "efuse": "0xCB",
+    "file": "caterina/Caterina-Feather32u4.hex",
+    "hfuse": "0xD8",
+    "lock_bits": "0x2F",
+    "lfuse": "0xFF",
     "unlock_bits": "0x3F"
+  },
+  "debug": {
+    "simavr_target": "atmega32u4"
   },
   "frameworks": [
     "arduino"

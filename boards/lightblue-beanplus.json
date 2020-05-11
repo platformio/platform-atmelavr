@@ -9,6 +9,9 @@
   "connectivity": [
     "bluetooth"
   ],
+  "debug": {
+    "simavr_target": "atmega328p"
+  },
   "frameworks": [
     "arduino"
   ],

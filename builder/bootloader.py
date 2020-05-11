@@ -28,10 +28,14 @@ def get_suitable_optiboot_binary(framework_dir, board_config):
     mcu = board_config.get("build.mcu", "").lower()
     f_cpu = board_config.get("build.f_cpu", "16000000L").upper()
     uart = board_config.get("hardware.uart", "uart0").upper()
-    bootloader_file = "optiboot_flash_%s_%s_%s_%s.hex" % (
-        mcu, uart, env.subst("$UPLOAD_SPEED"), f_cpu)
+    bootloader_led = board_config.get("bootloader.led_pin", "").upper()
+    if core == "MightyCore" and board_config.get("build.variant", "") == "bobuino":
+        bootloader_led = "B7"
+    bootloader_file = "optiboot_flash_%s_%s_%s_%s_%s.hex" % (
+        mcu, uart, board_config.get(
+            "bootloader.speed", env.subst("$UPLOAD_SPEED")), f_cpu, bootloader_led)
     bootloader_path = join(framework_dir, "bootloaders", "optiboot_flash",
-        "bootloaders", "%s" % mcu, "%s" % f_cpu, bootloader_file)
+        "bootloaders", mcu, f_cpu, bootloader_file)
 
     if isfile(bootloader_path):
         return bootloader_path
@@ -41,7 +45,7 @@ def get_suitable_optiboot_binary(framework_dir, board_config):
 
 common_cmd = [
     "avrdude", "-p", "$BOARD_MCU", "-e", "-C",
-    join(platform.get_package_dir("tool-avrdude"), "avrdude.conf"),
+    '"%s"' % join(platform.get_package_dir("tool-avrdude"), "avrdude.conf"),
     "-c", "$UPLOAD_PROTOCOL", "$UPLOAD_FLAGS"
 ]
 
@@ -55,7 +59,7 @@ lock_bits = board.get("bootloader.lock_bits", "0x0F")
 unlock_bits = board.get("bootloader.unlock_bits", "0x3F")
 bootloader_path = board.get("bootloader.file", "")
 
-if core in ("MiniCore", "MegaCore", "MightyCore"):
+if core in ("MiniCore", "MegaCore", "MightyCore", "MajorCore"):
     if not isfile(bootloader_path):
         bootloader_path = get_suitable_optiboot_binary(framework_dir, board)
     fuses_action = env.SConscript("fuses.py", exports="env")

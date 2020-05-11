@@ -7,12 +7,15 @@
     "variant": "standard"
   },
   "bootloader": {
-    "efuse": "0xF8", 
-    "file": "atmega/ATmegaBOOT_168_ng.hex", 
-    "hfuse": "0xDD", 
-    "lock_bits": "0x0F", 
-    "lfuse": "0xFF", 
+    "efuse": "0xF8",
+    "file": "atmega/ATmegaBOOT_168_ng.hex",
+    "hfuse": "0xDD",
+    "lock_bits": "0x0F",
+    "lfuse": "0xFF",
     "unlock_bits": "0x3F"
+  },
+  "debug": {
+    "simavr_target": "atmega168"
   },
   "frameworks": [
     "arduino"

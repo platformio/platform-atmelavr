@@ -4,7 +4,10 @@
     "extra_flags": "-DARDUINO_AVR_RAMBO",
     "f_cpu": "16000000L",
     "mcu": "atmega2560",
-    "variant": "rambo"
+    "variant": "prusa_einsy_rambo"
+  },
+  "debug": {
+    "simavr_target": "atmega2560"
   },
   "frameworks": ["arduino"],
   "name": "Prusa RAMBo",

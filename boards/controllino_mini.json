@@ -20,6 +20,9 @@
     "mcu": "atmega328p",
     "variant": "Controllino_mini"
   },
+  "debug": {
+    "simavr_target": "atmega328p"
+  },
   "frameworks": [
     "arduino"
   ],

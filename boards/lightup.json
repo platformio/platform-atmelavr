@@ -13,6 +13,9 @@
     "usb_product": "LightUp",
     "variant": "leonardo"
   },
+  "debug": {
+    "simavr_target": "atmega32u4"
+  },
   "frameworks": [
     "arduino"
   ],

@@ -13,6 +13,9 @@
     "usb_product": "ItsyBitsy 32u4 3V 8MHz",
     "variant": "itsybitsy32u4"
   },
+  "debug": {
+    "simavr_target": "atmega32u4"
+  },
   "frameworks": [
     "arduino"
   ],

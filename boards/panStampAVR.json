@@ -6,6 +6,9 @@
     "mcu": "atmega328p",
     "variant": "panstamp"
   },
+  "debug": {
+    "simavr_target": "atmega328p"
+  },
   "frameworks": [
     "arduino"
   ],

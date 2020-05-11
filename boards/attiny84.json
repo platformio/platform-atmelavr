@@ -6,6 +6,9 @@
     "mcu": "attiny84",
     "variant": "tinyX4"
   },
+  "debug": {
+    "simavr_target": "attiny84"
+  },
   "frameworks": [
     "arduino"
   ],

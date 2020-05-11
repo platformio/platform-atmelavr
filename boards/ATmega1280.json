@@ -6,6 +6,12 @@
     "mcu": "atmega1280",
     "variant": "100-pin-arduino-mega"
   },
+  "bootloader":{
+    "led_pin": "B7"
+  },
+  "debug": {
+    "simavr_target": "atmega1280"
+  },
   "frameworks": [
     "arduino"
   ],

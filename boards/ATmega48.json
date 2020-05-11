@@ -6,6 +6,12 @@
     "mcu": "atmega48",
     "variant": "standard"
   },
+  "bootloader":{
+    "led_pin": "B5"
+  },
+  "debug": {
+    "simavr_target": "atmega48"
+  },
   "frameworks": [
     "arduino"
   ],

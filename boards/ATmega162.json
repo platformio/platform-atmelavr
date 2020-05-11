@@ -1,21 +1,18 @@
 {
   "build": {
-    "core": "MiniCore",
-    "extra_flags": "-DARDUINO_AVR_ATmega168",
+    "core": "MajorCore",
+    "extra_flags": "-DARDUINO_AVR_ATmega162",
     "f_cpu": "16000000L",
-    "mcu": "atmega168",
+    "mcu": "atmega162",
     "variant": "standard"
   },
   "bootloader":{
-    "led_pin": "B5"
-  },
-  "debug": {
-    "simavr_target": "atmega168"
+    "led_pin": "B0"
   },
   "frameworks": [
     "arduino"
   ],
-  "name": "ATmega168/A",
+  "name": "ATmega162",
   "upload": {
     "maximum_ram_size": 1024,
     "maximum_size": 15872,
@@ -23,6 +20,6 @@
     "require_upload_port": true,
     "speed": 115200
   },
-  "url": "https://www.microchip.com/wwwproducts/en/ATmega168",
+  "url": "https://www.microchip.com/wwwproducts/en/ATmega162",
   "vendor": "Microchip"
 }

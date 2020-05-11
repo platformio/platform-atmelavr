@@ -1,7 +1,7 @@
 {
   "name": "atmelavr",
   "title": "Atmel AVR",
-  "description": "Atmel AVR 8- and 32-bit MCUs deliver a unique combination of performance, power efficiency and design flexibility. Optimized to speed time to market-and easily adapt to new ones-they are based on the industrys most code-efficient architecture for C and assembly programming.",
+  "description": "Atmel AVR 8-bit MCUs deliver a unique combination of performance, power efficiency and design flexibility. Optimized to speed time to market-and easily adapt to new ones-they are based on the industry's most code-efficient architecture for C and assembly programming",
   "url": "http://www.atmel.com/products/microcontrollers/avr/default.aspx",
   "homepage": "http://platformio.org/platforms/atmelavr",
   "license": "Apache-2.0",
@@ -12,7 +12,7 @@
     "type": "git",
     "url": "https://github.com/platformio/platform-atmelavr.git"
   },
-  "version": "2.0.0",
+  "version": "2.1.0",
   "packageRepositories": [
     "https://dl.bintray.com/platformio/dl-packages/manifest.json",
     "http://dl.platformio.org/packages/manifest.json",
@@ -66,17 +66,22 @@
     "framework-arduino-avr-megacore": {
       "type": "framework",
       "optional": true,
-      "version": "~2.0.2"
+      "version": "~2.0.3"
     },
     "framework-arduino-avr-mightycore": {
       "type": "framework",
       "optional": true,
-      "version": "~2.0.3"
+      "version": "~2.0.5"
     },
     "framework-arduino-avr-minicore": {
       "type": "framework",
       "optional": true,
-      "version": "~2.0.3"
+      "version": "~2.0.5"
+    },
+    "framework-arduino-avr-majorcore": {
+      "type": "framework",
+      "optional": true,
+      "version": "~2.0.2"
     },
     "framework-arduino-avr-nicai": {
       "type": "framework",
@@ -91,7 +96,7 @@
     "framework-arduino-avr-prusa_rambo": {
       "type": "framework",
       "optional": true,
-      "version": "~1.0.1"
+      "version": "~1.0.3"
     },
     "framework-simba": {
       "type": "framework",
@@ -107,6 +112,11 @@
       "type": "uploader",
       "optional": true,
       "version": "~1.200.0"
+    },
+    "tool-simavr": {
+      "type": "debugger",
+      "optional": true,
+      "version": "~1.10600.200511"
     }
   }
 }

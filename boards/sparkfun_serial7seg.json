@@ -6,6 +6,9 @@
     "mcu": "atmega328p",
     "variant": "sparkfun_ser7seg"
   },
+  "debug": {
+    "simavr_target": "atmega328p"
+  },
   "frameworks": [
     "arduino"
   ],

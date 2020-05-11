@@ -6,6 +6,9 @@
     "mcu": "atmega128rfa1",
     "variant": "sparkfun_rf128"
   },
+  "debug": {
+    "simavr_target": "atmega128rfa1"
+  },
   "frameworks": [
     "arduino"
   ],

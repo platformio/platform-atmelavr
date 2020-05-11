@@ -6,6 +6,12 @@
     "mcu": "atmega88p",
     "variant": "standard"
   },
+  "bootloader":{
+    "led_pin": "B5"
+  },
+  "debug": {
+    "simavr_target": "atmega88p"
+  },
   "frameworks": [
     "arduino"
   ],

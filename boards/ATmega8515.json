@@ -1,9 +1,9 @@
 {
   "build": {
-    "core": "MightyCore",
-    "extra_flags": "-DARDUINO_AVR_ATmega32",
+    "core": "MajorCore",
+    "extra_flags": "-DARDUINO_AVR_ATmega8515",
     "f_cpu": "16000000L",
-    "mcu": "atmega32",
+    "mcu": "atmega8515",
     "variant": "standard"
   },
   "bootloader":{
@@ -12,14 +12,14 @@
   "frameworks": [
     "arduino"
   ],
-  "name": "ATmega32",
+  "name": "ATmega8515",
   "upload": {
-    "maximum_ram_size": 2048,
-    "maximum_size": 32256,
+    "maximum_ram_size": 512,
+    "maximum_size": 7680,
     "protocol": "arduino",
     "require_upload_port": true,
     "speed": 115200
   },
-  "url": "https://www.microchip.com/wwwproducts/en/ATmega32",
+  "url": "https://www.microchip.com/wwwproducts/en/ATmega8515",
   "vendor": "Microchip"
 }

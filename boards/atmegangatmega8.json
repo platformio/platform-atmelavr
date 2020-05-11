@@ -7,11 +7,14 @@
     "variant": "standard"
   },
   "bootloader": {
-    "file": "atmega8/ATmegaBOOT-prod-firmware-2009-11-07.hex", 
-    "hfuse": "0xCA", 
-    "lock_bits": "0x0F", 
-    "lfuse": "0xDF", 
+    "file": "atmega8/ATmegaBOOT-prod-firmware-2009-11-07.hex",
+    "hfuse": "0xCA",
+    "lock_bits": "0x0F",
+    "lfuse": "0xDF",
     "unlock_bits": "0x3F"
+  },
+  "debug": {
+    "simavr_target": "atmega8"
   },
   "frameworks": [
     "arduino"

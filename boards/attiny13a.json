@@ -5,6 +5,9 @@
     "f_cpu": "1200000L",
     "mcu": "attiny13a"
   },
+  "debug": {
+    "simavr_target": "attiny13a"
+  },
   "frameworks": [
     "arduino"
   ],

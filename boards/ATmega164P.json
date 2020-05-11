@@ -6,6 +6,12 @@
     "mcu": "atmega164p",
     "variant": "standard"
   },
+  "bootloader":{
+    "led_pin": "B0"
+  },
+  "debug": {
+    "simavr_target": "atmega164p"
+  },
   "frameworks": [
     "arduino"
   ],

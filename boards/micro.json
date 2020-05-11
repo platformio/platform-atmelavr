@@ -33,6 +33,9 @@
     "lfuse": "0xFF",
     "unlock_bits": "0x3F"
   },
+  "debug": {
+    "simavr_target": "atmega32u4"
+  },
   "frameworks": [
     "arduino"
   ],

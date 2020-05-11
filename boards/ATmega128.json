@@ -6,6 +6,12 @@
     "mcu": "atmega128",
     "variant": "64-pin-avr"
   },
+  "bootloader":{
+    "led_pin": "B5"
+  },
+  "debug": {
+    "simavr_target": "atmega128"
+  },
   "frameworks": [
     "arduino"
   ],

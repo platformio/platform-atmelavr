@@ -6,6 +6,12 @@
     "mcu": "atmega1284p",
     "variant": "standard"
   },
+  "bootloader":{
+    "led_pin": "B0"
+  },
+  "debug": {
+    "simavr_target": "atmega1284p"
+  },
   "frameworks": [
     "arduino"
   ],

@@ -6,6 +6,9 @@
     "mcu": "atmega644p",
     "variant": "microduino_plus"
   },
+  "debug": {
+    "simavr_target": "atmega644p"
+  },
   "frameworks": [
     "arduino"
   ],

@@ -7,12 +7,15 @@
     "variant": "eightanaloginputs"
   },
   "bootloader": {
-    "efuse": "0xFD", 
-    "file": "optiboot/optiboot_atmega328-Mini.hex", 
-    "hfuse": "0xD8", 
-    "lock_bits": "0x0F", 
-    "lfuse": "0xFF", 
+    "efuse": "0xFD",
+    "file": "optiboot/optiboot_atmega328-Mini.hex",
+    "hfuse": "0xD8",
+    "lock_bits": "0x0F",
+    "lfuse": "0xFF",
     "unlock_bits": "0x3F"
+  },
+  "debug": {
+    "simavr_target": "atmega328p"
   },
   "frameworks": [
     "arduino"
