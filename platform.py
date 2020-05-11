@@ -89,8 +89,10 @@ class AtmelavrPlatform(PlatformBase):
             debug["tools"]["simavr"] = {
                 "init_cmds": [
                     "define pio_reset_halt_target",
+                    "   monitor reset halt",
                     "end",
                     "define pio_reset_run_target",
+                    "   monitor reset",
                     "end",
                     "target remote $DEBUG_PORT",
                     "$INIT_BREAK",

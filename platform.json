@@ -116,7 +116,7 @@
     "tool-simavr": {
       "type": "debugger",
       "optional": true,
-      "version": "~1.6.0"
+      "version": "~1.10600.200511"
     }
   }
 }
