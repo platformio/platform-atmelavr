@@ -21,7 +21,7 @@
     "extra_flags": "-e",
     "maximum_ram_size": 64,
     "maximum_size": 1024,
-    "protocol": "arduinoisp",
+    "protocol": "stk500v1",
     "require_upload_port": true,
     "speed": 19200
   },
