@@ -83,6 +83,11 @@
       "optional": true,
       "version": "~2.0.2"
     },
+    "framework-arduino-avr-microcore": {
+      "type": "framework",
+      "optional": true,
+      "version": "~1.0.6"
+    },
     "framework-arduino-avr-nicai": {
       "type": "framework",
       "optional": true,
