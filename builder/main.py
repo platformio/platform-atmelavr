@@ -81,7 +81,6 @@ def BeforeUpload(target, source, env):  # pylint: disable=W0613,W0621
 
 
 env = DefaultEnvironment()
-env.SConscript("compat.py", exports="env")
 
 env.Replace(
     AR="avr-gcc-ar",
@@ -163,13 +162,10 @@ target_buildprog = env.Alias("buildprog", target_firm, target_firm)
 # Target: Print binary size
 #
 
-target_size = env.AddSystemTarget(
-    "size",
-    target_elf,
-    env.VerboseAction("$SIZEPRINTCMD", "Calculating size $SOURCE"),
-    "Program Size",
-    "Calculate program size",
-)
+target_size = env.Alias(
+    "size", target_elf,
+    env.VerboseAction("$SIZEPRINTCMD", "Calculating size $SOURCE"))
+AlwaysBuild(target_size)
 
 #
 # Target: Upload by default .hex file
@@ -213,53 +209,46 @@ else:
         env.VerboseAction("$UPLOADCMD", "Uploading $SOURCE")
     ]
 
-
-env.AddSystemTarget("upload", target_firm, upload_actions, "Upload")
+AlwaysBuild(env.Alias("upload", target_firm, upload_actions))
 
 #
 # Target: Upload EEPROM data (from EEMEM directive)
 #
-
-env.AddSystemTarget(
+target_uploadeep = env.Alias(
     "uploadeep",
     join("$BUILD_DIR", "${PROGNAME}.eep")
-    if "nobuild" in COMMAND_LINE_TARGETS
-    else env.ElfToEep(target_elf),
-    [
+    if "nobuild" in COMMAND_LINE_TARGETS else env.ElfToEep(target_elf), [
         env.VerboseAction(BeforeUpload, "Looking for upload port..."),
-        env.VerboseAction("$UPLOADEEPCMD", "Uploading $SOURCE"),
-    ],
-    "Upload EEPROM",
-)
+        env.VerboseAction("$UPLOADEEPCMD", "Uploading $SOURCE")
+    ])
+AlwaysBuild(target_uploadeep)
 
 #
 # Target: Upload firmware using external programmer
 #
 
-env.AddSystemTarget(
-    "program",
-    target_firm,
-    env.VerboseAction("$UPLOADCMD", "Programming $SOURCE"),
-    "Upload using Programmer",
-)
+target_program = env.Alias(
+    "program", target_firm,
+    env.VerboseAction("$UPLOADCMD", "Programming $SOURCE"))
+AlwaysBuild(target_program)
 
 #
 # Target: Setup fuses
 #
 
-fuses_action = None
 if "fuses" in COMMAND_LINE_TARGETS:
     fuses_action = env.SConscript("fuses.py", exports="env")
-env.AddSystemTarget("fuses", None, fuses_action, "Set Fuses")
+    target_fuses = env.Alias("fuses", None, [fuses_action])
+    AlwaysBuild(target_fuses)
 
 #
 # Target: Upload bootloader
 #
 
-bootloader_actions = None
 if "bootloader" in COMMAND_LINE_TARGETS:
     bootloader_actions = env.SConscript("bootloader.py", exports="env")
-env.AddSystemTarget("bootloader", None, bootloader_actions, "Burn Bootloader")
+    target_bootloader = env.Alias("bootloader", None, bootloader_actions)
+    AlwaysBuild(target_bootloader)
 
 #
 # Setup default targets
