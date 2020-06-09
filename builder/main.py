@@ -15,8 +15,14 @@
 from os.path import join
 from time import sleep
 
-from SCons.Script import (ARGUMENTS, COMMAND_LINE_TARGETS, AlwaysBuild,
-                          Builder, Default, DefaultEnvironment)
+from SCons.Script import (
+    ARGUMENTS,
+    COMMAND_LINE_TARGETS,
+    AlwaysBuild,
+    Builder,
+    Default,
+    DefaultEnvironment,
+)
 
 from platformio.util import get_serial_ports
 
@@ -28,7 +34,7 @@ def BeforeUpload(target, source, env):  # pylint: disable=W0613,W0621
 
     # Deprecated: compatibility with old projects. Use `program` instead
     if "usb" in env.subst("$UPLOAD_PROTOCOL"):
-        upload_options['require_upload_port'] = False
+        upload_options["require_upload_port"] = False
         env.Replace(UPLOAD_SPEED=None)
 
     if env.subst("$UPLOAD_SPEED"):
@@ -67,8 +73,9 @@ def BeforeUpload(target, source, env):  # pylint: disable=W0613,W0621
         _rpi_sysgpio("/sys/class/gpio/gpio%d/value" % pin_num, 0)
         _rpi_sysgpio("/sys/class/gpio/unexport", pin_num)
     else:
-        if (not upload_options.get("disable_flushing", False)
-                and not env.get("UPLOAD_PORT", "").startswith("net:")):
+        if not upload_options.get("disable_flushing", False) and not env.get(
+            "UPLOAD_PORT", ""
+        ).startswith("net:"):
             env.FlushSerialBuffer("$UPLOAD_PORT")
 
         before_ports = get_serial_ports()
@@ -92,48 +99,46 @@ env.Replace(
     OBJCOPY="avr-objcopy",
     RANLIB="avr-gcc-ranlib",
     SIZETOOL="avr-size",
-
     ARFLAGS=["rc"],
-
     SIZEPROGREGEXP=r"^(?:\.text|\.data|\.bootloader)\s+(\d+).*",
     SIZEDATAREGEXP=r"^(?:\.data|\.bss|\.noinit)\s+(\d+).*",
     SIZECHECKCMD="$SIZETOOL -A -d $SOURCES",
-    SIZEPRINTCMD='$SIZETOOL --mcu=$BOARD_MCU -C -d $SOURCES',
-
-    PROGSUFFIX=".elf"
+    SIZEPRINTCMD="$SIZETOOL --mcu=$BOARD_MCU -C -d $SOURCES",
+    PROGSUFFIX=".elf",
 )
 
 env.Append(
     BUILDERS=dict(
         ElfToEep=Builder(
-            action=env.VerboseAction(" ".join([
-                "$OBJCOPY",
-                "-O",
-                "ihex",
-                "-j",
-                ".eeprom",
-                '--set-section-flags=.eeprom="alloc,load"',
-                "--no-change-warnings",
-                "--change-section-lma",
-                ".eeprom=0",
-                "$SOURCES",
-                "$TARGET"
-            ]), "Building $TARGET"),
-            suffix=".eep"
+            action=env.VerboseAction(
+                " ".join(
+                    [
+                        "$OBJCOPY",
+                        "-O",
+                        "ihex",
+                        "-j",
+                        ".eeprom",
+                        '--set-section-flags=.eeprom="alloc,load"',
+                        "--no-change-warnings",
+                        "--change-section-lma",
+                        ".eeprom=0",
+                        "$SOURCES",
+                        "$TARGET",
+                    ]
+                ),
+                "Building $TARGET",
+            ),
+            suffix=".eep",
         ),
-
         ElfToHex=Builder(
-            action=env.VerboseAction(" ".join([
-                "$OBJCOPY",
-                "-O",
-                "ihex",
-                "-R",
-                ".eeprom",
-                "$SOURCES",
-                "$TARGET"
-            ]), "Building $TARGET"),
-            suffix=".hex"
-        )
+            action=env.VerboseAction(
+                " ".join(
+                    ["$OBJCOPY", "-O", "ihex", "-R", ".eeprom", "$SOURCES", "$TARGET"]
+                ),
+                "Building $TARGET",
+            ),
+            suffix=".hex",
+        ),
     )
 )
 
@@ -180,11 +185,8 @@ upload_protocol = env.subst("$UPLOAD_PROTOCOL")
 if upload_protocol == "micronucleus":
     env.Replace(
         UPLOADER="micronucleus",
-        UPLOADERFLAGS=[
-            "-c", "$UPLOAD_PROTOCOL",
-            "--timeout", "60"
-        ],
-        UPLOADCMD="$UPLOADER $UPLOADERFLAGS $SOURCES"
+        UPLOADERFLAGS=["-c", "$UPLOAD_PROTOCOL", "--timeout", "60"],
+        UPLOADCMD="$UPLOADER $UPLOADERFLAGS $SOURCES",
     )
     upload_actions = [env.VerboseAction("$UPLOADCMD", "Uploading $SOURCE")]
 
@@ -195,14 +197,17 @@ else:
     env.Replace(
         UPLOADER="avrdude",
         UPLOADERFLAGS=[
-            "-p", "$BOARD_MCU",
+            "-p",
+            "$BOARD_MCU",
             "-C",
-            join(env.PioPlatform().get_package_dir("tool-avrdude") or "",
-                 "avrdude.conf"),
-            "-c", "$UPLOAD_PROTOCOL"
+            join(
+                env.PioPlatform().get_package_dir("tool-avrdude") or "", "avrdude.conf"
+            ),
+            "-c",
+            "$UPLOAD_PROTOCOL",
         ],
-        UPLOADCMD='$UPLOADER $UPLOADERFLAGS -U flash:w:$SOURCES:i',
-        UPLOADEEPCMD='$UPLOADER $UPLOADERFLAGS -U eeprom:w:$SOURCES:i'
+        UPLOADCMD="$UPLOADER $UPLOADERFLAGS -U flash:w:$SOURCES:i",
+        UPLOADEEPCMD="$UPLOADER $UPLOADERFLAGS -U eeprom:w:$SOURCES:i",
     )
 
     if int(ARGUMENTS.get("PIOVERBOSE", 0)):
@@ -210,7 +215,7 @@ else:
 
     upload_actions = [
         env.VerboseAction(BeforeUpload, "Looking for upload port..."),
-        env.VerboseAction("$UPLOADCMD", "Uploading $SOURCE")
+        env.VerboseAction("$UPLOADCMD", "Uploading $SOURCE"),
     ]
 
 
