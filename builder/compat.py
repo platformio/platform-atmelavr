@@ -19,9 +19,9 @@ Import("env")
 
 
 # Added in PIO Core 4.4.0
-if not hasattr(env, "AddSystemTarget"):
+if not hasattr(env, "AddPlatformTarget"):
 
-    def AddSystemTarget(
+    def AddPlatformTarget(
         env,
         name,
         dependencies,
@@ -35,4 +35,4 @@ if not hasattr(env, "AddSystemTarget"):
             AlwaysBuild(target)
         return target
 
-    env.AddMethod(AddSystemTarget)
+    env.AddMethod(AddPlatformTarget)

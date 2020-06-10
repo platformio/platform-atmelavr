@@ -168,7 +168,7 @@ target_buildprog = env.Alias("buildprog", target_firm, target_firm)
 # Target: Print binary size
 #
 
-target_size = env.AddSystemTarget(
+target_size = env.AddPlatformTarget(
     "size",
     target_elf,
     env.VerboseAction("$SIZEPRINTCMD", "Calculating size $SOURCE"),
@@ -219,13 +219,13 @@ else:
     ]
 
 
-env.AddSystemTarget("upload", target_firm, upload_actions, "Upload")
+env.AddPlatformTarget("upload", target_firm, upload_actions, "Upload")
 
 #
 # Target: Upload EEPROM data (from EEMEM directive)
 #
 
-env.AddSystemTarget(
+env.AddPlatformTarget(
     "uploadeep",
     join("$BUILD_DIR", "${PROGNAME}.eep")
     if "nobuild" in COMMAND_LINE_TARGETS
@@ -241,7 +241,7 @@ env.AddSystemTarget(
 # Target: Upload firmware using external programmer
 #
 
-env.AddSystemTarget(
+env.AddPlatformTarget(
     "program",
     target_firm,
     env.VerboseAction("$UPLOADCMD", "Programming $SOURCE"),
@@ -255,7 +255,7 @@ env.AddSystemTarget(
 fuses_action = None
 if "fuses" in COMMAND_LINE_TARGETS:
     fuses_action = env.SConscript("fuses.py", exports="env")
-env.AddSystemTarget("fuses", None, fuses_action, "Set Fuses")
+env.AddPlatformTarget("fuses", None, fuses_action, "Set Fuses")
 
 #
 # Target: Upload bootloader
@@ -264,7 +264,7 @@ env.AddSystemTarget("fuses", None, fuses_action, "Set Fuses")
 bootloader_actions = None
 if "bootloader" in COMMAND_LINE_TARGETS:
     bootloader_actions = env.SConscript("bootloader.py", exports="env")
-env.AddSystemTarget("bootloader", None, bootloader_actions, "Burn Bootloader")
+env.AddPlatformTarget("bootloader", None, bootloader_actions, "Burn Bootloader")
 
 #
 # Setup default targets
