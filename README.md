@@ -1,6 +1,6 @@
 # Atmel AVR: development platform for [PlatformIO](http://platformio.org)
-[![Build Status](https://travis-ci.org/platformio/platform-atmelavr.svg?branch=develop)](https://travis-ci.org/platformio/platform-atmelavr)
-[![Build status](https://ci.appveyor.com/api/projects/status/ympddo5w1osqx6qr/branch/develop?svg=true)](https://ci.appveyor.com/project/ivankravets/platform-atmelavr/branch/develop)
+
+![alt text](https://github.com/platformio/platform-atmelavr/workflows/Examples/badge.svg "Atmel AVR development platform")
 
 Atmel AVR 8- and 32-bit MCUs deliver a unique combination of performance, power efficiency and design flexibility. Optimized to speed time to market-and easily adapt to new ones-they are based on the industrys most code-efficient architecture for C and assembly programming.
 

@@ -12,7 +12,7 @@
     "type": "git",
     "url": "https://github.com/platformio/platform-atmelavr.git"
   },
-  "version": "2.1.0",
+  "version": "2.2.0",
   "packageRepositories": [
     "https://dl.bintray.com/platformio/dl-packages/manifest.json",
     "http://dl.platformio.org/packages/manifest.json",
@@ -82,6 +82,11 @@
       "type": "framework",
       "optional": true,
       "version": "~2.0.2"
+    },
+    "framework-arduino-avr-microcore": {
+      "type": "framework",
+      "optional": true,
+      "version": "~1.0.6"
     },
     "framework-arduino-avr-nicai": {
       "type": "framework",

@@ -1,9 +1,14 @@
 {
   "build": {
-    "core": "core13",
+    "core": "MicroCore",
     "extra_flags": "-DARDUINO_AVR_ATTINY13",
-    "f_cpu": "1200000L",
-    "mcu": "attiny13"
+    "f_cpu": "9600000L",
+    "mcu": "attiny13",
+    "variant": "attiny13"
+  },
+  "hardware": {
+    "oscillator": "internal",
+    "uart": "no_bootloader"
   },
   "debug": {
     "simavr_target": "attiny13"
@@ -11,15 +16,15 @@
   "frameworks": [
     "arduino"
   ],
-  "name": "Generic ATtiny13",
+  "name": "ATtiny13",
   "upload": {
     "extra_flags": "-e",
     "maximum_ram_size": 64,
     "maximum_size": 1024,
-    "protocol": "arduinoisp",
+    "protocol": "stk500v1",
     "require_upload_port": true,
     "speed": 19200
   },
-  "url": "http://www.atmel.com/devices/ATTINY13.aspx",
-  "vendor": "Atmel"
+  "url": "https://www.microchip.com/wwwproducts/en/ATtiny13",
+  "vendor": "Microchip"
 }

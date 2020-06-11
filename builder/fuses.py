@@ -151,7 +151,7 @@ def get_efuse(mcu, uart, bod):
     mcus_6 = ("atmega162",)
 
     mcu_without_efuse = ("atmega8535", "atmega8515", "atmega8", "atmega16",
-        "atmega32")
+        "atmega32", "attiny13a", "attiny13")
 
     if mcu in mcu_without_efuse:
         return None
@@ -247,12 +247,12 @@ efuse = board.get("fuses.efuse", "")
 lock = board.get("fuses.lock", get_lock_bits(target))
 
 if (not lfuse or not hfuse) and core not in (
-    "MiniCore", "MegaCore", "MightyCore", "MajorCore"):
+    "MiniCore", "MegaCore", "MightyCore", "MajorCore", "MicroCore"):
     sys.stderr.write("Error: Dynamic fuses generation for %s is not supported."
         " Please specify fuses in platformio.ini\n" % target)
     env.Exit(1)
 
-if core in ("MiniCore", "MegaCore", "MightyCore", "MajorCore"):
+if core in ("MiniCore", "MegaCore", "MightyCore", "MajorCore", "MicroCore"):
     f_cpu = board.get("build.f_cpu", "16000000L").upper()
     oscillator = board.get("hardware.oscillator", "external").lower()
     bod = board.get("hardware.bod", "2.7v").lower()
