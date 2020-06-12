@@ -117,7 +117,6 @@ class AtmelavrPlatform(PlatformBase):
                     "   monitor reset",
                     "end",
                     "define pio_reset_run_target",
-                    "   monitor run",
                     "end",
                     "set remotetimeout 1",
                     "set serial baud 115200",
