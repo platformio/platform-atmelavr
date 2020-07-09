@@ -111,6 +111,7 @@ class AtmelavrPlatform(PlatformBase):
                 "onboard": True
             }
         if debug.get("avr_debugger", ""):
+            speed = debug["avr_debugger"]["speed"]
             debug["tools"]["avr_debugger"] = {
                 "init_cmds": [
                     "define pio_reset_halt_target",
@@ -119,7 +120,7 @@ class AtmelavrPlatform(PlatformBase):
                     "define pio_reset_run_target",
                     "end",
                     "set remotetimeout 1",
-                    "set serial baud 115200",
+                    "set serial baud {0}".format(speed),
                     "set remote hardware-breakpoint-limit 8",
                     "set remote hardware-watchpoint-limit 0",
                     "target remote $DEBUG_PORT"
