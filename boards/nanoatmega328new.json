@@ -16,7 +16,9 @@
   },
   "debug": {
     "simavr_target": "atmega328p",
-    "avr_debugger": true
+    "avr_debugger": {
+      "speed": 115200
+    }
   },
   "frameworks": [
     "arduino",

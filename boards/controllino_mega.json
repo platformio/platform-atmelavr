@@ -25,7 +25,10 @@
     "variant": "Controllino_mega"
   },
   "debug": {
-    "simavr_target": "atmega2560"
+    "simavr_target": "atmega2560",
+    "avr_debugger": {
+      "speed": 115200
+    }
   },
   "frameworks": [
     "arduino"
