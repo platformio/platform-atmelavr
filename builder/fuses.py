@@ -116,16 +116,19 @@ def get_hfuse(target, uart, oscillator, bod, eesave, jtagen):
             return 0xdf & ~ jtagen_offset & ~ eesave_offset
         else:
             return 0xde & ~ jtagen_offset & ~ eesave_offset
+
     elif target in targets_2:
         if uart == "no_bootloader":
             return 0xdf & ~ eesave_offset
         else:
             return 0xde & ~ eesave_offset
+
     elif target in targets_3:
         if uart == "no_bootloader":
             return 0xdd & ~ jtagen_offset & ~ eesave_offset
         else:
             return 0xdc & ~ jtagen_offset & ~ eesave_offset
+
     elif target in targets_4:
         if bod == "4.3v":
             return 0xdc & ~ eesave_offset
@@ -135,16 +138,19 @@ def get_hfuse(target, uart, oscillator, bod, eesave, jtagen):
             return 0xde & ~ eesave_offset
         else:
             return 0xdf & ~ eesave_offset
+
     elif target in targets_5:
         if uart == "no_bootloader":
             return 0xdf & ~ jtagen_offset & ~ ckopt_offset & ~ eesave_offset
         else:
             return 0xde & ~ jtagen_offset & ~ ckopt_offset & ~ eesave_offset
+
     elif target in targets_6:
         if uart == "no_bootloader":
             return 0xdd & ~ ckopt_offset & ~ eesave_offset
         else:
             return 0xdc & ~ ckopt_offset & ~ eesave_offset
+
     elif target in targets_7:
         if bod == "4.3v":
             return 0x9
@@ -160,28 +166,28 @@ def get_hfuse(target, uart, oscillator, bod, eesave, jtagen):
         env.Exit(1)
 
 
-def get_efuse(mcu, uart, bod):
+def get_efuse(target, uart, bod):
 
-    mcus_1 = (
+    targets_1 = (
         "atmega2561", "atmega2560", "atmega1284", "atmega1284p",
         "atmega1281", "atmega1280", "atmega644a", "atmega644p",
         "atmega640", "atmega328", "atmega328p", "atmega324a",
         "atmega324p", "atmega324pa", "atmega164a", "atmega164p")
-    mcus_2 = ("atmega328pb", "atmega324pb")
-    mcus_3 = (
+    targets_2 = ("atmega328pb", "atmega324pb")
+    targets_3 = (
         "atmega168", "atmega168p", "atmega168pb", "atmega88",
         "atmega88p", "atmega88pb")
-    mcus_4 = ("atmega128", "atmega64", "atmega48", "atmega48p")
-    mcus_5 = ("at90can128", "at90can64", "at90can32")
-    mcus_6 = ("atmega162",)
+    targets_4 = ("atmega128", "atmega64", "atmega48", "atmega48p")
+    targets_5 = ("at90can128", "at90can64", "at90can32")
+    targets_6 = ("atmega162",)
 
-    mcu_without_efuse = ("atmega8535", "atmega8515", "atmega8", "atmega16",
+    targets_without_efuse = ("atmega8535", "atmega8515", "atmega8", "atmega16",
         "atmega32", "attiny13a", "attiny13")
 
-    if mcu in mcu_without_efuse:
+    if target in targets_without_efuse:
         return None
 
-    if mcu in mcus_1:
+    if target in targets_1:
         if bod == "4.3v":
             return 0xfc
         elif bod == "2.7v":
@@ -191,7 +197,7 @@ def get_efuse(mcu, uart, bod):
         else:
             return 0xff
 
-    elif mcu in mcus_2:
+    elif target in targets_2:
         if bod == "4.3v":
             return 0xf4
         elif bod == "2.7v":
@@ -201,13 +207,13 @@ def get_efuse(mcu, uart, bod):
         else:
             return 0xf7
 
-    elif mcu in mcus_3:
+    elif target in targets_3:
         return 0xfd if uart == "no_bootloader" else 0xfc
 
-    elif mcu in mcus_4:
+    elif target in targets_4:
         return 0xff
 
-    elif mcu in mcus_5:
+    elif target in targets_5:
         if bod == "4.1v":
             return 0xfd
         elif bod == "4.0v":
@@ -225,7 +231,7 @@ def get_efuse(mcu, uart, bod):
         else:
             return 0xff
 
-    elif mcu in mcus_6:
+    elif target in targets_6:
         if bod == "4.3v":
             return 0xf9
         elif bod == "2.7v":
@@ -236,7 +242,7 @@ def get_efuse(mcu, uart, bod):
             return 0xff
 
     else:
-        sys.stderr.write("Error: Couldn't calculate efuse for %s\n" % mcu)
+        sys.stderr.write("Error: Couldn't calculate efuse for %s\n" % target)
         env.Exit(1)
 
 
