@@ -27,6 +27,8 @@ def get_lfuse(target, f_cpu, oscillator, bod, eesave, ckout):
     if target in targets_1:
         if oscillator == "external":
             return 0xf7 & ~ ckout_offset
+        elif oscillator == "external_clock":
+            return 0xe0 & ~ ckout_offset
         else:
             if f_cpu == "8000000L":
                 return 0xe2 & ~ ckout_offset
@@ -36,6 +38,8 @@ def get_lfuse(target, f_cpu, oscillator, bod, eesave, ckout):
     elif target in targets_2:
         if oscillator == "external":
             return 0xff & ~ ckout_offset
+        elif oscillator == "external_clock":
+            return 0xe0 & ~ ckout_offset
         else:
             if f_cpu == "8000000L":
                 return 0xe2 & ~ ckout_offset
@@ -53,6 +57,8 @@ def get_lfuse(target, f_cpu, oscillator, bod, eesave, ckout):
         bod_offset = bod_bits << 6
         if oscillator == "external":
             return 0xff & ~ bod_offset
+        elif oscillator == "external_clock":
+            return 0xe0 & ~ bod_offset
         else:
             if f_cpu == "8000000L":
                 return 0xe4 & ~ bod_offset
@@ -62,7 +68,7 @@ def get_lfuse(target, f_cpu, oscillator, bod, eesave, ckout):
     elif target in targets_4:
         eesave_bit = 1 if eesave == "yes" else 0
         eesave_offset = eesave_bit << 6
-        if oscillator == "external":
+        if oscillator == "external" or oscillator == "external_clock":
             return 0x78 & ~ eesave_offset
         else:
             if f_cpu == "9600000L":
@@ -249,8 +255,8 @@ def is_target_without_bootloader(target):
 def get_lock_bits(target):
     if is_target_without_bootloader(target):
         return "0xff"
-
-    return "0x0f"
+    else:
+        return "0x0f"
 
 
 board = env.BoardConfig()
