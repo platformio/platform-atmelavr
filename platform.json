@@ -4,6 +4,13 @@
   "description": "Atmel AVR 8-bit MCUs deliver a unique combination of performance, power efficiency and design flexibility. Optimized to speed time to market-and easily adapt to new ones-they are based on the industry's most code-efficient architecture for C and assembly programming",
   "homepage": "http://www.atmel.com/products/microcontrollers/avr/default.aspx",
   "license": "Apache-2.0",
+  "keywords": [
+      "dev-platform",
+      "Microchip",
+      "AVR",
+      "Atmel",
+      "8-bit"
+  ],
   "engines": {
     "platformio": "<5"
   },
