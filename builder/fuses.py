@@ -166,8 +166,11 @@ def get_hfuse(target, uart, oscillator, bod, eesave, jtagen):
         env.Exit(1)
 
 
-def get_efuse(target, uart, bod):
+def get_efuse(target, uart, bod, cfd):
 
+    targets_without_efuse = (
+        "atmega8535", "atmega8515", "atmega8", "atmega16",
+        "atmega32", "attiny13a", "attiny13")
     targets_1 = (
         "atmega2561", "atmega2560", "atmega1284", "atmega1284p",
         "atmega1281", "atmega1280", "atmega644a", "atmega644p",
@@ -181,8 +184,8 @@ def get_efuse(target, uart, bod):
     targets_5 = ("at90can128", "at90can64", "at90can32")
     targets_6 = ("atmega162",)
 
-    targets_without_efuse = ("atmega8535", "atmega8515", "atmega8", "atmega16",
-        "atmega32", "attiny13a", "attiny13")
+    cfd_bit = 1 if cfd == "yes" else 0
+    cfd_offset = cfd_bit << 3
 
     if target in targets_without_efuse:
         return None
@@ -199,11 +202,11 @@ def get_efuse(target, uart, bod):
 
     elif target in targets_2:
         if bod == "4.3v":
-            return 0xf4
+            return 0xf4 | cfd_offset
         elif bod == "2.7v":
-            return 0xf5
+            return 0xf5 | cfd_offset
         elif bod == "1.8v":
-            return 0xf6
+            return 0xf6 | cfd_offset
         else:
             return 0xf7
 
@@ -291,15 +294,24 @@ if core in ("MiniCore", "MegaCore", "MightyCore", "MajorCore", "MicroCore"):
     eesave = board.get("hardware.eesave", "yes").lower()
     jtagen = board.get("hardware.jtagen", "no").lower()
     ckout = board.get("hardware.ckout", "no").lower()
+    cfd = board.get("hardware.cfd", "no").lower()
 
-    print("Target configuration:")
-    print("Target = %s, Clock speed = %s, Oscillator = %s, BOD level = %s, "
-          "UART port = %s, Save EEPROM = %s, Clock output = %s, JTAG enable = %s" %
-          (target, f_cpu, oscillator, bod, uart, eesave, ckout, jtagen))
+    print("\nTARGET CONFIGURATION:\n"
+          "---------------------")
+    print("Target = %s\n"
+          "Clock speed = %s\n"
+          "Oscillator = %s\n"
+          "BOD level = %s\n"
+          "UART port = %s\n"
+          "Save EEPROM = %s\n"
+          "Clock output = %s\n"
+          "JTAG enable = %s\n"
+          "Clock failure detection = %s\n"
+          % (target, f_cpu, oscillator, bod, uart, eesave, ckout, jtagen, cfd))
 
     lfuse = lfuse or hex(get_lfuse(target, f_cpu, oscillator, bod, eesave, ckout))
     hfuse = hfuse or hex(get_hfuse(target, uart, oscillator, bod, eesave, jtagen))
-    efuse = efuse or get_efuse(target, uart, bod)
+    efuse = efuse or get_efuse(target, uart, bod, cfd)
 
 fuses_cmd = [
     "avrdude", "-p", "$BOARD_MCU", "-C",
