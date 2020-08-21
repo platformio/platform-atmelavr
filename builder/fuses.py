@@ -296,18 +296,34 @@ if core in ("MiniCore", "MegaCore", "MightyCore", "MajorCore", "MicroCore"):
     ckout = board.get("hardware.ckout", "no").lower()
     cfd = board.get("hardware.cfd", "no").lower()
 
-    print("\nTARGET CONFIGURATION:\n"
-          "---------------------")
-    print("Target = %s\n"
-          "Clock speed = %s\n"
-          "Oscillator = %s\n"
-          "BOD level = %s\n"
-          "UART port = %s\n"
-          "Save EEPROM = %s\n"
-          "Clock output = %s\n"
-          "JTAG enable = %s\n"
-          "Clock failure detection = %s\n"
-          % (target, f_cpu, oscillator, bod, uart, eesave, ckout, jtagen, cfd))
+    print("\nTARGET CONFIGURATION:")
+    print("---------------------")
+    print("Target = %s" % target)
+    print("Clock speed = %s" % f_cpu)
+    print("Oscillator = %s" % oscillator)
+    print("BOD level = %s" % bod)
+    print("Save EEPROM = %s" % eesave)
+
+    if target not in ("attiny13", "attiny13a"):
+        print("UART port = %s" % uart)
+
+    if target not in (
+        "atmega8535", "atmega8515", "atmega128", "atmega64", "atmega32",
+        "atmega16", "atmega8", "attiny13", "attiny13a"):
+        print("Clock output = %s" % ckout)
+
+    if target in (
+        "atmega2561", "atmega2560", "atmega1284", "atmega1284p", "atmega1281",
+        "atmega1280", "atmega644a", "atmega644p", "atmega640", "atmega324a",
+        "atmega324p", "atmega324pa", "atmega324pb", "at90can128", "at90can64",
+        "at90can32", "atmega164a", "atmega164p", "atmega162", "atmega128",
+        "atmega64", "atmega32"):
+        print("JTAG enable = %s" % jtagen)
+
+    if target in ("atmega324pb", "atmega328pb"):
+        print("CFD enable = %s" % cfd)
+
+    print("---------------------")
 
     lfuse = lfuse or hex(get_lfuse(target, f_cpu, oscillator, bod, eesave, ckout))
     hfuse = hfuse or hex(get_hfuse(target, uart, oscillator, bod, eesave, jtagen))
@@ -332,7 +348,7 @@ if efuse:
     efuse = efuse if isinstance(efuse, str) else hex(efuse)
     fuses_cmd.append("-Uefuse:w:%s:m" % efuse)
 
-print("Selected fuses: [lfuse = %s, hfuse = %s%s]" % (
+print("\nSelected fuses: [lfuse = %s, hfuse = %s%s]" % (
     lfuse, hfuse, ", efuse = %s" % efuse if efuse else ""))
 
 fuses_action = env.VerboseAction(" ".join(fuses_cmd), "Setting fuses")
