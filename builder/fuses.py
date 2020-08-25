@@ -6,7 +6,7 @@ from SCons.Script import Import, Return
 Import("env")
 
 
-def get_lfuse(target, f_cpu, oscillator, bod, eesave):
+def get_lfuse(target, f_cpu, oscillator, bod, eesave, ckout):
     targets_1 = (
         "atmega2561", "atmega2560", "atmega1284", "atmega1284p", "atmega1281",
         "atmega1280", "atmega644a", "atmega644p", "atmega640", "atmega328",
@@ -16,20 +16,35 @@ def get_lfuse(target, f_cpu, oscillator, bod, eesave):
     targets_2 = (
         "atmega328pb", "atmega324pb", "atmega168pb", "atmega162", "atmega88pb",
         "atmega48pb", "at90can128", "at90can64", "at90can32")
-    targets_3 = ("atmega8535", "atmega8515", "atmega32", "atmega16", "atmega8")
+    targets_3 = (
+        "atmega8535", "atmega8515", "atmega128", "atmega64", "atmega32",
+        "atmega16", "atmega8")
     targets_4 = ("attiny13", "attiny13a")
+
+    ckout_bit = 1 if ckout == "yes" else 0
+    ckout_offset = ckout_bit << 6
 
     if target in targets_1:
         if oscillator == "external":
-            return 0xf7
+            return 0xf7 & ~ ckout_offset
+        elif oscillator == "external_clock":
+            return 0xe0 & ~ ckout_offset
         else:
-            return 0xe2 if f_cpu == "8000000L" else 0x62
+            if f_cpu == "8000000L":
+                return 0xe2 & ~ ckout_offset
+            else:
+                return 0x62 & ~ ckout_offset
 
     elif target in targets_2:
         if oscillator == "external":
-            return 0xff
+            return 0xff & ~ ckout_offset
+        elif oscillator == "external_clock":
+            return 0xe0 & ~ ckout_offset
         else:
-            return 0xe2 if f_cpu == "8000000L" else 0x62
+            if f_cpu == "8000000L":
+                return 0xe2 & ~ ckout_offset
+            else:
+                return 0x62 & ~ ckout_offset
 
     elif target in targets_3:
         if bod == "4.0v":
@@ -42,6 +57,8 @@ def get_lfuse(target, f_cpu, oscillator, bod, eesave):
         bod_offset = bod_bits << 6
         if oscillator == "external":
             return 0xff & ~ bod_offset
+        elif oscillator == "external_clock":
+            return 0xe0 & ~ bod_offset
         else:
             if f_cpu == "8000000L":
                 return 0xe4 & ~ bod_offset
@@ -51,7 +68,7 @@ def get_lfuse(target, f_cpu, oscillator, bod, eesave):
     elif target in targets_4:
         eesave_bit = 1 if eesave == "yes" else 0
         eesave_offset = eesave_bit << 6
-        if oscillator == "external":
+        if oscillator == "external" or oscillator == "external_clock":
             return 0x78 & ~ eesave_offset
         else:
             if f_cpu == "9600000L":
@@ -72,36 +89,47 @@ def get_lfuse(target, f_cpu, oscillator, bod, eesave):
         env.Exit(1)
 
 
-def get_hfuse(target, uart, oscillator, bod, eesave):
+def get_hfuse(target, uart, oscillator, bod, eesave, jtagen):
     targets_1 = (
         "atmega2561", "atmega2560", "atmega1284", "atmega1284p",
         "atmega1281", "atmega1280", "atmega644a", "atmega644p",
-        "atmega640", "atmega328", "atmega328p", "atmega328pb",
-        "atmega324a", "atmega324p", "atmega324pa", "atmega324pb",
-        "at90can128", "at90can64", "at90can32")
-    targets_2 = ("atmega164a", "atmega164p", "atmega162")
-    targets_3 = (
+        "atmega640", "atmega324a", "atmega324p", "atmega324pa",
+        "atmega324pb", "at90can128", "at90can64", "at90can32")
+    targets_2 = ("atmega328", "atmega328p", "atmega328pb")
+    targets_3 = ("atmega164a", "atmega164p", "atmega162")
+    targets_4 = (
         "atmega168", "atmega168p", "atmega168pb", "atmega88", "atmega88p",
         "atmega88pb", "atmega48", "atmega48p", "atmega48pb")
-    targets_4 = ("atmega128", "atmega64", "atmega32")
-    targets_5 = ("atmega8535", "atmega8515", "atmega16", "atmega8")
-    targets_6 = ("attiny13", "attiny13a")
+    targets_5 = ("atmega128", "atmega64", "atmega32")
+    targets_6 = ("atmega8535", "atmega8515", "atmega16", "atmega8")
+    targets_7 = ("attiny13", "attiny13a")
 
     eesave_bit = 1 if eesave == "yes" else 0
     eesave_offset = eesave_bit << 3
     ckopt_bit = 1 if oscillator == "external" else 0
     ckopt_offset = ckopt_bit << 4
+    jtagen_bit = 1 if jtagen == "yes" else 0
+    jtagen_offset = jtagen_bit << 6
+
     if target in targets_1:
+        if uart == "no_bootloader":
+            return 0xdf & ~ jtagen_offset & ~ eesave_offset
+        else:
+            return 0xde & ~ jtagen_offset & ~ eesave_offset
+
+    elif target in targets_2:
         if uart == "no_bootloader":
             return 0xdf & ~ eesave_offset
         else:
             return 0xde & ~ eesave_offset
-    elif target in targets_2:
-        if uart == "no_bootloader":
-            return 0xdd & ~ eesave_offset
-        else:
-            return 0xdc & ~ eesave_offset
+
     elif target in targets_3:
+        if uart == "no_bootloader":
+            return 0xdd & ~ jtagen_offset & ~ eesave_offset
+        else:
+            return 0xdc & ~ jtagen_offset & ~ eesave_offset
+
+    elif target in targets_4:
         if bod == "4.3v":
             return 0xdc & ~ eesave_offset
         elif bod == "2.7v":
@@ -110,17 +138,20 @@ def get_hfuse(target, uart, oscillator, bod, eesave):
             return 0xde & ~ eesave_offset
         else:
             return 0xdf & ~ eesave_offset
-    elif target in targets_4:
-        if uart == "no_bootloader":
-            return (0xdf & ~ ckopt_offset) & ~ eesave_offset
-        else:
-            return (0xde & ~ ckopt_offset) & ~ eesave_offset
+
     elif target in targets_5:
         if uart == "no_bootloader":
-            return (0xdd & ~ ckopt_offset) & ~ eesave_offset
+            return 0xdf & ~ jtagen_offset & ~ ckopt_offset & ~ eesave_offset
         else:
-            return (0xdc & ~ ckopt_offset) & ~ eesave_offset
+            return 0xde & ~ jtagen_offset & ~ ckopt_offset & ~ eesave_offset
+
     elif target in targets_6:
+        if uart == "no_bootloader":
+            return 0xdd & ~ ckopt_offset & ~ eesave_offset
+        else:
+            return 0xdc & ~ ckopt_offset & ~ eesave_offset
+
+    elif target in targets_7:
         if bod == "4.3v":
             return 0x9
         elif bod == "2.7v":
@@ -135,28 +166,31 @@ def get_hfuse(target, uart, oscillator, bod, eesave):
         env.Exit(1)
 
 
-def get_efuse(mcu, uart, bod):
+def get_efuse(target, uart, bod, cfd):
 
-    mcus_1 = (
+    targets_without_efuse = (
+        "atmega8535", "atmega8515", "atmega8", "atmega16",
+        "atmega32", "attiny13a", "attiny13")
+    targets_1 = (
         "atmega2561", "atmega2560", "atmega1284", "atmega1284p",
         "atmega1281", "atmega1280", "atmega644a", "atmega644p",
         "atmega640", "atmega328", "atmega328p", "atmega324a",
         "atmega324p", "atmega324pa", "atmega164a", "atmega164p")
-    mcus_2 = ("atmega328pb", "atmega324pb")
-    mcus_3 = (
+    targets_2 = ("atmega328pb", "atmega324pb")
+    targets_3 = (
         "atmega168", "atmega168p", "atmega168pb", "atmega88",
         "atmega88p", "atmega88pb")
-    mcus_4 = ("atmega128", "atmega64", "atmega48", "atmega48p")
-    mcus_5 = ("at90can128", "at90can64", "at90can32")
-    mcus_6 = ("atmega162",)
+    targets_4 = ("atmega128", "atmega64", "atmega48", "atmega48p")
+    targets_5 = ("at90can128", "at90can64", "at90can32")
+    targets_6 = ("atmega162",)
 
-    mcu_without_efuse = ("atmega8535", "atmega8515", "atmega8", "atmega16",
-        "atmega32", "attiny13a", "attiny13")
+    cfd_bit = 1 if cfd == "yes" else 0
+    cfd_offset = cfd_bit << 3
 
-    if mcu in mcu_without_efuse:
+    if target in targets_without_efuse:
         return None
 
-    if mcu in mcus_1:
+    if target in targets_1:
         if bod == "4.3v":
             return 0xfc
         elif bod == "2.7v":
@@ -166,23 +200,23 @@ def get_efuse(mcu, uart, bod):
         else:
             return 0xff
 
-    elif mcu in mcus_2:
+    elif target in targets_2:
         if bod == "4.3v":
-            return 0xf4
+            return 0xf4 | cfd_offset
         elif bod == "2.7v":
-            return 0xf5
+            return 0xf5 | cfd_offset
         elif bod == "1.8v":
-            return 0xf6
+            return 0xf6 | cfd_offset
         else:
             return 0xf7
 
-    elif mcu in mcus_3:
+    elif target in targets_3:
         return 0xfd if uart == "no_bootloader" else 0xfc
 
-    elif mcu in mcus_4:
+    elif target in targets_4:
         return 0xff
 
-    elif mcu in mcus_5:
+    elif target in targets_5:
         if bod == "4.1v":
             return 0xfd
         elif bod == "4.0v":
@@ -200,7 +234,7 @@ def get_efuse(mcu, uart, bod):
         else:
             return 0xff
 
-    elif mcu in mcus_6:
+    elif target in targets_6:
         if bod == "4.3v":
             return 0xf9
         elif bod == "2.7v":
@@ -211,7 +245,7 @@ def get_efuse(mcu, uart, bod):
             return 0xff
 
     else:
-        sys.stderr.write("Error: Couldn't calculate efuse for %s\n" % mcu)
+        sys.stderr.write("Error: Couldn't calculate efuse for %s\n" % target)
         env.Exit(1)
 
 
@@ -230,8 +264,8 @@ def is_target_without_bootloader(target):
 def get_lock_bits(target):
     if is_target_without_bootloader(target):
         return "0xff"
-
-    return "0x0f"
+    else:
+        return "0x0f"
 
 
 board = env.BoardConfig()
@@ -258,15 +292,42 @@ if core in ("MiniCore", "MegaCore", "MightyCore", "MajorCore", "MicroCore"):
     bod = board.get("hardware.bod", "2.7v").lower()
     uart = board.get("hardware.uart", "uart0").lower()
     eesave = board.get("hardware.eesave", "yes").lower()
+    jtagen = board.get("hardware.jtagen", "no").lower()
+    ckout = board.get("hardware.ckout", "no").lower()
+    cfd = board.get("hardware.cfd", "no").lower()
 
-    print("Target configuration:")
-    print("Target = %s, Clock speed = %s, Oscillator = %s, BOD level = %s, "
-          "UART port = %s, Save EEPROM = %s" %
-          (target, f_cpu, oscillator, bod, uart, eesave))
+    print("\nTARGET CONFIGURATION:")
+    print("---------------------")
+    print("Target = %s" % target)
+    print("Clock speed = %s" % f_cpu)
+    print("Oscillator = %s" % oscillator)
+    print("BOD level = %s" % bod)
+    print("Save EEPROM = %s" % eesave)
 
-    lfuse = lfuse or hex(get_lfuse(target, f_cpu, oscillator, bod, eesave))
-    hfuse = hfuse or hex(get_hfuse(target, uart, oscillator, bod, eesave))
-    efuse = efuse or get_efuse(target, uart, bod)
+    if target not in ("attiny13", "attiny13a"):
+        print("UART port = %s" % uart)
+
+    if target not in (
+        "atmega8535", "atmega8515", "atmega128", "atmega64", "atmega32",
+        "atmega16", "atmega8", "attiny13", "attiny13a"):
+        print("Clock output = %s" % ckout)
+
+    if target in (
+        "atmega2561", "atmega2560", "atmega1284", "atmega1284p", "atmega1281",
+        "atmega1280", "atmega644a", "atmega644p", "atmega640", "atmega324a",
+        "atmega324p", "atmega324pa", "atmega324pb", "at90can128", "at90can64",
+        "at90can32", "atmega164a", "atmega164p", "atmega162", "atmega128",
+        "atmega64", "atmega32"):
+        print("JTAG enable = %s" % jtagen)
+
+    if target in ("atmega324pb", "atmega328pb"):
+        print("CFD enable = %s" % cfd)
+
+    print("---------------------")
+
+    lfuse = lfuse or hex(get_lfuse(target, f_cpu, oscillator, bod, eesave, ckout))
+    hfuse = hfuse or hex(get_hfuse(target, uart, oscillator, bod, eesave, jtagen))
+    efuse = efuse or get_efuse(target, uart, bod, cfd)
 
 fuses_cmd = [
     "avrdude", "-p", "$BOARD_MCU", "-C",
@@ -287,7 +348,7 @@ if efuse:
     efuse = efuse if isinstance(efuse, str) else hex(efuse)
     fuses_cmd.append("-Uefuse:w:%s:m" % efuse)
 
-print("Selected fuses: [lfuse = %s, hfuse = %s%s]" % (
+print("\nSelected fuses: [lfuse = %s, hfuse = %s%s]" % (
     lfuse, hfuse, ", efuse = %s" % efuse if efuse else ""))
 
 fuses_action = env.VerboseAction(" ".join(fuses_cmd), "Setting fuses")
