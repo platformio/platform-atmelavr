@@ -37,96 +37,115 @@
   "packages": {
     "toolchain-atmelavr": {
       "type": "toolchain",
+      "owner": "platformio",
       "version": "~1.50400.0"
     },
     "framework-arduino-avr": {
       "type": "framework",
       "optional": true,
+      "owner": "platformio",
       "version": "~5.0.0"
     },
     "framework-arduino-avr-attiny": {
       "type": "framework",
       "optional": true,
+      "owner": "platformio",
       "version": "~1.3.2"
     },
     "framework-arduino-avr-bean": {
       "type": "framework",
       "optional": true,
+      "owner": "platformio",
       "version": "~2.0.3"
     },
     "framework-arduino-avr-core13": {
       "type": "framework",
       "optional": true,
+      "owner": "platformio",
       "version": "~0.0.22"
     },
     "framework-arduino-avr-digistump": {
       "type": "framework",
       "optional": true,
+      "owner": "platformio",
       "version": "~1.6.7"
     },
     "framework-arduino-avr-dwenguino": {
       "type": "framework",
       "optional": true,
+      "owner": "platformio",
       "version": "~2.2.1"
     },
     "framework-arduino-avr-megacore": {
       "type": "framework",
       "optional": true,
+      "owner": "platformio",
       "version": "~2.0.3"
     },
     "framework-arduino-avr-mightycore": {
       "type": "framework",
       "optional": true,
+      "owner": "platformio",
       "version": "~2.0.5"
     },
     "framework-arduino-avr-minicore": {
       "type": "framework",
       "optional": true,
+      "owner": "platformio",
       "version": "~2.0.5"
     },
     "framework-arduino-avr-majorcore": {
       "type": "framework",
       "optional": true,
+      "owner": "platformio",
       "version": "~2.0.2"
     },
     "framework-arduino-avr-microcore": {
       "type": "framework",
       "optional": true,
+      "owner": "platformio",
       "version": "~1.0.6"
     },
     "framework-arduino-avr-nicai": {
       "type": "framework",
       "optional": true,
+      "owner": "platformio",
       "version": "~3.5.0"
     },
     "framework-arduino-avr-panstamp": {
       "type": "framework",
       "optional": true,
+      "owner": "platformio",
       "version": "~1.5.7"
     },
     "framework-arduino-avr-prusa_rambo": {
       "type": "framework",
       "optional": true,
+      "owner": "platformio",
       "version": "~1.0.3"
     },
     "framework-simba": {
       "type": "framework",
       "optional": true,
+      "owner": "platformio",
       "version": ">=7.0.0"
     },
     "tool-avrdude": {
       "type": "uploader",
       "optional": true,
+      "owner": "platformio",
       "version": "~1.60300.0"
     },
     "tool-micronucleus": {
       "type": "uploader",
       "optional": true,
+      "owner": "platformio",
       "version": "~1.200.0"
     },
     "tool-simavr": {
       "type": "debugger",
       "optional": true,
+      "owner": "platformio",
       "version": "~1.10600.200511"
     }
   }
