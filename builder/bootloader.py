@@ -32,10 +32,21 @@ def get_suitable_optiboot_binary(framework_dir, board_config):
     if core == "MightyCore" and board_config.get("build.variant", "") == "bobuino":
         bootloader_led = "B7"
     bootloader_file = "optiboot_flash_%s_%s_%s_%s_%s.hex" % (
-        mcu, uart, board_config.get(
-            "bootloader.speed", env.subst("$UPLOAD_SPEED")), f_cpu, bootloader_led)
-    bootloader_path = join(framework_dir, "bootloaders", "optiboot_flash",
-        "bootloaders", mcu, f_cpu, bootloader_file)
+        mcu,
+        uart,
+        board_config.get("bootloader.speed", env.subst("$UPLOAD_SPEED")),
+        f_cpu,
+        bootloader_led,
+    )
+    bootloader_path = join(
+        framework_dir,
+        "bootloaders",
+        "optiboot_flash",
+        "bootloaders",
+        mcu,
+        f_cpu,
+        bootloader_file,
+    )
 
     if isfile(bootloader_path):
         return bootloader_path
@@ -43,66 +54,59 @@ def get_suitable_optiboot_binary(framework_dir, board_config):
     return bootloader_path.replace(".hex", "_BIGBOOT.hex")
 
 
-common_cmd = [
-    "avrdude", "-p", "$BOARD_MCU", "-e", "-C",
-    '"%s"' % join(platform.get_package_dir("tool-avrdude"), "avrdude.conf"),
-    "-c", "$UPLOAD_PROTOCOL", "$UPLOAD_FLAGS"
-]
-
 framework_dir = ""
 if env.get("PIOFRAMEWORK", []):
     framework_dir = platform.get_package_dir(
-        platform.frameworks[env.get("PIOFRAMEWORK")[0]]['package'])
+        platform.frameworks[env.get("PIOFRAMEWORK")[0]]["package"]
+    )
 
-# Common for all bootloaders
-lock_bits = board.get("bootloader.lock_bits", "0x0F")
-unlock_bits = board.get("bootloader.unlock_bits", "0x3F")
 bootloader_path = board.get("bootloader.file", "")
-
 if core in ("MiniCore", "MegaCore", "MightyCore", "MajorCore"):
     if not isfile(bootloader_path):
         bootloader_path = get_suitable_optiboot_binary(framework_dir, board)
-    fuses_action = env.SConscript("fuses.py", exports="env")
 else:
     if not isfile(bootloader_path):
-        bootloader_path = join(
-            framework_dir, "bootloaders", bootloader_path)
+        bootloader_path = join(framework_dir, "bootloaders", bootloader_path)
 
     if not board.get("bootloader", {}):
         sys.stderr.write("Error: missing bootloader configuration!\n")
         env.Exit(1)
 
-    lfuse = board.get("bootloader.lfuse", "")
-    hfuse = board.get("bootloader.hfuse", "")
-    efuse = board.get("bootloader.efuse", "")
-
-    if not all(f for f in (lfuse, hfuse)):
-        sys.stderr.write("Error: Missing bootloader fuses!\n")
-        env.Exit(1)
-
-    fuses_cmd = [
-        "-Ulock:w:%s:m" % unlock_bits,
-        "-Uhfuse:w:%s:m" % hfuse,
-        "-Ulfuse:w:%s:m" % lfuse
-    ]
-
-    if efuse:
-        fuses_cmd.append("-Uefuse:w:%s:m" % efuse)
-
-    fuses_action = env.VerboseAction(
-        " ".join(common_cmd + fuses_cmd), "Setting fuses")
-
 if not isfile(bootloader_path):
-    sys.stderr.write("Error: Couldn't find bootloader image\n")
+    sys.stderr.write("Error: Couldn't find bootloader image %s\n" % bootloader_path)
     env.Exit(1)
 
-bootloader_flags = [
-    '-Uflash:w:"%s":i' % bootloader_path, "-Ulock:w:%s:m" % lock_bits]
+fuses_action = env.SConscript("fuses.py", exports="env")
+
+lock_bits = board.get("bootloader.lock_bits", "0x0F")
+unlock_bits = board.get("bootloader.unlock_bits", "0x3F")
+
+env.Replace(
+    BOOTUPLOADER="avrdude",
+    BOOTUPLOADERFLAGS=[
+        "-p",
+        "$BOARD_MCU",
+        "-C",
+        '"%s"'
+        % join(env.PioPlatform().get_package_dir("tool-avrdude") or "", "avrdude.conf"),
+    ],
+    BOOTFLAGS=['-Uflash:w:"%s":i' % bootloader_path, "-Ulock:w:%s:m" % lock_bits],
+    UPLOADBOOTCMD="$BOOTUPLOADER $BOOTUPLOADERFLAGS $UPLOAD_FLAGS $BOOTFLAGS",
+)
+
+if env.subst("$UPLOAD_PROTOCOL") != "custom":
+    env.Append(BOOTUPLOADERFLAGS=["-c", "$UPLOAD_PROTOCOL"])
+else:
+    print(
+        "Warning: The `custom` upload protocol is used! The upload and fuse flags may "
+        "conflict!\nMore information: "
+        "https://docs.platformio.org/en/latest/platforms/atmelavr.html"
+        "#overriding-default-bootloader-command\n"
+    )
 
 bootloader_actions = [
     fuses_action,
-    env.VerboseAction(" ".join(common_cmd + bootloader_flags),
-                      "Uploading bootloader")
+    env.VerboseAction("$UPLOADBOOTCMD", "Uploading bootloader"),
 ]
 
 Return("bootloader_actions")
