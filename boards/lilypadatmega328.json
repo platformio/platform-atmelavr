@@ -16,7 +16,7 @@
   },
   "debug": {
     "simavr_target": "atmega328p",
-    "avr-debugger": {
+    "avr-stub": {
       "speed": 115200
     }
   },

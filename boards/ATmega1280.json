@@ -11,7 +11,7 @@
   },
   "debug": {
     "simavr_target": "atmega1280",
-    "avr-debugger": {
+    "avr-stub": {
       "speed": 115200
     }
   },
