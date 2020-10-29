@@ -7,7 +7,10 @@
     "variant": "rambo"
   },
   "debug": {
-    "simavr_target": "atmega2560"
+    "simavr_target": "atmega2560",
+    "avr-stub": {
+      "speed": 115200
+    }
   },
   "frameworks": [
     "arduino"

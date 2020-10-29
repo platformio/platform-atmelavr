@@ -15,7 +15,10 @@
     "unlock_bits": "0x3F"
   },
   "debug": {
-    "simavr_target": "atmega328p"
+    "simavr_target": "atmega328p",
+    "avr-stub": {
+      "speed": 115200
+    }
   },
   "frameworks": [
     "arduino",

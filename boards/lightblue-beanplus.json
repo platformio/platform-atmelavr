@@ -10,7 +10,10 @@
     "bluetooth"
   ],
   "debug": {
-    "simavr_target": "atmega328p"
+    "simavr_target": "atmega328p",
+    "avr-stub": {
+      "speed": 115200
+    }
   },
   "frameworks": [
     "arduino"

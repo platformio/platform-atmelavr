@@ -7,9 +7,14 @@
     "variant": "prusa_einsy_rambo"
   },
   "debug": {
-    "simavr_target": "atmega2560"
+    "simavr_target": "atmega2560",
+    "avr-stub": {
+      "speed": 115200
+    }
   },
-  "frameworks": ["arduino"],
+  "frameworks": [
+    "arduino"
+  ],
   "name": "Prusa RAMBo",
   "upload": {
     "maximum_ram_size": 8192,

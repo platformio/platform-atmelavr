@@ -12,6 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import sys
 from os.path import join
 from time import sleep
 
@@ -238,15 +239,16 @@ env.AddPlatformTarget(
 )
 
 #
-# Target: Upload firmware using external programmer
+# Deprecated target: Upload firmware using external programmer
 #
 
-env.AddPlatformTarget(
-    "program",
-    target_firm,
-    env.VerboseAction("$UPLOADCMD", "Programming $SOURCE"),
-    "Upload using Programmer",
-)
+if "program" in COMMAND_LINE_TARGETS:
+    sys.stderr.write(
+        "Error: The `program` target is deprecated. To use a programmer for uploading "
+        "firmware specify custom `upload_command`.\n"
+        "More information: https://docs.platformio.org/en/latest/platforms/"
+        "atmelavr.html#upload-using-programmer\n")
+    env.Exit(1)
 
 #
 # Target: Setup fuses
