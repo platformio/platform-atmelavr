@@ -16,7 +16,7 @@
   },
   "debug": {
     "simavr_target": "atmega2560",
-    "avr_debugger": {
+    "avr-debugger": {
       "speed": 115200
     }
   },

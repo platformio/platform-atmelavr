@@ -110,9 +110,9 @@ class AtmelavrPlatform(PlatformBase):
                 },
                 "onboard": True
             }
-        if debug.get("avr_debugger", ""):
-            speed = debug["avr_debugger"]["speed"]
-            debug["tools"]["avr_debugger"] = {
+        if debug.get("avr-debugger", ""):
+            speed = debug["avr-debugger"]["speed"]
+            debug["tools"]["avr-debugger"] = {
                 "init_cmds": [
                     "define pio_reset_halt_target",
                     "   monitor reset",
