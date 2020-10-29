@@ -6,11 +6,14 @@
     "mcu": "atmega328",
     "variant": "standard"
   },
-  "bootloader":{
+  "bootloader": {
     "led_pin": "B5"
   },
   "debug": {
-    "simavr_target": "atmega328"
+    "simavr_target": "atmega328",
+    "avr_debugger": {
+      "speed": 115200
+    }
   },
   "frameworks": [
     "arduino"
