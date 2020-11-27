@@ -18,7 +18,7 @@
   "name": "ATmega168/A",
   "upload": {
     "maximum_ram_size": 1024,
-    "maximum_size": 15872,
+    "maximum_size": 16384,
     "protocol": "arduino",
     "require_upload_port": true,
     "speed": 115200
