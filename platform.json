@@ -99,7 +99,7 @@
       "type": "framework",
       "optional": true,
       "owner": "platformio",
-      "version": "~1.0.7"
+      "version": "~2.0.0"
     },
     "framework-arduino-avr-nicai": {
       "type": "framework",
