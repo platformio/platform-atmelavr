@@ -15,7 +15,7 @@
   "name": "AT90CAN64",
   "upload": {
     "maximum_ram_size": 4096,
-    "maximum_size": 64512,
+    "maximum_size": 65536,
     "protocol": "arduino",
     "require_upload_port": true,
     "speed": 115200

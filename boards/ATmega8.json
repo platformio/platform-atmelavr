@@ -18,7 +18,7 @@
   "name": "ATmega8/A",
   "upload": {
     "maximum_ram_size": 1024,
-    "maximum_size": 7680,
+    "maximum_size": 8192,
     "protocol": "arduino",
     "require_upload_port": true,
     "speed": 115200

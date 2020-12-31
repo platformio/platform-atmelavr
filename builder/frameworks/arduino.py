@@ -42,6 +42,16 @@ elif build_core != "arduino":
 
 assert isdir(FRAMEWORK_DIR)
 
+
+def get_bootloader_size():
+    max_size = board.get("upload.maximum_size")
+    if max_size > 4096 and max_size <= 32768:
+        return 512
+    elif max_size >= 65536 or board.get("build.mcu").startswith("at90can32"):
+        return 1024
+    return 0
+
+
 CPPDEFINES = [
     ("F_CPU", "$BOARD_F_CPU"),
     "ARDUINO_ARCH_AVR",
@@ -103,6 +113,18 @@ env.Append(
     ]
 )
 
+#
+# Take into account bootloader size
+#
+
+if (
+    build_core in ("MiniCore", "MegaCore", "MightyCore", "MajorCore")
+    and board.get("hardware.uart", "uart0") != "no_bootloader"
+):
+    upload_section = board.get("upload")
+    upload_section["maximum_size"] -= board.get(
+        "bootloader.size", get_bootloader_size()
+    )
 # copy CCFLAGS to ASFLAGS (-x assembler-with-cpp mode)
 env.Append(ASFLAGS=env.get("CCFLAGS", [])[:])
 
