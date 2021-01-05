@@ -24,6 +24,13 @@
       "package": "framework-arduino-avr",
       "script": "builder/frameworks/arduino.py"
     },
+    "riot": {
+      "package": "framework-riot",
+      "script": "builder/frameworks/riot.py",
+      "description": "RIOT is a real-time multi-threading operating system that supports a range of devices that are typically found in the Internet of Things (IoT): 8-bit, 16-bit and 32-bit microcontrollers.",
+      "homepage": "https://www.riot-os.org",
+      "title": "RIOT"
+    },
     "simba": {
       "package": "framework-simba",
       "script": "builder/frameworks/simba.py"
@@ -124,6 +131,12 @@
       "optional": true,
       "owner": "platformio",
       "version": ">=7.0.0"
+    },
+    "framework-riot": {
+      "type": "framework",
+      "optional": true,
+      "owner": "valeros",
+      "version": "~0.202010.0"
     },
     "tool-avrdude": {
       "type": "uploader",

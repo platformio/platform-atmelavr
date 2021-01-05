@@ -40,7 +40,8 @@
   },
   "frameworks": [
     "arduino",
-    "simba"
+    "simba",
+    "riot"
   ],
   "name": "Arduino Uno",
   "upload": {
