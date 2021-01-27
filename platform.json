@@ -81,7 +81,7 @@
       "type": "framework",
       "optional": true,
       "owner": "platformio",
-      "version": "~2.0.6"
+      "version": "~2.0.8"
     },
     "framework-arduino-avr-minicore": {
       "type": "framework",
