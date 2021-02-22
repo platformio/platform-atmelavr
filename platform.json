@@ -33,7 +33,7 @@
     "toolchain-atmelavr": {
       "type": "toolchain",
       "owner": "platformio",
-      "version": "~1.50400.0"
+      "version": "~1.70300.0"
     },
     "framework-arduino-avr": {
       "type": "framework",
