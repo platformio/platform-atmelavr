@@ -63,7 +63,7 @@
       "type": "framework",
       "optional": true,
       "owner": "platformio",
-      "version": "~1.6.7"
+      "version": "~1.7.2"
     },
     "framework-arduino-avr-dwenguino": {
       "type": "framework",
@@ -135,7 +135,7 @@
       "type": "uploader",
       "optional": true,
       "owner": "platformio",
-      "version": "~1.200.0"
+      "version": "~1.250.0"
     },
     "tool-simavr": {
       "type": "debugger",
