@@ -75,31 +75,31 @@
       "type": "framework",
       "optional": true,
       "owner": "platformio",
-      "version": "~2.0.4"
+      "version": "~2.1.0"
     },
     "framework-arduino-avr-mightycore": {
       "type": "framework",
       "optional": true,
       "owner": "platformio",
-      "version": "~2.0.8"
+      "version": "~2.1.0"
     },
     "framework-arduino-avr-minicore": {
       "type": "framework",
       "optional": true,
       "owner": "platformio",
-      "version": "~2.0.7"
+      "version": "~2.1.0"
     },
     "framework-arduino-avr-majorcore": {
       "type": "framework",
       "optional": true,
       "owner": "platformio",
-      "version": "~2.0.3"
+      "version": "~2.1.0"
     },
     "framework-arduino-avr-microcore": {
       "type": "framework",
       "optional": true,
       "owner": "platformio",
-      "version": "~2.0.0"
+      "version": "~2.0.3"
     },
     "framework-arduino-avr-nicai": {
       "type": "framework",
