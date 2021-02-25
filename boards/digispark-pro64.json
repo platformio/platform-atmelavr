@@ -1,10 +1,10 @@
 {
   "build": {
     "core": "pro",
-    "extra_flags": "-DARDUINO_AVR_DIGISPARKPRO",
+    "extra_flags": "-DARDUINO_AVR_DIGISPARKPRO -DSERIAL_BUFFER_SIZE=64",
     "f_cpu": "16000000L",
     "mcu": "attiny167",
-    "variant": "pro32buffer"
+    "variant": "pro"
   },
   "frameworks": [
     "arduino"

@@ -186,7 +186,12 @@ upload_protocol = env.subst("$UPLOAD_PROTOCOL")
 if upload_protocol == "micronucleus":
     env.Replace(
         UPLOADER="micronucleus",
-        UPLOADERFLAGS=["-c", "$UPLOAD_PROTOCOL", "--timeout", "60"],
+        UPLOADERFLAGS=[
+            "--no-ansi",
+            "--run",
+            "--timeout",
+            "60"
+        ],
         UPLOADCMD="$UPLOADER $UPLOADERFLAGS $SOURCES",
     )
     upload_actions = [env.VerboseAction("$UPLOADCMD", "Uploading $SOURCE")]
