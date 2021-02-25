@@ -189,7 +189,7 @@ if upload_protocol == "micronucleus":
         UPLOADERFLAGS=[
             "--no-ansi",
             "--run",
-            "--timeout"
+            "--timeout",
             "60"
         ],
         UPLOADCMD="$UPLOADER $UPLOADERFLAGS $SOURCES",
