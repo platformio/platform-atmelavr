@@ -125,6 +125,17 @@ if (
     upload_section["maximum_size"] -= board.get(
         "bootloader.size", get_bootloader_size()
     )
+elif build_core in ("tiny", "tinymodern"):
+    flatten_defines = env.Flatten(env["CPPDEFINES"])
+    extra_defines = []
+    if "CLOCK_SOURCE" not in flatten_defines:
+        extra_defines.append(("CLOCK_SOURCE", 0))
+    if "NEOPIXELPORT" not in flatten_defines:
+        extra_defines.append(("NEOPIXELPORT", "PORTA"))
+
+    if extra_defines:
+        env.AppendUnique(CPPDEFINES=extra_defines)
+
 # copy CCFLAGS to ASFLAGS (-x assembler-with-cpp mode)
 env.Append(ASFLAGS=env.get("CCFLAGS", [])[:])
 
