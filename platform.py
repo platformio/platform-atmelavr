@@ -96,7 +96,7 @@ class AtmelavrPlatform(PlatformBase):
                     "end",
                     "target remote $DEBUG_PORT",
                     "$INIT_BREAK",
-                    "$LOAD_CMD"
+                    "$LOAD_CMDS"
                 ],
                 "port": ":1234",
                 "server": {
