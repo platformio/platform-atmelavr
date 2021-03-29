@@ -1,7 +1,7 @@
 {
   "build": {
     "core": "tiny",
-    "extra_flags": "-DARDUINO_AVR_ATTINYX5",
+    "extra_flags": "-DARDUINO_AVR_ATTINYX5 -DNEOPIXELPORT=PORTB",
     "f_cpu": "8000000L",
     "mcu": "attiny25",
     "variant": "tinyX5"
