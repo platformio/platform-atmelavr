@@ -88,8 +88,7 @@ env.Append(
     CXXFLAGS=[
         "-fno-exceptions",
         "-fno-threadsafe-statics",
-        "-fpermissive",
-        "-std=gnu++11"
+        "-fpermissive"
     ],
 
     LINKFLAGS=[
@@ -112,6 +111,19 @@ env.Append(
         join(FRAMEWORK_DIR, "cores", build_core)
     ]
 )
+
+if build_core in ("MiniCore", "MegaCore", "MightyCore", "MajorCore"):
+    env.Append(
+        CXXFLAGS=[
+            "-std=gnu++17"
+        ],
+    )
+else:
+    env.Append(
+        CXXFLAGS=[
+            "-std=gnu++11"
+        ],
+    )
 
 #
 # Take into account bootloader size
