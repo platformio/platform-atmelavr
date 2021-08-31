@@ -18,7 +18,7 @@
     "type": "git",
     "url": "https://github.com/platformio/platform-atmelavr.git"
   },
-  "version": "3.3.0",
+  "version": "3.4.0",
   "frameworks": {
     "arduino": {
       "package": "framework-arduino-avr",
@@ -99,7 +99,7 @@
       "type": "framework",
       "optional": true,
       "owner": "platformio",
-      "version": "~2.0.3"
+      "version": "~2.1.0"
     },
     "framework-arduino-avr-nicai": {
       "type": "framework",
@@ -141,7 +141,7 @@
       "type": "debugger",
       "optional": true,
       "owner": "platformio",
-      "version": "~1.10600.200511"
+      "version": "~1.10700.0"
     }
   }
 }
