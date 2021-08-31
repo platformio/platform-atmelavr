@@ -141,7 +141,7 @@
       "type": "debugger",
       "optional": true,
       "owner": "platformio",
-      "version": "~1.10600.200511"
+      "version": "~1.10700.0"
     }
   }
 }
