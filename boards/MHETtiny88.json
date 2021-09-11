@@ -1,0 +1,23 @@
+{
+  "build": {
+    "core": "tiny88",
+    "extra_flags": "-DARDUINO_AVR_ATTINYX8",
+    "f_cpu": "16500000L",
+    "mcu": "attiny88",
+    "variant": "MHtiny88"
+  },
+  "debug": {
+    "simavr_target": "attiny88"
+  },
+  "frameworks": [
+    "arduino"
+  ],
+  "name": "Digispark USB MH-ET Live Tiny88",
+  "upload": {
+    "maximum_ram_size": 512,
+    "maximum_size": 6650,
+    "protocol": "micronucleus"
+  },
+  "url": "http://digistump.com/products/1",
+  "vendor": "Digistump"
+}

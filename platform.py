@@ -30,7 +30,7 @@ class AtmelavrPlatform(PlatformBase):
                 "pioframework", []) and build_core != "arduino":
 
             framework_package = "framework-arduino-avr-%s" % build_core.lower()
-            if build_core in ("dtiny", "pro"):
+            if build_core in ("dtiny", "pro", "tiny88"):
                 framework_package = "framework-arduino-avr-digistump"
             elif build_core in ("tiny", "tinymodern"):
                 framework_package = "framework-arduino-avr-attiny"
