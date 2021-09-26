@@ -4,7 +4,7 @@
     "extra_flags": "-DARDUINO_AVR_ATTINYX8",
     "f_cpu": "16500000L",
     "mcu": "attiny88",
-    "variant": "MHtiny88"
+    "variant": "tinyX8"
   },
   "debug": {
     "simavr_target": "attiny88"
