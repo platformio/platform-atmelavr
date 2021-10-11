@@ -141,9 +141,11 @@ elif build_core in ("tiny", "tinymodern"):
     flatten_defines = env.Flatten(env["CPPDEFINES"])
     extra_defines = []
     if "CLOCK_SOURCE" not in flatten_defines:
-        extra_defines.append(("CLOCK_SOURCE", 0))
+        extra_defines.append(("CLOCK_SOURCE", board.get("build.clock_source", 0)))
     if "NEOPIXELPORT" not in flatten_defines:
-        extra_defines.append(("NEOPIXELPORT", "PORTA"))
+        extra_defines.append(
+            ("NEOPIXELPORT", board.get("build.neo_pixel_port", "PORTA"))
+        )
 
     if extra_defines:
         env.AppendUnique(CPPDEFINES=extra_defines)
