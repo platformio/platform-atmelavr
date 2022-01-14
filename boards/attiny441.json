@@ -1,7 +1,7 @@
 {
   "build": {
     "core": "tinymodern",
-    "extra_flags": "-DARDUINO_AVR_ATTINYX41",
+    "extra_flags": "-DARDUINO_AVR_ATTINYX41 -DLOWERCAL -DWIRE_MASTER_ONLY -DNEW_PINOUT",
     "f_cpu": "8000000L",
     "mcu": "attiny441"
   },

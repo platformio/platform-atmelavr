@@ -14,8 +14,8 @@
   ],
   "name": "SparkFun ATmega128RFA1 Dev Board",
   "upload": {
-    "maximum_ram_size": 126976,
-    "maximum_size": 16384,
+    "maximum_ram_size": 16384,
+    "maximum_size": 126976,
     "protocol": "arduino",
     "require_upload_port": true,
     "speed": 57600

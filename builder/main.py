@@ -52,7 +52,7 @@ def BeforeUpload(target, source, env):  # pylint: disable=W0613,W0621
         return
 
     env.AutodetectUploadPort()
-    env.Append(UPLOADERFLAGS=["-P", '"$UPLOAD_PORT"'])
+    env.Append(UPLOADERFLAGS=["-P", "$UPLOAD_PORT"])
 
     if env.subst("$BOARD") in ("raspduino", "emonpi", "sleepypi"):
 
@@ -161,6 +161,7 @@ if "nobuild" in COMMAND_LINE_TARGETS:
 else:
     target_elf = env.BuildProgram()
     target_firm = env.ElfToHex(join("$BUILD_DIR", "${PROGNAME}"), target_elf)
+    env.Depends(target_firm, "checkprogsize")
 
 AlwaysBuild(env.Alias("nobuild", target_firm))
 target_buildprog = env.Alias("buildprog", target_firm, target_firm)
@@ -186,7 +187,12 @@ upload_protocol = env.subst("$UPLOAD_PROTOCOL")
 if upload_protocol == "micronucleus":
     env.Replace(
         UPLOADER="micronucleus",
-        UPLOADERFLAGS=["-c", "$UPLOAD_PROTOCOL", "--timeout", "60"],
+        UPLOADERFLAGS=[
+            "--no-ansi",
+            "--run",
+            "--timeout",
+            "60"
+        ],
         UPLOADCMD="$UPLOADER $UPLOADERFLAGS $SOURCES",
     )
     upload_actions = [env.VerboseAction("$UPLOADCMD", "Uploading $SOURCE")]

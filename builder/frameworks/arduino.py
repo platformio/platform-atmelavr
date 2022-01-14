@@ -88,8 +88,7 @@ env.Append(
     CXXFLAGS=[
         "-fno-exceptions",
         "-fno-threadsafe-statics",
-        "-fpermissive",
-        "-std=gnu++11"
+        "-fpermissive"
     ],
 
     LINKFLAGS=[
@@ -113,6 +112,19 @@ env.Append(
     ]
 )
 
+if build_core in ("MiniCore", "MegaCore", "MightyCore", "MajorCore"):
+    env.Append(
+        CXXFLAGS=[
+            "-std=gnu++17"
+        ],
+    )
+else:
+    env.Append(
+        CXXFLAGS=[
+            "-std=gnu++11"
+        ],
+    )
+
 #
 # Take into account bootloader size
 #
@@ -125,6 +137,19 @@ if (
     upload_section["maximum_size"] -= board.get(
         "bootloader.size", get_bootloader_size()
     )
+elif build_core in ("tiny", "tinymodern"):
+    flatten_defines = env.Flatten(env["CPPDEFINES"])
+    extra_defines = []
+    if "CLOCK_SOURCE" not in flatten_defines:
+        extra_defines.append(("CLOCK_SOURCE", board.get("build.clock_source", 0)))
+    if "NEOPIXELPORT" not in flatten_defines:
+        extra_defines.append(
+            ("NEOPIXELPORT", board.get("build.neo_pixel_port", "PORTA"))
+        )
+
+    if extra_defines:
+        env.AppendUnique(CPPDEFINES=extra_defines)
+
 # copy CCFLAGS to ASFLAGS (-x assembler-with-cpp mode)
 env.Append(ASFLAGS=env.get("CCFLAGS", [])[:])
 

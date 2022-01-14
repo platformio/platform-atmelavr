@@ -18,7 +18,7 @@
     "type": "git",
     "url": "https://github.com/platformio/platform-atmelavr.git"
   },
-  "version": "3.1.0",
+  "version": "3.4.0",
   "frameworks": {
     "arduino": {
       "package": "framework-arduino-avr",
@@ -33,7 +33,7 @@
     "toolchain-atmelavr": {
       "type": "toolchain",
       "owner": "platformio",
-      "version": "~1.50400.0"
+      "version": "~1.70300.0"
     },
     "framework-arduino-avr": {
       "type": "framework",
@@ -45,7 +45,7 @@
       "type": "framework",
       "optional": true,
       "owner": "platformio",
-      "version": "~1.3.2"
+      "version": "~1.5.2"
     },
     "framework-arduino-avr-bean": {
       "type": "framework",
@@ -63,7 +63,7 @@
       "type": "framework",
       "optional": true,
       "owner": "platformio",
-      "version": "~1.6.7"
+      "version": "~1.7.2"
     },
     "framework-arduino-avr-dwenguino": {
       "type": "framework",
@@ -75,31 +75,31 @@
       "type": "framework",
       "optional": true,
       "owner": "platformio",
-      "version": "~2.0.4"
+      "version": "~2.1.0"
     },
     "framework-arduino-avr-mightycore": {
       "type": "framework",
       "optional": true,
       "owner": "platformio",
-      "version": "~2.0.8"
+      "version": "~2.1.0"
     },
     "framework-arduino-avr-minicore": {
       "type": "framework",
       "optional": true,
       "owner": "platformio",
-      "version": "~2.0.7"
+      "version": "~2.1.0"
     },
     "framework-arduino-avr-majorcore": {
       "type": "framework",
       "optional": true,
       "owner": "platformio",
-      "version": "~2.0.3"
+      "version": "~2.1.0"
     },
     "framework-arduino-avr-microcore": {
       "type": "framework",
       "optional": true,
       "owner": "platformio",
-      "version": "~2.0.0"
+      "version": "~2.1.0"
     },
     "framework-arduino-avr-nicai": {
       "type": "framework",
@@ -135,13 +135,13 @@
       "type": "uploader",
       "optional": true,
       "owner": "platformio",
-      "version": "~1.200.0"
+      "version": "~1.250.0"
     },
     "tool-simavr": {
       "type": "debugger",
       "optional": true,
       "owner": "platformio",
-      "version": "~1.10600.200511"
+      "version": "~1.10700.0"
     }
   }
 }
