@@ -21,8 +21,7 @@ from SCons.Script import Import
 Import("env")
 
 env.Append(
-
-    ASFLAGS=["-x", "assembler-with-cpp"],
+    ASPPFLAGS=["-x", "assembler-with-cpp"],
 
     CFLAGS=[
         "-std=gnu11",
@@ -61,5 +60,8 @@ env.Append(
     LIBS=["m"]
 )
 
-# copy CCFLAGS to ASFLAGS (-x assembler-with-cpp mode)
-env.Append(ASFLAGS=env.get("CCFLAGS", [])[:])
+# Duplicate preprocessor flags to the assembler
+# for '.S', '.spp', '.SPP', '.sx' source files
+env.Append(
+    ASPPFLAGS=env.get("CCFLAGS", [])
+)

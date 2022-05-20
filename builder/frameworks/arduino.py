@@ -69,7 +69,7 @@ if "build.usb_product" in board:
     ]
 
 env.Append(
-    ASFLAGS=["-x", "assembler-with-cpp"],
+    ASPPFLAGS=["-x", "assembler-with-cpp"],
 
     CFLAGS=[
         "-std=gnu11",
@@ -125,6 +125,12 @@ else:
         ],
     )
 
+# Duplicate preprocessor flags to the assembler
+# for '.S', '.spp', '.SPP', '.sx' source files
+env.Append(
+    ASPPFLAGS=env.get("CCFLAGS", [])
+)
+
 #
 # Take into account bootloader size
 #
@@ -149,9 +155,6 @@ elif build_core in ("tiny", "tinymodern"):
 
     if extra_defines:
         env.AppendUnique(CPPDEFINES=extra_defines)
-
-# copy CCFLAGS to ASFLAGS (-x assembler-with-cpp mode)
-env.Append(ASFLAGS=env.get("CCFLAGS", [])[:])
 
 #
 # Target: Build Core Library

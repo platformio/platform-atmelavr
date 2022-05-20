@@ -19,8 +19,7 @@ class AtmelavrPlatform(PlatformBase):
 
     def configure_default_packages(self, variables, targets):
         if not variables.get("board"):
-            return super().configure_default_packages(
-                variables, targets)
+            return super().configure_default_packages(variables, targets)
 
         build_core = variables.get(
             "board_build.core", self.board_config(variables.get("board")).get(
@@ -58,18 +57,17 @@ class AtmelavrPlatform(PlatformBase):
         if disabled_tool in self.packages and disabled_tool != required_tool:
             del self.packages[disabled_tool]
 
-        return super().configure_default_packages(
-            variables, targets)
+        return super().configure_default_packages(variables, targets)
 
     def on_run_err(self, line):  # pylint: disable=R0201
         # fix STDERR "flash written" for avrdude
         if "avrdude" in line:
             self.on_run_out(line)
         else:
-            super().on_run_err(self, line)
+            super().on_run_err(line)
 
     def get_boards(self, id_=None):
-        result = super().get_boards(self, id_)
+        result = super().get_boards(id_)
         if not result:
             return result
         if id_:
