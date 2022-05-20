@@ -18,7 +18,6 @@ jobs:
           - "examples/digitstump-mouse"
           - "examples/engduino-magnetometer"
           - "examples/native-blink"
-          - "examples/simba-blink"
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v2
