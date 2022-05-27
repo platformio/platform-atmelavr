@@ -68,21 +68,27 @@ if "build.usb_product" in board:
          board.get("vendor", "").replace('"', ""))
     ]
 
+machine_flags = [
+    "-mmcu=$BOARD_MCU",
+]
+
 env.Append(
-    ASPPFLAGS=["-x", "assembler-with-cpp"],
+    ASFLAGS=machine_flags,
+    ASPPFLAGS=[
+        "-x", "assembler-with-cpp",
+    ],
 
     CFLAGS=[
         "-std=gnu11",
         "-fno-fat-lto-objects"
     ],
 
-    CCFLAGS=[
+    CCFLAGS=machine_flags + [
         "-Os",  # optimize for size
         "-Wall",  # show warnings
         "-ffunction-sections",  # place each function in its own section
         "-fdata-sections",
         "-flto",
-        "-mmcu=$BOARD_MCU"
     ],
 
     CXXFLAGS=[
@@ -91,9 +97,8 @@ env.Append(
         "-fpermissive"
     ],
 
-    LINKFLAGS=[
+    LINKFLAGS=machine_flags + [
         "-Os",
-        "-mmcu=$BOARD_MCU",
         "-Wl,--gc-sections",
         "-flto",
         "-fuse-linker-plugin"
@@ -124,12 +129,6 @@ else:
             "-std=gnu++11"
         ],
     )
-
-# Duplicate preprocessor flags to the assembler
-# for '.S', '.spp', '.SPP', '.sx' source files
-env.Append(
-    ASPPFLAGS=env.get("CCFLAGS", [])
-)
 
 #
 # Take into account bootloader size

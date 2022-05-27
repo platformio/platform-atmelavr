@@ -20,21 +20,27 @@ from SCons.Script import Import
 
 Import("env")
 
+machine_flags = [
+    "-mmcu=$BOARD_MCU",
+]
+
 env.Append(
-    ASPPFLAGS=["-x", "assembler-with-cpp"],
+    ASFLAGS=machine_flags,
+    ASPPFLAGS=[
+        "-x", "assembler-with-cpp",
+    ],
 
     CFLAGS=[
         "-std=gnu11",
         "-fno-fat-lto-objects"
     ],
 
-    CCFLAGS=[
+    CCFLAGS=machine_flags + [
         "-Os",  # optimize for size
         "-Wall",  # show warnings
         "-ffunction-sections",  # place each function in its own section
         "-fdata-sections",
         "-flto",
-        "-mmcu=$BOARD_MCU"
     ],
 
     CXXFLAGS=[
@@ -49,19 +55,12 @@ env.Append(
         ("F_CPU", "$BOARD_F_CPU")
     ],
 
-    LINKFLAGS=[
+    LINKFLAGS=machine_flags + [
         "-Os",
-        "-mmcu=$BOARD_MCU",
         "-Wl,--gc-sections",
         "-flto",
         "-fuse-linker-plugin"
     ],
 
     LIBS=["m"]
-)
-
-# Duplicate preprocessor flags to the assembler
-# for '.S', '.spp', '.SPP', '.sx' source files
-env.Append(
-    ASPPFLAGS=env.get("CCFLAGS", [])
 )
