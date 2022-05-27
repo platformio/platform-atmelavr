@@ -27,8 +27,7 @@
     }
   },
   "frameworks": [
-    "arduino",
-    "simba"
+    "arduino"
   ],
   "name": "Arduino Mega or Mega 2560 ATmega2560 (Mega 2560)",
   "upload": {
