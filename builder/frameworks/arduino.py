@@ -68,21 +68,27 @@ if "build.usb_product" in board:
          board.get("vendor", "").replace('"', ""))
     ]
 
+machine_flags = [
+    "-mmcu=$BOARD_MCU",
+]
+
 env.Append(
-    ASFLAGS=["-x", "assembler-with-cpp"],
+    ASFLAGS=machine_flags,
+    ASPPFLAGS=[
+        "-x", "assembler-with-cpp",
+    ],
 
     CFLAGS=[
         "-std=gnu11",
         "-fno-fat-lto-objects"
     ],
 
-    CCFLAGS=[
+    CCFLAGS=machine_flags + [
         "-Os",  # optimize for size
         "-Wall",  # show warnings
         "-ffunction-sections",  # place each function in its own section
         "-fdata-sections",
         "-flto",
-        "-mmcu=$BOARD_MCU"
     ],
 
     CXXFLAGS=[
@@ -91,9 +97,8 @@ env.Append(
         "-fpermissive"
     ],
 
-    LINKFLAGS=[
+    LINKFLAGS=machine_flags + [
         "-Os",
-        "-mmcu=$BOARD_MCU",
         "-Wl,--gc-sections",
         "-flto",
         "-fuse-linker-plugin"
@@ -141,15 +146,14 @@ elif build_core in ("tiny", "tinymodern"):
     flatten_defines = env.Flatten(env["CPPDEFINES"])
     extra_defines = []
     if "CLOCK_SOURCE" not in flatten_defines:
-        extra_defines.append(("CLOCK_SOURCE", 0))
+        extra_defines.append(("CLOCK_SOURCE", board.get("build.clock_source", 0)))
     if "NEOPIXELPORT" not in flatten_defines:
-        extra_defines.append(("NEOPIXELPORT", "PORTA"))
+        extra_defines.append(
+            ("NEOPIXELPORT", board.get("build.neo_pixel_port", "PORTA"))
+        )
 
     if extra_defines:
         env.AppendUnique(CPPDEFINES=extra_defines)
-
-# copy CCFLAGS to ASFLAGS (-x assembler-with-cpp mode)
-env.Append(ASFLAGS=env.get("CCFLAGS", [])[:])
 
 #
 # Target: Build Core Library
