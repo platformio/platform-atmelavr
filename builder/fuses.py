@@ -32,7 +32,23 @@ def get_lfuse(target, f_cpu, oscillator, bod, eesave, ckout):
         "atmega48p",
     )
     targets_2 = (
+        "atmega6490p",
+        "atmega6490",
+        "atmega6450p",
+        "atmega6450",
+        "atmega3290p",
+        "atmega3290",
+        "atmega3250p",
+        "atmega3250",
+        "atmega649p",
+        "atmega649",
+        "atmega645p",
+        "atmega645",
+        "atmega329p",
+        "atmega329",
         "atmega328pb",
+        "atmega325p",
+        "atmega325",
         "atmega324pb",
         "atmega168pb",
         "atmega162",
@@ -123,15 +139,31 @@ def get_lfuse(target, f_cpu, oscillator, bod, eesave, ckout):
 
 def get_hfuse(target, uart, oscillator, bod, eesave, jtagen):
     targets_1 = (
+        "atmega6490p",
+        "atmega6490",
+        "atmega6450p",
+        "atmega6450",
+        "atmega3290p",
+        "atmega3290",
+        "atmega3250p",
+        "atmega3250",
         "atmega2561",
         "atmega2560",
         "atmega1284",
         "atmega1284p",
         "atmega1281",
         "atmega1280",
+        "atmega649p",
+        "atmega649",
+        "atmega645p",
+        "atmega645",
         "atmega644a",
         "atmega644p",
         "atmega640",
+        "atmega329p",
+        "atmega329",
+        "atmega325p",
+        "atmega325",
         "atmega324a",
         "atmega324p",
         "atmega324pa",
@@ -141,7 +173,15 @@ def get_hfuse(target, uart, oscillator, bod, eesave, jtagen):
         "at90can32",
     )
     targets_2 = ("atmega328", "atmega328p", "atmega328pb")
-    targets_3 = ("atmega164a", "atmega164p", "atmega162")
+    targets_3 = (
+        "atmega169p",
+        "atmega169",
+        "atmega165p",
+        "atmega165",
+        "atmega164p",
+        "atmega164a",
+        "atmega162",
+    )
     targets_4 = (
         "atmega168",
         "atmega168p",
@@ -259,7 +299,25 @@ def get_efuse(target, uart, bod, cfd):
     )
     targets_4 = ("atmega128", "atmega64", "atmega48", "atmega48p")
     targets_5 = ("at90can128", "at90can64", "at90can32")
-    targets_6 = ("atmega162",)
+    targets_6 = (
+        "atmega6490p",
+        "atmega6490",
+        "atmega6450p",
+        "atmega6450",
+        "atmega3290p",
+        "atmega3290",
+        "atmega3250p",
+        "atmega3250",
+        "atmega649p",
+        "atmega649",
+        "atmega645p",
+        "atmega645",
+        "atmega329p",
+        "atmega329",
+        "atmega325p",
+        "atmega325",
+        "atmega162",
+    )
 
     cfd_bit = 1 if cfd == "yes" else 0
     cfd_offset = cfd_bit << 3
