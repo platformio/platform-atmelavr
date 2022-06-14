@@ -1,0 +1,25 @@
+{
+  "build": {
+    "core": "MegaCore",
+    "extra_flags": "-DARDUINO_AVR_ATmega6490P",
+    "f_cpu": "16000000L",
+    "mcu": "atmega6490p",
+    "variant": "100-pin-avr"
+  },
+  "bootloader":{
+    "led_pin": "B7"
+  },
+  "frameworks": [
+    "arduino"
+  ],
+  "name": "ATmega6490P",
+  "upload": {
+    "maximum_ram_size": 4096,
+    "maximum_size": 65536,
+    "protocol": "arduino",
+    "require_upload_port": true,
+    "speed": 115200
+  },
+  "url": "https://www.microchip.com/wwwproducts/en/ATmega6490P",
+  "vendor": "Microchip"
+}
