@@ -39,8 +39,7 @@
     }
   },
   "frameworks": [
-    "arduino",
-    "simba"
+    "arduino"
   ],
   "name": "Arduino Uno",
   "upload": {
