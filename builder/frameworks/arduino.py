@@ -131,6 +131,14 @@ else:
     )
 
 #
+# Expand linker script to its full path
+# Add specia linker options
+#
+if build_core in ("blinklib"):
+    ldscript = board.get("build.ldscript")
+    env.Replace(LDSCRIPT_PATH=join(FRAMEWORK_DIR, "linkscripts", ldscript))
+    env.Append(LINKFLAGS=["-mrelax", "-nostartfiles"])
+#
 # Take into account bootloader size
 #
 

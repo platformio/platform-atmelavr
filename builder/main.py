@@ -107,6 +107,8 @@ env.Replace(
     PROGSUFFIX=".elf",
 )
 
+builtinbase = int(env.BoardConfig().get("build", {}).get("builtinbase", "0"), 16)
+
 env.Append(
     BUILDERS=dict(
         ElfToEep=Builder(
@@ -133,7 +135,8 @@ env.Append(
         ElfToHex=Builder(
             action=env.VerboseAction(
                 " ".join(
-                    ["$OBJCOPY", "-O", "ihex", "-R", ".eeprom", "$SOURCES", "$TARGET"]
+                    ["$OBJCOPY", "-O", "ihex", "-R", ".eeprom", "$SOURCES", "$TARGET"] if builtinbase == 0 else \
+                    ["$OBJCOPY", "--change-addresses", hex(builtinbase), "-O", "ihex", "-R", ".eepromm", "$SOURCES", "$TARGET"]
                 ),
                 "Building $TARGET",
             ),
