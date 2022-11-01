@@ -132,12 +132,17 @@ else:
 
 #
 # Expand linker script to its full path
-# Add specia linker options
+# Add special linker options
+# Make bootloader file available (needs to be flashed in one go)
 #
 if build_core in ("blinklib"):
     ldscript = board.get("build.ldscript")
     env.Replace(LDSCRIPT_PATH=join(FRAMEWORK_DIR, "linkscripts", ldscript))
-    env.Append(LINKFLAGS=["-mrelax", "-nostartfiles"])
+    env.Append(
+        LINKFLAGS=["-mrelax", "-nostartfiles"],
+        BOOTLOADER_FILE=join(FRAMEWORK_DIR, "bootloaders", board.get("bootloader.file"))
+    )
+
 #
 # Take into account bootloader size
 #
