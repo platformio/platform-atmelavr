@@ -133,7 +133,8 @@ else:
 #
 # Expand linker script to its full path
 # Add special linker options
-# Make bootloader file available (needs to be flashed in one go)
+# Make bootloader file available as env variable
+# (needs to be flashed in one go)
 #
 if build_core in ("blinklib"):
     ldscript = board.get("build.ldscript")
