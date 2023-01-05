@@ -105,8 +105,7 @@ class AtmelavrPlatform(PlatformBase):
                         "-f", build.get("f_cpu", "")
                     ],
                     "executable": "bin/simavr"
-                },
-                "onboard": True
+                }
             }
         if debug.get("avr-stub", ""):
             speed = debug["avr-stub"]["speed"]
@@ -126,8 +125,7 @@ class AtmelavrPlatform(PlatformBase):
                 "init_break": "",
                 "load_cmd": "preload",
                 "require_debug_port": True,
-                "default": False,
-                "onboard": True
+                "default": False
             }
 
         board.manifest["debug"] = debug
