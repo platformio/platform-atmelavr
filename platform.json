@@ -119,7 +119,8 @@
       "type": "uploader",
       "optional": true,
       "owner": "platformio",
-      "version": "~1.60300.0"
+      "version": "~1.60300.0",
+      "optionalVersions": ["~1.70100.0"]
     },
     "tool-micronucleus": {
       "type": "uploader",

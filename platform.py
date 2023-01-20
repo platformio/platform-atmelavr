@@ -34,6 +34,15 @@ class AtmelavrPlatform(PlatformBase):
             elif build_core in ("tiny", "tinymodern"):
                 framework_package = "framework-arduino-avr-attiny"
 
+            if build_core in (
+                "MiniCore",
+                "MegaCore",
+                "MightyCore",
+                "MajorCore",
+                "MicroCore",
+            ):
+                self.packages["tool-avrdude"]["version"] = "~1.70100.0"
+
             self.frameworks["arduino"]["package"] = framework_package
             self.packages[framework_package]["optional"] = False
             self.packages["framework-arduino-avr"]["optional"] = True
