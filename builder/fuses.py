@@ -175,8 +175,10 @@ def get_hfuse(target, uart, oscillator, bod, eesave, jtagen):
     targets_2 = ("atmega328", "atmega328p", "atmega328pb")
     targets_3 = (
         "atmega169p",
+        "atmega169a",
         "atmega169",
         "atmega165p",
+        "atmega165a",
         "atmega165",
         "atmega164p",
         "atmega164a",

@@ -1,9 +1,9 @@
 {
   "build": {
     "core": "MegaCore",
-    "extra_flags": "-DARDUINO_AVR_ATmega169",
+    "extra_flags": "-DARDUINO_AVR_ATmega169A",
     "f_cpu": "16000000L",
-    "mcu": "atmega169",
+    "mcu": "atmega169a",
     "variant": "64-pin-avr"
   },
   "bootloader":{
@@ -12,7 +12,7 @@
   "frameworks": [
     "arduino"
   ],
-  "name": "ATmega169/A",
+  "name": "ATmega169A",
   "upload": {
     "maximum_ram_size": 1024,
     "maximum_size": 16384,

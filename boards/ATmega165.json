@@ -3,7 +3,7 @@
     "core": "MegaCore",
     "extra_flags": "-DARDUINO_AVR_ATmega165",
     "f_cpu": "16000000L",
-    "mcu": "atmega165",
+    "mcu": "atmega165a",
     "variant": "64-pin-avr"
   },
   "bootloader":{
