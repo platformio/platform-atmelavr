@@ -34,6 +34,15 @@ class AtmelavrPlatform(PlatformBase):
             elif build_core in ("tiny", "tinymodern"):
                 framework_package = "framework-arduino-avr-attiny"
 
+            if build_core in (
+                "MiniCore",
+                "MegaCore",
+                "MightyCore",
+                "MajorCore",
+                "MicroCore",
+            ):
+                self.packages["tool-avrdude"]["version"] = "~1.70100.0"
+
             self.frameworks["arduino"]["package"] = framework_package
             self.packages[framework_package]["optional"] = False
             self.packages["framework-arduino-avr"]["optional"] = True
@@ -105,8 +114,7 @@ class AtmelavrPlatform(PlatformBase):
                         "-f", build.get("f_cpu", "")
                     ],
                     "executable": "bin/simavr"
-                },
-                "onboard": True
+                }
             }
         if debug.get("avr-stub", ""):
             speed = debug["avr-stub"]["speed"]
@@ -126,8 +134,7 @@ class AtmelavrPlatform(PlatformBase):
                 "init_break": "",
                 "load_cmd": "preload",
                 "require_debug_port": True,
-                "default": False,
-                "onboard": True
+                "default": False
             }
 
         board.manifest["debug"] = debug
