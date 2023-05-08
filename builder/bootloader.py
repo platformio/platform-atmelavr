@@ -120,8 +120,12 @@ if not isfile(bootloader_path):
 
 fuses_action = env.SConscript("fuses.py", exports="env")
 
-lock_bits = board.get("bootloader.lock_bits", "0xFF" if core == "MicroCore" else "0x0F")
-unlock_bits = board.get("bootloader.unlock_bits", "0xFF" if core == "MicroCore" else "0x3F")
+if core == "MicroCore":
+    lock_bits = board.get("bootloader.lock_bits", "0xFF")
+    unlock_bits = board.get("bootloader.unlock_bits", "0xFF")
+else:
+    lock_bits = board.get("bootloader.lock_bits", "0x0F")
+    unlock_bits = board.get("bootloader.unlock_bits", "0x3F")
 
 env.Replace(
     BOOTUPLOADER="avrdude",
