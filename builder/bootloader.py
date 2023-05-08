@@ -57,17 +57,25 @@ def get_suitable_optiboot_binary(framework_dir, board_config):
 
 def get_suitable_urboot_binary(framework_dir, board_config):
     mcu = board_config.get("build.mcu", "").lower()
-    f_cpu = re.sub("[^0-9]", "", board_config.get("build.f_cpu", "16000000L"))
-    f_cpu_error = board_config.get("hardware.f_cpu_error", "0.0")
-    oscillator = board.get("hardware.oscillator", "external").lower()
-    uart = board_config.get("hardware.uart", "swio_rxb1_txb0" if core == "MicroCore" else "uart0").lower()
-    bootloader_speed = board_config.get("bootloader.speed", env.subst("$UPLOAD_SPEED"))
     bootloader_led = board_config.get("bootloader.led_pin", "no-led").lower()
+    bootloader_speed = board_config.get("bootloader.speed", env.subst("$UPLOAD_SPEED"))
     bootloader_file = "urboot_%s.hex" % mcu
-    if oscillator == "internal":
-        clock_speed = int(f_cpu) + int((float(f_cpu_error)/100)*int(f_cpu))
+
+    if core == "MicroCore":
+        f_cpu = re.sub("[^0-9]", "", board_config.get("build.f_cpu", "9600000L"))
+        f_cpu_error = board_config.get("hardware.f_cpu_error", "0.0")
+        uart = board_config.get("hardware.uart", "swio_rxb1_txb0").lower()
+        oscillator = board.get("hardware.oscillator", "internal").lower()
+        if oscillator == "internal":
+            clock_speed = int(f_cpu) + int((float(f_cpu_error)/100)*int(f_cpu))
+        else:
+            clock_speed = int(f_cpu)
     else:
+        f_cpu = re.sub("[^0-9]", "", board_config.get("build.f_cpu", "16000000L"))
+        uart = board_config.get("hardware.uart", "uart0").lower()
+        oscillator = board.get("hardware.oscillator", "external").lower()
         clock_speed = int(f_cpu)
+
     bootloader_path = join(
         framework_dir,
         "bootloaders",
