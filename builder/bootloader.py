@@ -106,7 +106,6 @@ elif core == "MicroCore":
 else:
     if not isfile(bootloader_path):
         bootloader_path = join(framework_dir, "bootloaders", bootloader_path)
-        print(bootloader_path)
 
     if not board.get("bootloader", {}):
         sys.stderr.write("Error: missing bootloader configuration!\n")
@@ -115,6 +114,8 @@ else:
 if not isfile(bootloader_path):
     sys.stderr.write("Error: Couldn't find bootloader image %s\n" % bootloader_path)
     env.Exit(1)
+
+print("Using bootloader image:\n%s" % bootloader_path)
 
 fuses_action = env.SConscript("fuses.py", exports="env")
 
