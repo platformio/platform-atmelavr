@@ -13,7 +13,6 @@
 # limitations under the License.
 
 import sys
-import re
 from os.path import isfile, join
 
 from SCons.Script import Import, Return
@@ -57,22 +56,22 @@ def get_suitable_optiboot_binary(framework_dir, board_config):
 
 def get_suitable_urboot_binary(framework_dir, board_config):
     mcu = board_config.get("build.mcu", "").lower()
-    f_cpu = re.sub("[^0-9]", "", board_config.get("build.f_cpu", "16000000L"))
+    f_cpu = int(board_config.get("build.f_cpu", "16000000L").strip("UL"))
     oscillator = board.get("hardware.oscillator", "external").lower()
     bootloader_led = board_config.get("bootloader.led_pin", "no-led").lower()
     bootloader_speed = board_config.get("bootloader.speed", env.subst("$UPLOAD_SPEED"))
     bootloader_file = "urboot_%s.hex" % mcu
 
     if core == "MicroCore":
-        f_cpu_error = board_config.get("hardware.f_cpu_error", "0.0")
+        f_cpu_error = float(board_config.get("hardware.f_cpu_error", "0.0"))
         uart = board_config.get("hardware.uart", "swio_rxb1_txb0").lower()
         if oscillator == "internal":
-            clock_speed = int(f_cpu) + int((float(f_cpu_error)/100)*int(f_cpu))
+            clock_speed = f_cpu + int(f_cpu_error/100 * f_cpu)
         else:
-            clock_speed = int(f_cpu)
+            clock_speed = f_cpu
     else:
         uart = board_config.get("hardware.uart", "uart0").lower()
-        clock_speed = int(f_cpu)
+        clock_speed = f_cpu
 
     bootloader_path = join(
         framework_dir,
