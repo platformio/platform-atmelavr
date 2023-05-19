@@ -57,11 +57,11 @@ class AtmelavrPlatform(PlatformBase):
         if upload_protocol == "micronucleus":
             disabled_tool = "tool-avrdude"
 
-        if "fuses" in targets:
+        if "fuses" in targets or "bootloader" in targets:
             required_tool = "tool-avrdude"
 
         if required_tool in self.packages:
-            self.packages[required_tool]['optional'] = False
+            self.packages[required_tool]["optional"] = False
 
         if disabled_tool in self.packages and disabled_tool != required_tool:
             del self.packages[disabled_tool]

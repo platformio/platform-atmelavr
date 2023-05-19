@@ -4,7 +4,7 @@
     "extra_flags": "-DARDUINO_AVR_ATTINY13",
     "f_cpu": "9600000L",
     "mcu": "attiny13",
-    "variant": "attiny13"
+    "variant": "attiny13a"
   },
   "hardware": {
     "oscillator": "internal",

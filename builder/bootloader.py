@@ -54,6 +54,41 @@ def get_suitable_optiboot_binary(framework_dir, board_config):
     return bootloader_path.replace(".hex", "_BIGBOOT.hex")
 
 
+def get_suitable_urboot_binary(framework_dir, board_config):
+    mcu = board_config.get("build.mcu", "").lower()
+    f_cpu = int(board_config.get("build.f_cpu", "16000000L").strip("UL"))
+    oscillator = board.get("hardware.oscillator", "external").lower()
+    bootloader_led = board_config.get("bootloader.led_pin", "no-led").lower()
+    bootloader_speed = board_config.get("bootloader.speed", env.subst("$UPLOAD_SPEED"))
+    bootloader_file = "urboot_%s.hex" % mcu
+
+    if core == "MicroCore":
+        f_cpu_error = float(board_config.get("hardware.f_cpu_error", "0.0"))
+        uart = board_config.get("hardware.uart", "swio_rxb1_txb0").lower()
+        if oscillator == "internal":
+            clock_speed = f_cpu + int(f_cpu_error/100 * f_cpu)
+        else:
+            clock_speed = f_cpu
+    else:
+        uart = board_config.get("hardware.uart", "uart0").lower()
+        clock_speed = f_cpu
+
+    bootloader_path = join(
+        framework_dir,
+        "bootloaders",
+        "urboot",
+        "watchdog_1_s",
+        "%s_oscillator" % oscillator,
+        "%d_hz" % clock_speed,
+        "%s_baud" % bootloader_speed,
+        uart,
+        bootloader_led,
+        bootloader_file,
+    )
+
+    return bootloader_path
+
+
 framework_dir = ""
 if env.get("PIOFRAMEWORK", []):
     framework_dir = platform.get_package_dir(
@@ -64,6 +99,9 @@ bootloader_path = board.get("bootloader.file", "")
 if core in ("MiniCore", "MegaCore", "MightyCore", "MajorCore"):
     if not isfile(bootloader_path):
         bootloader_path = get_suitable_optiboot_binary(framework_dir, board)
+elif core == "MicroCore":
+    if not isfile(bootloader_path):
+        bootloader_path = get_suitable_urboot_binary(framework_dir, board)
 else:
     if not isfile(bootloader_path):
         bootloader_path = join(framework_dir, "bootloaders", bootloader_path)
@@ -76,10 +114,16 @@ if not isfile(bootloader_path):
     sys.stderr.write("Error: Couldn't find bootloader image %s\n" % bootloader_path)
     env.Exit(1)
 
+print("Using bootloader image:\n%s" % bootloader_path)
+
 fuses_action = env.SConscript("fuses.py", exports="env")
 
-lock_bits = board.get("bootloader.lock_bits", "0x0F")
-unlock_bits = board.get("bootloader.unlock_bits", "0x3F")
+if core == "MicroCore":
+    lock_bits = board.get("bootloader.lock_bits", "0xFF")
+    unlock_bits = board.get("bootloader.unlock_bits", "0xFF")
+else:
+    lock_bits = board.get("bootloader.lock_bits", "0x0F")
+    unlock_bits = board.get("bootloader.unlock_bits", "0x3F")
 
 env.Replace(
     BOOTUPLOADER="avrdude",

@@ -205,6 +205,8 @@ def get_hfuse(target, uart, oscillator, bod, eesave, jtagen):
     ckopt_offset = ckopt_bit << 4
     jtagen_bit = 1 if jtagen == "yes" else 0
     jtagen_offset = jtagen_bit << 6
+    selfprogen_bit = 1 if uart != "no_bootloader" else 0
+    selfprogen_offset = selfprogen_bit << 4
 
     if target in targets_1:
         if uart == "no_bootloader":
@@ -248,13 +250,13 @@ def get_hfuse(target, uart, oscillator, bod, eesave, jtagen):
 
     elif target in targets_7:
         if bod == "4.3v":
-            return 0x9
+            return 0xF9 & ~selfprogen_offset
         elif bod == "2.7v":
-            return 0xFB
+            return 0xFB & ~selfprogen_offset
         elif bod == "1.8v":
-            return 0xFD
+            return 0xFD & ~selfprogen_offset
         else:
-            return 0xFF
+            return 0xFF & ~selfprogen_offset
 
     else:
         sys.stderr.write("Error: Couldn't calculate hfuse for %s\n" % target)
@@ -411,15 +413,13 @@ def is_target_without_bootloader(target):
         "attiny26",
         "attiny25",
         "attiny24",
-        "attiny13",
-        "attiny13a",
     )
 
     return target in targets_without_bootloader
 
 
 def get_lock_bits(target):
-    if is_target_without_bootloader(target):
+    if is_target_without_bootloader(target) or core == "MicroCore":
         return "0xff"
     else:
         return "0x0f"
@@ -464,7 +464,7 @@ if core in ("MiniCore", "MegaCore", "MightyCore", "MajorCore", "MicroCore"):
     f_cpu = board.get("build.f_cpu", "16000000L").upper()
     oscillator = board.get("hardware.oscillator", "external").lower()
     bod = board.get("hardware.bod", "2.7v").lower()
-    uart = board.get("hardware.uart", "uart0").lower()
+    uart = board.get("hardware.uart", "no_bootloader" if core == "MicroCore" else "uart0").lower()
     eesave = board.get("hardware.eesave", "yes").lower()
     jtagen = board.get("hardware.jtagen", "no").lower()
     ckout = board.get("hardware.ckout", "no").lower()
@@ -477,9 +477,7 @@ if core in ("MiniCore", "MegaCore", "MightyCore", "MajorCore", "MicroCore"):
     print("Oscillator = %s" % oscillator)
     print("BOD level = %s" % bod)
     print("Save EEPROM = %s" % eesave)
-
-    if target not in ("attiny13", "attiny13a"):
-        print("UART port = %s" % uart)
+    print("UART port = %s" % uart)
 
     if target not in (
         "atmega8535",
