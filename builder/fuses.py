@@ -533,8 +533,8 @@ env.Replace(
         "-p",
         "$BOARD_MCU",
         "-C",
-        '"%s"'
-        % join(env.PioPlatform().get_package_dir("tool-avrdude") or "", "avrdude.conf"),
+        # '"%s"' % # quotation marks already added automatically because FUSESUPLOADERFLAGS is a list
+        join(env.PioPlatform().get_package_dir("tool-avrdude") or "", "avrdude.conf"),
     ],
     FUSESFLAGS=[
         "-Ulock:w:%s:m" % lock,
