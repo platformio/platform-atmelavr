@@ -131,10 +131,9 @@ env.Replace(
         "-p",
         "$BOARD_MCU",
         "-C",
-        # '"%s"' % # quotation marks already added automatically because BOOTUPLOADERFLAGS is a list
         join(env.PioPlatform().get_package_dir("tool-avrdude") or "", "avrdude.conf"),
     ],
-    BOOTFLAGS='-Uflash:w:"%s":i' % bootloader_path  +" "+  "-Ulock:w:%s:m" % lock_bits, # can't be list, because of doubled quotes around bootloader_path
+    BOOTFLAGS=['-Uflash:w:"%s":i' % bootloader_path, "-Ulock:w:%s:m" % lock_bits],
     UPLOADBOOTCMD="$BOOTUPLOADER $BOOTUPLOADERFLAGS $UPLOAD_FLAGS $BOOTFLAGS",
 )
 
@@ -149,7 +148,7 @@ else:
     )
 
 bootloader_actions = [
-    fuses_action,
+    # fuses_action,
     env.VerboseAction("$UPLOADBOOTCMD", "Uploading bootloader"),
 ]
 
