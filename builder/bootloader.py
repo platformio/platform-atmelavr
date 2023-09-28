@@ -148,7 +148,7 @@ else:
     )
 
 bootloader_actions = [
-    # fuses_action,
+    fuses_action,
     env.VerboseAction("$UPLOADBOOTCMD", "Uploading bootloader"),
 ]
 
