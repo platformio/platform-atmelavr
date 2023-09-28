@@ -533,8 +533,7 @@ env.Replace(
         "-p",
         "$BOARD_MCU",
         "-C",
-        '"%s"'
-        % join(env.PioPlatform().get_package_dir("tool-avrdude") or "", "avrdude.conf"),
+        join(env.PioPlatform().get_package_dir("tool-avrdude") or "", "avrdude.conf"),
     ],
     FUSESFLAGS=[
         "-Ulock:w:%s:m" % lock,

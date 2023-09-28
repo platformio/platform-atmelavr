@@ -131,8 +131,7 @@ env.Replace(
         "-p",
         "$BOARD_MCU",
         "-C",
-        '"%s"'
-        % join(env.PioPlatform().get_package_dir("tool-avrdude") or "", "avrdude.conf"),
+        join(env.PioPlatform().get_package_dir("tool-avrdude") or "", "avrdude.conf"),
     ],
     BOOTFLAGS=['-Uflash:w:"%s":i' % bootloader_path, "-Ulock:w:%s:m" % lock_bits],
     UPLOADBOOTCMD="$BOOTUPLOADER $BOOTUPLOADERFLAGS $UPLOAD_FLAGS $BOOTFLAGS",
