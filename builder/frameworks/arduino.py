@@ -45,10 +45,21 @@ assert isdir(FRAMEWORK_DIR)
 
 def get_bootloader_size():
     max_size = board.get("upload.maximum_size")
-    if max_size > 4096 and max_size <= 32768:
-        return 512
-    elif max_size >= 65536 or board.get("build.mcu").startswith("at90can32"):
-        return 1024
+    if (
+        build_core in ("MightyCore", "MegaCore", "MiniCore", "MajorCore", "MicroCore") and \
+        board.get("bootloader.type", "urboot").lower() == "urboot"
+    ):
+        if max_size >= 65536 or board.get("build.mcu").startswith("at90can32"):
+            return 512
+        elif max_size >= 4096:
+            return 384
+        else:
+            return 256
+    else:
+        if max_size >= 65536 or board.get("build.mcu").startswith("at90can32"):
+            return 1024
+        elif max_size > 4096 and max_size <= 32768:
+            return 512
     return 0
 
 
