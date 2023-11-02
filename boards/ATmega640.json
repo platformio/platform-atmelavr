@@ -7,7 +7,11 @@
     "variant": "100-pin-arduino-mega"
   },
   "bootloader":{
-    "led_pin": "B7"
+    "led_pin": "B7",
+    "uart0_pins": "uart0_rxe0_txe1",
+    "uart1_pins": "uart1_rxd2_txd3",
+    "uart2_pins": "uart2_rxh0_txh1",
+    "uart3_pins": "uart3_rxj0_txj1"
   },
   "frameworks": [
     "arduino"

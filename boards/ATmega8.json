@@ -7,7 +7,8 @@
     "variant": "standard"
   },
   "bootloader":{
-    "led_pin": "B5"
+    "led_pin": "B5",
+    "uart0_pins": "uart0_rxd0_txd1"
   },
   "debug": {
     "simavr_target": "atmega8"
