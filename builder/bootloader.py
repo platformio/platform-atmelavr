@@ -57,34 +57,82 @@ def get_suitable_optiboot_binary(framework_dir, board_config):
 def get_suitable_urboot_binary(framework_dir, board_config):
     mcu = board_config.get("build.mcu", "").lower()
     f_cpu = int(board_config.get("build.f_cpu", "16000000L").strip("UL"))
-    oscillator = board.get("hardware.oscillator", "external").lower()
-    bootloader_led = board_config.get("bootloader.led_pin", "no-led").lower()
+    oscillator = board_config.get("hardware.oscillator", "external").lower()
     bootloader_speed = board_config.get("bootloader.speed", env.subst("$UPLOAD_SPEED"))
-    bootloader_file = "urboot_%s.hex" % mcu
 
     if core == "MicroCore":
+        bootloader_file = "urboot_%s.hex" % mcu
+        bootloader_led = board_config.get("bootloader.led_pin", "no-led").lower()
         f_cpu_error = float(board_config.get("hardware.f_cpu_error", "0.0"))
-        uart = board_config.get("hardware.uart", "swio_rxb1_txb0").lower()
+        uart_pins = board_config.get("hardware.uart", "swio_rxb1_txb0").lower()
         if oscillator == "internal":
             clock_speed = f_cpu + int(f_cpu_error/100 * f_cpu)
         else:
             clock_speed = f_cpu
-    else:
-        uart = board_config.get("hardware.uart", "uart0").lower()
-        clock_speed = f_cpu
 
-    bootloader_path = join(
-        framework_dir,
-        "bootloaders",
-        "urboot",
-        "watchdog_1_s",
-        "%s_oscillator" % oscillator,
-        "%d_hz" % clock_speed,
-        "%s_baud" % bootloader_speed,
-        uart,
-        bootloader_led,
-        bootloader_file,
-    )
+        bootloader_path = join(
+            framework_dir,
+            "bootloaders",
+            "urboot",
+            "watchdog_1_s",
+            "%s_oscillator" % oscillator,
+            "%d_hz" % clock_speed,
+            "%s_baud" % bootloader_speed,
+            uart_pins,
+            bootloader_led,
+            bootloader_file,
+        )
+
+    elif core in ("MightyCore", "MegaCore", "MiniCore", "MajorCore"):
+        bootloader_file = "urboot_%s_pr_ee_ce.hex" % mcu
+        user_led = board_config.get("bootloader.led_pin", "no-led").lower()
+        if(user_led != "no-led"):
+            bootloader_led = "led+%s" % board_config.get("bootloader.led_pin", "").lower()
+        else:
+            bootloader_led = "no-led"
+        uart = board_config.get("hardware.uart", "uart0").lower()
+        if(uart == "uart0"):
+            uart_pins = board_config.get("bootloader.uart0_pins", "")
+        elif(uart == "uart1"):
+            uart_pins = board_config.get("bootloader.uart1_pins", "")
+        elif(uart == "uart2"):
+            uart_pins = board_config.get("bootloader.uart2_pins", "")
+        elif(uart == "uart3"):
+            uart_pins = board_config.get("bootloader.uart3_pins", "")
+
+        # UART2 and UART3 on the ATmega640/1280/2560 doesn't have autobaud support
+        if mcu in ("atmega640", "atmega1280", "atmega2560") and uart in ("uart2", "uart3"):
+            bootloader_path = join(
+                framework_dir,
+                "bootloaders",
+                "urboot",
+                mcu,
+                "watchdog_1_s",
+                "%s_oscillator" % oscillator,
+                "%d_hz" % f_cpu,
+                "%s_baud" % bootloader_speed,
+                uart_pins,
+                bootloader_led,
+                bootloader_file,
+            )
+        else:
+            bootloader_path = join(
+                framework_dir,
+                "bootloaders",
+                "urboot",
+                mcu,
+                "watchdog_1_s",
+                "autobaud",
+                uart_pins,
+                bootloader_led,
+                bootloader_file,
+            )
+
+    else:
+        sys.stderr.write(
+            "Error: Urboot support is not implemented for target %s and core %s\n" % mcu, core
+        )
+        env.Exit(1)
 
     return bootloader_path
 
@@ -96,12 +144,13 @@ if env.get("PIOFRAMEWORK", []):
     )
 
 bootloader_path = board.get("bootloader.file", "")
-if core in ("MiniCore", "MegaCore", "MightyCore", "MajorCore"):
+if core in ("MiniCore", "MegaCore", "MightyCore", "MajorCore", "MicroCore"):
     if not isfile(bootloader_path):
-        bootloader_path = get_suitable_optiboot_binary(framework_dir, board)
-elif core == "MicroCore":
-    if not isfile(bootloader_path):
-        bootloader_path = get_suitable_urboot_binary(framework_dir, board)
+        bootloader_type = board.get("bootloader.type", "urboot").lower()
+        if(bootloader_type == "urboot" or core == "MicroCore"):
+            bootloader_path = get_suitable_urboot_binary(framework_dir, board)
+        else:
+            bootloader_path = get_suitable_optiboot_binary(framework_dir, board)
 else:
     if not isfile(bootloader_path):
         bootloader_path = join(framework_dir, "bootloaders", bootloader_path)
@@ -118,7 +167,7 @@ print("Using bootloader image:\n%s" % bootloader_path)
 
 fuses_action = env.SConscript("fuses.py", exports="env")
 
-if core == "MicroCore":
+if bootloader_type == "urboot":
     lock_bits = board.get("bootloader.lock_bits", "0xFF")
     unlock_bits = board.get("bootloader.unlock_bits", "0xFF")
 else:
