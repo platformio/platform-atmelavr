@@ -26,7 +26,7 @@
   "upload": {
     "maximum_ram_size": 8192,
     "maximum_size": 131072,
-    "protocol": "arduino",
+    "protocol": "urclock",
     "require_upload_port": true,
     "speed": 115200
   },
