@@ -167,9 +167,9 @@ print("Using bootloader image:\n%s" % bootloader_path)
 
 fuses_action = env.SConscript("fuses.py", exports="env")
 
-if bootloader_type == "urboot":
-    lock_bits = board.get("bootloader.lock_bits", "0xFF")
-    unlock_bits = board.get("bootloader.unlock_bits", "0xFF")
+if bootloader_type in ("no_bootloader", "urboot"):
+    lock_bits = board.get("bootloader.lock_bits", "0xff")
+    unlock_bits = board.get("bootloader.unlock_bits", "0xff")
 else:
     lock_bits = board.get("bootloader.lock_bits", "0x0F")
     unlock_bits = board.get("bootloader.unlock_bits", "0x3F")
