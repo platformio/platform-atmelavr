@@ -216,7 +216,7 @@ else:
         UPLOADEEPCMD="$UPLOADER $UPLOADERFLAGS -U eeprom:w:$SOURCES:i",
     )
 
-    if(upload_protocol == "urclock"):
+    if upload_protocol == "urclock":
         env.Append(UPLOADERFLAGS=["-xnometadata"])
 
     if int(ARGUMENTS.get("PIOVERBOSE", 0)):
