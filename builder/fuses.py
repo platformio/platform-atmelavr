@@ -545,7 +545,7 @@ if core in ("MiniCore", "MegaCore", "MightyCore", "MajorCore", "MicroCore"):
 
     lfuse = lfuse or hex(get_lfuse(target, f_cpu, oscillator, bod, eesave, ckout))
     hfuse = hfuse or hex(get_hfuse(target, uart, oscillator, bod, eesave, jtagen, bootloader_type))
-    efuse = efuse or hex(get_efuse(target, uart, bod, cfd, bootloader_type))
+    efuse = efuse or get_efuse(target, uart, bod, cfd, bootloader_type)
     lock = lock or hex(get_lock_bits(target, uart, bootloader_type))
 
 env.Replace(
