@@ -83,7 +83,7 @@ def get_suitable_urboot_binary(framework_dir, board_config):
             bootloader_file,
         )
 
-        if (f_cpu_error < -10.00 or f_cpu_error > 10.00 or f_cpu_error % 1.25 != 0.0):
+        if -10.00 > f_cpu_error > 10.00 or f_cpu_error % 1.25 != 0.0:
             sys.stderr.write(
                 "Error: invalid f_cpu factor %.2f. Must me in steps of ±1.25 and within ±10.00\n"
                 % f_cpu_error
