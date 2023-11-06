@@ -58,13 +58,6 @@ def get_bootloader_size():
             return 1024
         elif max_size > 4096 and max_size <= 32768:
             return 512
-    elif upload_protocol == "avr109":
-        return 4096
-    elif upload_protocol == "wiring":
-        if max_size > 131072:
-            return 8192
-        else:
-            return 4096
     return 0
 
 
