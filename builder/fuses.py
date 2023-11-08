@@ -131,13 +131,16 @@ def get_lfuse(target, f_cpu, oscillator, bod, eesave, ckout):
                 return 0x7B & ~eesave_offset
             elif f_cpu == "16000L":
                 return 0x6B & ~eesave_offset
+            else:
+                sys.stderr.write("Error: unknown f_cpu value %s\n" % f_cpu)
+                env.Exit(1)
 
     else:
         sys.stderr.write("Error: Couldn't calculate lfuse for %s\n" % target)
         env.Exit(1)
 
 
-def get_hfuse(target, uart, oscillator, bod, eesave, jtagen, bootloader_type):
+def get_hfuse(target, oscillator, bod, eesave, jtagen, bootloader_type):
     targets_1 = (
         "atmega6490p",
         "atmega6490",
@@ -205,7 +208,7 @@ def get_hfuse(target, uart, oscillator, bod, eesave, jtagen, bootloader_type):
     ckopt_offset = ckopt_bit << 4
     jtagen_bit = 1 if jtagen == "yes" else 0
     jtagen_offset = jtagen_bit << 6
-    selfprogen_bit = 1 if uart != "no_bootloader" else 0
+    selfprogen_bit = 1 if bootloader_type != "no_bootloader" else 0
     selfprogen_offset = selfprogen_bit << 4
 
     is_urboot_or_noboot = bootloader_type in ("no_bootloader", "urboot")
@@ -265,7 +268,7 @@ def get_hfuse(target, uart, oscillator, bod, eesave, jtagen, bootloader_type):
         env.Exit(1)
 
 
-def get_efuse(target, uart, bod, cfd, bootloader_type):
+def get_efuse(target, bod, cfd, bootloader_type):
 
     targets_without_efuse = (
         "atmega8535",
@@ -333,6 +336,7 @@ def get_efuse(target, uart, bod, cfd, bootloader_type):
         return None
 
     is_urboot_or_noboot = bootloader_type in ("no_bootloader", "urboot")
+
     if target in targets_1:
         if bod == "4.3v":
             return 0xFC
@@ -429,10 +433,9 @@ def is_target_without_bootloader(target):
     return target in targets_without_bootloader
 
 
-def get_lock_bits(target, uart, bootloader_type):
-    if is_target_without_bootloader(target) or (
-        bootloader_type == "urboot" and uart != "no_bootloader"
-    ):
+def get_lock_bits(target, bootloader_type):
+    is_urboot_or_noboot = bootloader_type in ("no_bootloader", "urboot")
+    if is_target_without_bootloader(target) or is_urboot_or_noboot:
         return 0xFF
     else:
         return 0xCF
@@ -477,14 +480,21 @@ if core in ("MiniCore", "MegaCore", "MightyCore", "MajorCore", "MicroCore"):
     f_cpu = board.get("build.f_cpu", "16000000L").upper()
     oscillator = board.get("hardware.oscillator", "external").lower()
     bod = board.get("hardware.bod", "2.7v").lower()
-    uart = board.get("hardware.uart", "no_bootloader" if core == "MicroCore" else "uart0").lower()
     eesave = board.get("hardware.eesave", "yes").lower()
     jtagen = board.get("hardware.jtagen", "no").lower()
     ckout = board.get("hardware.ckout", "no").lower()
     cfd = board.get("hardware.cfd", "no").lower()
     bootloader_type = board.get("bootloader.type", "urboot").lower()
-    if "no_bootloader" in (uart, bootloader_type):
-        uart = bootloader_type = "no_bootloader"
+    if core == "MicroCore":
+        uart = "swio"
+        uart_pins = board.get("bootloader.uart_pins", "no_bootloader")
+        if "no_bootloader" in (uart_pins, bootloader_type):
+            uart_pins = bootloader_type = "no_bootloader"
+    else:
+        uart = board.get("hardware.uart", "uart0").lower()
+        uart_pins = board.get("bootloader.%s_pins" % uart, "")
+        if "no_bootloader" in (uart, uart_pins, bootloader_type):
+            uart = uart_pins = bootloader_type = "no_bootloader"
     if "optiboot" in bootloader_type:
         bootloader_type = "optiboot"
 
@@ -496,7 +506,9 @@ if core in ("MiniCore", "MegaCore", "MightyCore", "MajorCore", "MicroCore"):
     print("BOD level = %s" % bod)
     print("Save EEPROM = %s" % eesave)
     print("Bootloader type = %s" % bootloader_type)
-    if uart != "no_bootloader":
+    if uart_pins != "no_bootloader" and core == "MicroCore":
+        print("UART pins = %s" % uart_pins)
+    elif uart not in ("no_bootloader", "swio"):
         print("UART port = %s" % uart)
 
     if target not in (
@@ -544,9 +556,9 @@ if core in ("MiniCore", "MegaCore", "MightyCore", "MajorCore", "MicroCore"):
     print("---------------------")
 
     lfuse = lfuse or hex(get_lfuse(target, f_cpu, oscillator, bod, eesave, ckout))
-    hfuse = hfuse or hex(get_hfuse(target, uart, oscillator, bod, eesave, jtagen, bootloader_type))
-    efuse = efuse or get_efuse(target, uart, bod, cfd, bootloader_type)
-    lock = lock or hex(get_lock_bits(target, uart, bootloader_type))
+    hfuse = hfuse or hex(get_hfuse(target, oscillator, bod, eesave, jtagen, bootloader_type))
+    efuse = efuse or get_efuse(target, bod, cfd, bootloader_type)
+    lock  = lock  or hex(get_lock_bits(target, bootloader_type))
 
 env.Replace(
     FUSESUPLOADER="avrdude",

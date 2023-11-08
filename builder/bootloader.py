@@ -61,10 +61,10 @@ def get_suitable_urboot_binary(framework_dir, board_config):
     bootloader_speed = board_config.get("bootloader.speed", env.subst("$UPLOAD_SPEED"))
 
     if core == "MicroCore":
-        bootloader_file = "urboot_%s.hex" % mcu
+        bootloader_file = "urboot_attiny13a.hex"
         bootloader_led = board_config.get("bootloader.led_pin", "no-led").lower()
         f_cpu_error = float(board_config.get("hardware.f_cpu_error", "0.0"))
-        uart_pins = board_config.get("hardware.uart", "swio_rxb1_txb0").lower()
+        uart_pins = board_config.get("bootloader.uart_pins", "swio_rxb1_txb0").lower()
         if oscillator == "internal":
             clock_speed = f_cpu + int(f_cpu_error / 100 * f_cpu)
         else:
