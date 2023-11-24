@@ -1,0 +1,42 @@
+{
+  "build": {
+    "core": "arduino",
+    "extra_flags": "-DARDUINO_AVR_UNO",
+    "f_cpu": "16000000L",
+    "hwids": [
+      [
+        "0x2341",
+        "0x0062"
+      ]
+    ],
+    "mcu": "atmega328p",
+    "variant": "standard"
+  },
+  "bootloader": {
+    "efuse": "0xFD",
+    "file": "optiboot/optiboot_atmega328.hex",
+    "hfuse": "0xDE",
+    "lock_bits": "0x0F",
+    "lfuse": "0xFF",
+    "unlock_bits": "0x3F"
+  },
+  "debug": {
+    "simavr_target": "atmega328p",
+    "avr-stub": {
+      "speed": 115200
+    }
+  },
+  "frameworks": [
+    "arduino"
+  ],
+  "name": "Arduino Uno Mini",
+  "upload": {
+    "maximum_ram_size": 2048,
+    "maximum_size": 32256,
+    "protocol": "arduino",
+    "require_upload_port": true,
+    "speed": 115200
+  },
+  "url": "https://store.arduino.cc/products/uno-mini-le",
+  "vendor": "Arduino"
+}
