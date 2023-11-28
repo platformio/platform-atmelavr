@@ -7,7 +7,8 @@
     "variant": "standard"
   },
   "bootloader":{
-    "led_pin": "B5"
+    "led_pin": "B5",
+    "uart0_pins": "uart0_rxd0_txd1"
   },
   "debug": {
     "simavr_target": "atmega48p"
@@ -19,7 +20,7 @@
   "upload": {
     "maximum_ram_size": 512,
     "maximum_size": 4096,
-    "protocol": "arduino",
+    "protocol": "urclock",
     "require_upload_port": false
   },
   "url": "https://www.microchip.com/wwwproducts/en/ATmega48P",

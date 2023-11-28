@@ -44,11 +44,20 @@ assert isdir(FRAMEWORK_DIR)
 
 
 def get_bootloader_size():
+    upload_protocol = env.subst("$UPLOAD_PROTOCOL")
     max_size = board.get("upload.maximum_size")
-    if max_size > 4096 and max_size <= 32768:
-        return 512
-    elif max_size >= 65536 or board.get("build.mcu").startswith("at90can32"):
-        return 1024
+    if upload_protocol == "urclock":
+        if max_size >= 65536 or board.get("build.mcu").startswith("at90can32"):
+            return 512
+        elif max_size >= 4096:
+            return 384
+        else:
+            return 256
+    elif upload_protocol == "arduino":
+        if max_size >= 65536 or board.get("build.mcu").startswith("at90can32"):
+            return 1024
+        elif max_size > 4096 and max_size <= 32768:
+            return 512
     return 0
 
 
@@ -134,10 +143,7 @@ else:
 # Take into account bootloader size
 #
 
-if (
-    build_core in ("MiniCore", "MegaCore", "MightyCore", "MajorCore")
-    and board.get("hardware.uart", "uart0") != "no_bootloader"
-):
+if build_core in ("MiniCore", "MegaCore", "MightyCore", "MajorCore", "MicroCore"):
     upload_section = board.get("upload")
     upload_section["maximum_size"] -= board.get(
         "bootloader.size", get_bootloader_size()

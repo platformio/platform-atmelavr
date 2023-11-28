@@ -7,7 +7,9 @@
     "variant": "standard"
   },
   "bootloader":{
-    "led_pin": "B0"
+    "led_pin": "B0",
+    "uart0_pins": "uart0_rxd0_txd1",
+    "uart1_pins": "uart1_rxd2_txd3"
   },
   "frameworks": [
     "arduino"
@@ -16,7 +18,7 @@
   "upload": {
     "maximum_ram_size": 4096,
     "maximum_size": 65536,
-    "protocol": "arduino",
+    "protocol": "urclock",
     "require_upload_port": true,
     "speed": 115200
   },
