@@ -7,7 +7,8 @@
     "variant": "64-pin-avr"
   },
   "bootloader":{
-    "led_pin": "B5"
+    "led_pin": "B5",
+    "uart0_pins": "uart0_rxe0_txe1"
   },
   "frameworks": [
     "arduino"
@@ -16,7 +17,7 @@
   "upload": {
     "maximum_ram_size": 2048,
     "maximum_size": 32768,
-    "protocol": "arduino",
+    "protocol": "urclock",
     "require_upload_port": true,
     "speed": 115200
   },

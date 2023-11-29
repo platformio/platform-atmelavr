@@ -41,7 +41,7 @@ class AtmelavrPlatform(PlatformBase):
                 "MajorCore",
                 "MicroCore",
             ):
-                self.packages["tool-avrdude"]["version"] = "~1.70100.0"
+                self.packages["tool-avrdude"]["version"] = "~1.70200.0"
 
             self.frameworks["arduino"]["package"] = framework_package
             self.packages[framework_package]["optional"] = False
