@@ -1,0 +1,38 @@
+{
+  "build": {
+    "core": "blinklib",
+    "extra_flags": "-DARDUINO_AVR_BLINK_328",
+    "f_cpu": "8000000L",
+    "mcu": "atmega328pb",
+    "variant": "standard",
+    "ldscript": "avr5-atmega328.xn",
+    "builtinbase": "0x3900"
+  },
+  "bootloader": {
+    "file": "BlinkBIOS-328PB.hex",
+    "lfuse": "0x62",
+    "hfuse": "0xD8",
+    "efuse": "0xff"
+  },
+  "debug": {
+    "simavr_target": "atmega328p"
+  },
+  "fuses" : {
+    "lfuse": "0x62",
+    "hfuse": "0xD8",
+    "efuse": "0xff"
+  },
+  "frameworks": [
+    "arduino"
+  ],
+  "name": "Blink328",
+  "upload": {
+    "maximum_ram_size": 1024,
+    "maximum_size": 5888,
+    "protocol": "usbtiny",
+    "require_upload_port": false,
+    "speed": 115200
+  },
+  "url": "https://move38.com/",
+  "vendor": "Move38"
+}
