@@ -1,0 +1,30 @@
+{
+    "build": {
+        "core": "MegaCore",
+        "extra_flags": "-DARDUINO_AVR_ATmega2560 -D SERIAL_RX_BUFFER_SIZE=128",
+        "f_cpu": "7372800L",
+        "mcu": "atmega2560",
+        "variant": "100-pin-arduino-mega",
+        "unflags": "-flto",
+        "board": "ATmega2560"
+    },
+    "frameworks": ["arduino"],
+    "name": "STF Labs B107AA (PowerStat V4)",
+    "upload": {
+        "protocol": "custom",
+        "speed": 115200,
+        "maximum_size": 262144,
+        "maximum_ram_size": 8192,
+        "upload_flags": "-C$PROJECT_PACKAGES_DIR/tool-avrdude/avrdude.conf -p$BOARD_MCU -PUSB -cusbasp",
+        "command": "avrdude -C$PROJECT_PACKAGES_DIR/tool-avrdude/avrdude.conf -p$BOARD_MCU -PUSB -cusbasp -U flash:w:$SOURCE:i"
+    },
+    "platform": "atmelavr",
+    "hardware": {
+        "oscillator": "external",
+        "uart": "no_bootloader",
+        "bod": "disabled",
+        "eesave": "no"
+    },
+    "url": "http://www.stf.com.tr",
+    "vendor": "STF Labs"
+}
