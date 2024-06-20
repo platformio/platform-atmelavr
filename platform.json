@@ -49,6 +49,11 @@
       "owner": "platformio",
       "version": "~2.0.3"
     },
+    "framework-arduino-avr-blinklib": {
+      "type": "framework",
+      "optional": true,
+      "version": "https://github.com/maxgerhardt/pio-blinks-core.git"
+    },
     "framework-arduino-avr-core13": {
       "type": "framework",
       "optional": true,

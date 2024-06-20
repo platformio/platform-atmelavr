@@ -107,6 +107,9 @@ env.Replace(
     PROGSUFFIX=".elf",
 )
 
+# Some Arduino cores need to relocate their firmware to a different address
+builtinbase = env.BoardConfig().get("build", {}).get("builtinbase", "")
+
 env.Append(
     BUILDERS=dict(
         ElfToEep=Builder(
@@ -133,7 +136,8 @@ env.Append(
         ElfToHex=Builder(
             action=env.VerboseAction(
                 " ".join(
-                    ["$OBJCOPY", "-O", "ihex", "-R", ".eeprom", "$SOURCES", "$TARGET"]
+                    ["$OBJCOPY", "-O", "ihex", "-R", ".eeprom", "$SOURCES", "$TARGET"] if builtinbase == "" else \
+                    ["$OBJCOPY", "--change-addresses", builtinbase, "-O", "ihex", "-R", ".eeprom", "$SOURCES", "$TARGET"]
                 ),
                 "Building $TARGET",
             ),

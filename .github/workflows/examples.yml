@@ -12,6 +12,7 @@ jobs:
           - "examples/arduino-blink"
           - "examples/arduino-external-libs"
           - "examples/arduino-internal-libs"
+          - "examples/arduino-move38-colorwheel"
           - "examples/arduino-own-src_dir"
           - "examples/assembly-blink"
           - "examples/digitstump-mouse"
