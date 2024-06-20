@@ -100,7 +100,7 @@ env.Replace(
     RANLIB="avr-gcc-ranlib",
     SIZETOOL="avr-size",
     ARFLAGS=["rc"],
-    SIZEPROGREGEXP=r"^(?:\.text|\.data|\.bootloader)\s+(\d+).*",
+    SIZEPROGREGEXP=r"^(?:\.text|\.data|.fin\d|\.bootloader)\s+(\d+).*",
     SIZEDATAREGEXP=r"^(?:\.data|\.bss|\.noinit)\s+(\d+).*",
     SIZECHECKCMD="$SIZETOOL -A -d $SOURCES",
     SIZEPRINTCMD="$SIZETOOL --mcu=$BOARD_MCU -C -d $SOURCES",
