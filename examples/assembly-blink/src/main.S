@@ -20,7 +20,7 @@ blink:
 delay_ms:
   ; Delay about (r25:r24)*ms. Clobbers r30, and r31.
   ; One millisecond is about 16000 cycles at 16MHz.
-  ; The inner loop takes 4 cycles, so we repeat it 3000 times
+  ; The inner loop takes 4 cycles, so we repeat it 4000 times
   ldi   r31, hi8(4000)
   ldi   r30, lo8(4000)
 1:
