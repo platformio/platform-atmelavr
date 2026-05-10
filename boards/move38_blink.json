@@ -1,0 +1,38 @@
+{
+  "build": {
+    "core": "blinklib",
+    "extra_flags": "-DARDUINO_AVR_BLINK_168",
+    "f_cpu": "8000000L",
+    "mcu": "atmega168pb",
+    "variant": "standard",
+    "ldscript": "avr5-atmega168pb.xn",
+    "builtinbase": "0x1700"
+  },
+  "bootloader": {
+    "file": "BlinkBIOS-168PB.hex",
+    "lfuse": "0x62",
+    "hfuse": "0xDF",
+    "efuse": "0xf8"
+  },
+  "debug": {
+    "simavr_target": "atmega168p"
+  },
+  "fuses" : {
+    "lfuse": "0x62",
+    "hfuse": "0xDF",
+    "efuse": "0xf8"
+  },
+  "frameworks": [
+    "arduino"
+  ],
+  "name": "Blink",
+  "upload": {
+    "maximum_ram_size": 1024,
+    "maximum_size": 5888,
+    "protocol": "usbtiny",
+    "require_upload_port": false,
+    "speed": 115200
+  },
+  "url": "https://move38.com/",
+  "vendor": "Move38"
+}
