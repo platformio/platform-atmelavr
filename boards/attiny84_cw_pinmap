@@ -1,0 +1,24 @@
+{
+  "build": {
+    "core": "tiny",
+    "extra_flags": "-DARDUINO_AVR_ATTINYX4",
+    "f_cpu": "8000000L",
+    "mcu": "attiny84",
+    "variant": "tinyX4_reverse"
+  },
+  "debug": {
+    "simavr_target": "attiny84"
+  },
+  "frameworks": [
+    "arduino"
+  ],
+  "name": "Generic ATtiny84",
+  "upload": {
+    "extra_flags": "-e",
+    "maximum_ram_size": 512,
+    "maximum_size": 8192,
+    "protocol": "usbtiny"
+  },
+  "url": "http://www.atmel.com/devices/ATTINY84.aspx",
+  "vendor": "Atmel"
+}
