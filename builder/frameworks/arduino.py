@@ -22,7 +22,7 @@ kinds of creative coding, interactive objects, spaces or physical experiences.
 http://arduino.cc/en/Reference/HomePage
 """
 
-from os.path import isdir, join
+from os.path import isdir, join, isabs
 
 from SCons.Script import DefaultEnvironment
 
@@ -41,6 +41,21 @@ elif build_core != "arduino":
         "framework-arduino-avr-%s" % build_core.lower())
 
 assert isdir(FRAMEWORK_DIR)
+
+
+def get_variants_dir():
+    if "build.variants_dir" not in board and "build.variant_pkg" not in board:
+        return join(FRAMEWORK_DIR, "variants")
+    if "build.variants_dir" in board:
+        if isabs(env.subst(board.get("build.variants_dir"))):
+            return board.get("build.variants_dir", "")
+        return join("$PROJECT_DIR", board.get("build.variants_dir"))
+
+    elif board.get("build.variant_pkg", ""):
+        full_variant_pkg = (
+            "framework-arduino-avr-%s" % board.get("build.variant_pkg").lower()
+        )
+        return join(platform.get_package_dir(full_variant_pkg), "variants")
 
 
 def get_bootloader_size():
@@ -168,9 +183,7 @@ elif build_core in ("tiny", "tinymodern"):
 libs = []
 
 if "build.variant" in board:
-    variants_dir = join(
-        "$PROJECT_DIR", board.get("build.variants_dir")) if board.get(
-            "build.variants_dir", "") else join(FRAMEWORK_DIR, "variants")
+    variants_dir = get_variants_dir()
 
     env.Append(
         CPPPATH=[

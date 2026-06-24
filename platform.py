@@ -20,10 +20,11 @@ class AtmelavrPlatform(PlatformBase):
     def configure_default_packages(self, variables, targets):
         if not variables.get("board"):
             return super().configure_default_packages(variables, targets)
+        board = self.board_config(variables.get("board"))
 
         build_core = variables.get(
-            "board_build.core", self.board_config(variables.get("board")).get(
-                "build.core", "arduino"))
+            "board_build.core", board.get("build.core", "arduino")
+        )
 
         if "arduino" in variables.get(
                 "pioframework", []) and build_core != "arduino":
@@ -47,10 +48,17 @@ class AtmelavrPlatform(PlatformBase):
             self.packages[framework_package]["optional"] = False
             self.packages["framework-arduino-avr"]["optional"] = True
 
+        variant_package = (
+            "framework-arduino-avr-%s" % (board.get("build.variant_pkg", ""),)
+            if board.get("build.variant_pkg", "")
+            else None
+        )
+        if variant_package and variant_package in self.packages:
+            self.packages[variant_package]["optional"] = False
+
         upload_protocol = variables.get(
-            "upload_protocol",
-            self.board_config(variables.get("board")).get(
-                "upload.protocol", ""))
+            "upload_protocol", board.get("upload.protocol", "")
+        )
         disabled_tool = "tool-micronucleus"
         required_tool = ""
 
