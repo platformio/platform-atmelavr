@@ -115,6 +115,12 @@
       "owner": "platformio",
       "version": "~1.0.3"
     },
+    "framework-arduino-avr-envirodiy": {
+      "type": "framework",
+      "optional": true,
+      "owner": "envirodiy",
+      "version": "https://github.com/EnviroDIY/EnviroDIYAVRBoards"
+    },
     "tool-avrdude": {
       "type": "uploader",
       "optional": true,
