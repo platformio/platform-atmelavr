@@ -1,0 +1,49 @@
+{
+  "build": {
+    "core": "arduino",
+    "extra_flags": "-DARDUINO_AVR_3DOT_32U4",
+    "f_cpu": "8000000L",
+    "hwids": [
+      [
+        "0x04D8",
+        "0xEC2E"
+      ],
+      [
+          "0x04D8",
+          "0xEC2D"
+      ]
+    ],
+    "mcu": "atmega32u4",
+    "usb_product": "Arxterra 3DoT",
+    "variant": "leonardo",
+    "board": "AVR_3DOT_9_1"
+  },
+  "bootloader": {
+    "tool": "avrdude",
+    "extended_fuses": "0xCF",
+    "file": "caterina/Caterina.hex",
+    "low_fuses": "0xE2",
+    "high_fuses": "0xD8",
+    "lock_bits": "0xEF",
+    "unlock_bits": "0xFF"
+  },
+  "debug": {
+    "simavr_target": "atmega32u4"
+  },
+  "frameworks": [
+    "arduino"
+  ],
+  "name": "Arxterra 3DoT",
+  "upload": {
+    "disable_flushing": true,
+    "maximum_ram_size": 2560,
+    "maximum_size": 28672,
+    "protocol": "avr109",
+    "require_upload_port": true,
+    "speed": 57600,
+    "use_1200bps_touch": true,
+    "wait_for_upload_port": true
+  },
+  "url": "https://www.humansforrobots.com/product/3dot-board/",
+  "vendor": "Arxterra"
+}
