@@ -32,7 +32,7 @@ board = env.BoardConfig()
 build_core = board.get("build.core", "")
 
 FRAMEWORK_DIR = platform.get_package_dir("framework-arduino-avr")
-if build_core in ("dtiny", "pro"):
+if build_core in ("dtiny", "pro", "tiny88"):
     FRAMEWORK_DIR = platform.get_package_dir("framework-arduino-avr-digistump")
 elif build_core in ("tiny", "tinymodern"):
     FRAMEWORK_DIR = platform.get_package_dir("framework-arduino-avr-attiny")
